@@ -33,6 +33,12 @@
           >Acerca de mí</b-nav-item
           >
           <b-nav-item
+              @click="setActive('services')"
+              :active="activeItem === 'services'"
+              class="mb-2"
+          >Servicios</b-nav-item
+          >
+          <b-nav-item
               @click="setActive('experience')"
               :active="activeItem === 'experience'"
               class="mb-2"
@@ -59,14 +65,16 @@
     <div class="main-container">
       <home-component :key="sectionsKeys.home" id="home"></home-component>
       <about-component :key="sectionsKeys.about" id="about"></about-component>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <services-component :key="sectionsKeys.services" id="services"></services-component>
+      <br><br><br><br>
     </div>
   </div>
 </template>
 <script>
 
-import HomeComponent from "./components/HomeComponent";
+import HomeComponent from "@/components/HomeComponent";
 import AboutComponent from "@/components/AboutComponent";
+import ServicesComponent from "@/components/ServicesComponent";
 
 export default {
   name: "App",
@@ -76,7 +84,8 @@ export default {
       scrolled: false,
       sectionsKeys: {
         home: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
-        about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+        about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+        services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
       }
     };
   },
@@ -101,7 +110,7 @@ export default {
       this.scrolled = window.scrollY > 0;
     }
   },
-  components: {AboutComponent, HomeComponent },
+  components: {ServicesComponent, AboutComponent, HomeComponent },
 };
 </script>
 <style scoped>
@@ -121,11 +130,17 @@ export default {
 
 .mi-portfolio .main-container #home {
   padding-top: 150px;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
 }
 
 .mi-portfolio .main-container #about {
-  padding-top: 100px;
+  padding-top: 150px;
+  padding-bottom: 120px;
+}
+
+.mi-portfolio .main-container #services {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .mi-portfolio .navbar {
