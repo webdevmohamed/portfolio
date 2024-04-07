@@ -10,11 +10,9 @@
           </p>
         </div>
         <div class="scroll-down-container">
-          <a href="#about">
-            <div class="flecha-scroll-down">
+            <div class="flecha-scroll-down" @click="scrollDown()">
               <div class="scroll-down"></div>
             </div>
-          </a>
           <p class="text-scroll-down">Scroll Down</p>
         </div>
         <img class="tachado" :src="require('@/assets/tachado.png')" alt="" />
@@ -42,6 +40,11 @@ export default {
    mounted() {
       this.showLeft = true;
       this.showRight = true;
+  },
+  methods: {
+    scrollDown() {
+      this.$emit('scroll-down');
+    }
   }
 };
 </script>

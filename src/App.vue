@@ -1,5 +1,5 @@
 <template>
-  <div class="mi-portfolio">
+  <div class="mi-portfolio" id="mi-portfolio">
     <b-navbar toggleable="lg" :class="['navbar', scrolled ? 'shadow' : '' ]" class="navbar">
       <b-navbar-brand>
         <span class="brand">M</span>
@@ -21,38 +21,38 @@
       >
         <b-navbar-nav>
           <b-nav-item
-              @click="setActive('home')"
-              :active="activeItem === 'home'"
+              @click="setActive('home', false)"
+              :active="activeSection === 'home'"
               class="mb-2"
           >Inicio</b-nav-item
           >
           <b-nav-item
-              @click="setActive('about')"
-              :active="activeItem === 'about'"
+              @click="setActive('about', false)"
+              :active="activeSection === 'about'"
               class="mb-2"
           >Acerca de mí</b-nav-item
           >
           <b-nav-item
-              @click="setActive('services')"
-              :active="activeItem === 'services'"
+              @click="setActive('services', false)"
+              :active="activeSection === 'services'"
               class="mb-2"
           >Servicios</b-nav-item
           >
           <b-nav-item
-              @click="setActive('experience')"
-              :active="activeItem === 'experience'"
+              @click="setActive('experience', false)"
+              :active="activeSection === 'experience'"
               class="mb-2"
           >Experiencia</b-nav-item
           >
           <b-nav-item
-              @click="setActive('projects')"
-              :active="activeItem === 'projects'"
+              @click="setActive('projects', false)"
+              :active="activeSection === 'projects'"
               class="mb-2"
           >Proyectos</b-nav-item
           >
           <b-nav-item
-              @click="setActive('contact')"
-              :active="activeItem === 'contact'"
+              @click="setActive('contact', false)"
+              :active="activeSection === 'contact'"
               class="mb-2 d-inline d-lg-none"
           >Contacto</b-nav-item
           >
@@ -63,9 +63,9 @@
       </b-collapse>
     </b-navbar>
     <div class="main-container">
-      <home-component :key="sectionsKeys.home" id="home"></home-component>
-      <about-component :key="sectionsKeys.about" id="about"></about-component>
-      <services-component :key="sectionsKeys.services" id="services"></services-component>
+      <home-component :key="sectionsKeys.home" class="section" :class="{ visible: sectionAnimationState.home }" @scroll-down="setActive('about', false)" id="home"></home-component>
+      <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }" id="about"></about-component>
+      <services-component :key="sectionsKeys.services" class="section" :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
       <br><br><br><br>
     </div>
   </div>
@@ -80,30 +80,87 @@ export default {
   name: "App",
   data() {
     return {
-      activeItem: "home",
+      activeSection: "home",
       scrolled: false,
       sectionsKeys: {
         home: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+      },
+      sectionAnimationState: {
+        home: false,
+        about: false,
+        services: false
       }
     };
   },
+  /*mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    const options = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.sectionAnimationState[entry.target.id]) {
+          this.sectionAnimationState[entry.target.id] = true;
+          this.setActive(entry.target.id, true);
+        }
+      });
+    }, options);
+
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  },*/
+
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+    const options = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.sectionAnimationState[entry.target.id]) {
+          this.sectionAnimationState[entry.target.id] = true;
+          this.setActive(entry.target.id, true);
+        }
+      });
+    }, options);
+
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      observer.observe(section);
+    });
   },
+
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll);
   },
 
   methods: {
-    setActive(item) {
-      if (this.activeItem !== item) this.sectionsKeys[item] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-      this.activeItem = item;
-      window.scrollTo({
-        top: document.getElementById(item).offsetTop,
-        behavior: 'smooth'
-      });
+    /*setActive(section, scroll) {
+      if (this.activeSection !== section) this.sectionsKeys[section] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      this.activeSection = section;
+      if (!scroll) {
+        window.scrollTo({
+          top: document.getElementById(section).offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    },*/
+
+    setActive(section, scroll) {
+      if (this.activeSection !== section) this.sectionsKeys[section] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      this.activeSection = section;
+      if (!scroll) {
+        window.scrollTo({
+          top: document.getElementById(section).offsetTop,
+          behavior: 'smooth'
+        });
+      }
     },
 
     handleScroll() {
@@ -206,6 +263,17 @@ export default {
 
 .mi-portfolio .navbar #nav-item-collapse .navbar-nav button {
   font-weight: bold;
+}
+
+.section {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease; /* Añade una transición para suavizar la aparición */
+}
+
+.section.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media screen and (max-width: 1200px) {
