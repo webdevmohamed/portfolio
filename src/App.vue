@@ -1,5 +1,5 @@
 <template>
-  <div class="mi-portfolio" id="mi-portfolio">
+  <div class="mi-portfolio">
     <b-navbar toggleable="lg" :class="['navbar', scrolled ? 'shadow' : '' ]" class="navbar">
       <b-navbar-brand>
         <span class="brand">M</span>
@@ -88,52 +88,15 @@ export default {
         services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
       },
       sectionAnimationState: {
-        home: false,
+        home: true,
         about: false,
         services: false
       }
     };
   },
-  /*mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-    const options = {
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.sectionAnimationState[entry.target.id]) {
-          this.sectionAnimationState[entry.target.id] = true;
-          this.setActive(entry.target.id, true);
-        }
-      });
-    }, options);
-
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  },*/
 
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
-    const options = {
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.sectionAnimationState[entry.target.id]) {
-          this.sectionAnimationState[entry.target.id] = true;
-          this.setActive(entry.target.id, true);
-        }
-      });
-    }, options);
-
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-      observer.observe(section);
-    });
   },
 
   beforeDestroy() {
@@ -141,32 +104,40 @@ export default {
   },
 
   methods: {
-    /*setActive(section, scroll) {
+    setActive(section) {
+      window.removeEventListener('scroll', this.handleScroll);
       if (this.activeSection !== section) this.sectionsKeys[section] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      this.sectionAnimationState[section] = true;
       this.activeSection = section;
-      if (!scroll) {
         window.scrollTo({
           top: document.getElementById(section).offsetTop,
           behavior: 'smooth'
         });
-      }
-    },*/
 
-    setActive(section, scroll) {
-      if (this.activeSection !== section) this.sectionsKeys[section] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-      this.activeSection = section;
-      if (!scroll) {
-        window.scrollTo({
-          top: document.getElementById(section).offsetTop,
-          behavior: 'smooth'
-        });
-      }
+      setTimeout(()=>{
+          window.addEventListener('scroll', this.handleScroll)
+      }, 500)
+
     },
 
     handleScroll() {
       this.scrolled = window.scrollY > 0;
+      const sections = document.querySelectorAll('.section');
+      let closestSectionId = null;
+      let closestDistance = Infinity;
+      sections.forEach(section => {
+        const distance = Math.abs(section.getBoundingClientRect().y);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSectionId = section.id;
+        }
+      });
+      if (!this.sectionAnimationState[closestSectionId]) this.sectionsKeys[closestSectionId] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+      this.sectionAnimationState[closestSectionId] = true;
+      this.activeSection = closestSectionId;
     }
   },
+
   components: {ServicesComponent, AboutComponent, HomeComponent },
 };
 </script>
