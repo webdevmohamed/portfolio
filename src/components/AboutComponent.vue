@@ -16,9 +16,14 @@
             Con una trayectoria de <b>3 años</b> en el campo del <b>Desarrollo Web</b>, me destaco por mi capacidad de
             aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.
           </p>
-          <ul class="skills">
-            <li><b>Mis Skills Son:</b> HTML, CSS, JavaScript, Vue, Nuxt, Git, Bootstrap, jQuery, PHP, MySQL & Strapi.</li>
-          </ul>
+          <a class="card1" :href="pdfUrl" download>
+            <h3>Descargar CV</h3>
+            <div class="go-corner">
+              <div class="go-arrow">
+                <b-icon class="download" icon="download"></b-icon>
+              </div>
+            </div>
+          </a>
           <div class="contact-buttons">
             <b-button squared variant="dark" class="contact-me-button bg-black border-0">
               <b-icon icon="cursor"></b-icon>
@@ -38,12 +43,14 @@
 </template>
 
 <script>
+import pdf from '@/assets/Mohamed_Mortahil_Elaaouad_Abril_2024.pdf';
 export default {
   name: "AboutComponent",
   data() {
     return {
       showLeft: false,
       showRight: false,
+      pdfUrl: pdf
     };
   },
   mounted() {
@@ -96,15 +103,9 @@ export default {
   color: #68a506;
 }
 
-.about .about-me-description .description-container .description .skills {
-  list-style-type: square;
-  padding: 0;
-  margin-top: 30px;
-}
-
 .about .about-me-description .description-container .description .contact-buttons {
   display: flex;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .about .about-me-description .description-container .description .contact-buttons .contact-me-button {
@@ -134,10 +135,109 @@ export default {
   margin-left: 20px;
 }
 
+.about .about-me-description .description-container .description .contact-buttons .linkedin-button .linkedin {
+  width: 20px;
+  height: 20px;
+}
+
+
 .about .about-me-description .description-container .description .contact-buttons .linkedin-button:hover {
   border-color: #68a506;
   cursor: pointer;
 }
+
+.about .about-me-description .description-container .description .contact-buttons .linkedin-button:hover .linkedin {
+  fill: #68a506;
+}
+
+
+
+
+.card1 h3 {
+  color: black;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.card1 p {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #666666;
+}
+
+.card1 p.small {
+  font-size: 14px;
+}
+
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background-color: #68a506;
+  border-radius: 0 0 0 58px;
+}
+
+.go-arrow {
+  margin-top: -10px;
+  margin-right: -10px;
+  color: white;
+}
+.go-arrow .download {
+  width: 20px;
+  height: 20px;
+}
+
+
+.card1 {
+  display: block;
+  position: relative;
+  max-width: 245px;
+  background-color: #f2f8f9;
+  padding: 15px 25px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.card1:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -16px;
+  background: #68a506;
+  height: 32px;
+  width: 32px;
+  border-radius: 32px;
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: transform 0.5s ease-out;
+}
+
+.card1:hover:before {
+  transform: scale(21);
+}
+
+
+.card1:hover p {
+  transition: all 0.6s ease-out;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card1:hover h3 {
+  transition: all 0.6s ease-out;
+  color: #ffffff;
+}
+
 
 .slide-fade-enter-active {
   transition: all 2s ease;
@@ -203,11 +303,6 @@ export default {
 
   .about .about-me-description .description-container .description .text-description {
     width: 100%;
-  }
-
-  .about .about-me-description .description-container .description .skills {
-    padding: inherit;
-    list-style-type: none;
   }
 
   .about .about-me-description .description-container .description .contact-buttons {

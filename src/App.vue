@@ -1,6 +1,6 @@
 <template>
   <div class="mi-portfolio">
-    <b-navbar toggleable="lg" :class="['navbar', scrolled ? 'shadow' : '' ]" class="navbar">
+    <b-navbar toggleable="xl" :class="['navbar', scrolled ? 'shadow' : '' ]" class="navbar">
       <b-navbar-brand>
         <span class="brand">M</span>
         <span class="name d-none d-md-inline"
@@ -39,6 +39,12 @@
           >Servicios</b-nav-item
           >
           <b-nav-item
+              @click="setActive('habilidades', false)"
+              :active="activeSection === 'habilidades'"
+              class="mb-2"
+          >Habilidades</b-nav-item
+          >
+          <b-nav-item
               @click="setActive('experience', false)"
               :active="activeSection === 'experience'"
               class="mb-2"
@@ -67,6 +73,8 @@
       <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }" id="about"></about-component>
       <services-component :key="sectionsKeys.services" class="section" :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
       <br><br><br><br>
+      <skills-component></skills-component>
+      <br><br><br><br>
     </div>
   </div>
 </template>
@@ -75,6 +83,7 @@
 import HomeComponent from "@/components/HomeComponent";
 import AboutComponent from "@/components/AboutComponent";
 import ServicesComponent from "@/components/ServicesComponent";
+import SkillsComponent from "@/components/SkillsComponent";
 
 export default {
   name: "App",
@@ -138,7 +147,7 @@ export default {
     }
   },
 
-  components: {ServicesComponent, AboutComponent, HomeComponent },
+  components: {SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
 };
 </script>
 <style scoped>

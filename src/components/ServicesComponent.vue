@@ -8,7 +8,7 @@
         <div class="service col-3 first" v-show="showFist">
           <div class="content">
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
-            <b-icon class="ms-2 mb-4" icon="layout-text-window" font-scale="2"></b-icon>
+            <b-icon class="ms-2 mb-4 icono" icon="layout-text-window" font-scale="2"></b-icon>
             <h3><b>Diseño Web</b></h3>
             <p class="text-secondary">Diseños bonitos y elegantes con interfaces interactivas que resultan intuitivas, eficaces y agradables de usar para el usuario.</p>
           </div>
@@ -20,7 +20,7 @@
         <div class="service col-3 second" v-show="showSecond">
           <div class="content">
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
-            <b-icon class="ms-2 mb-4" icon="journal-code" font-scale="2"></b-icon>
+            <b-icon class="ms-2 mb-4 icono" icon="journal-code" font-scale="2"></b-icon>
             <h3><b>Desarrollo</b></h3>
             <p class="text-secondary">Desarrollo web personalizado adaptado a sus especificaciones, diseñado para ofrecer una experiencia de usuario impecable.</p>
           </div>
@@ -32,7 +32,7 @@
         <div class="service col-3 third" v-show="showThird">
           <div class="content">
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
-            <b-icon class="ms-2 mb-4" icon="tablet" font-scale="2"></b-icon>
+            <b-icon class="ms-2 mb-4 icono" icon="tablet" font-scale="2"></b-icon>
             <h3><b>Diseño responsivo</b></h3>
             <p class="text-secondary">Desarrollo de sitios web que se adaptan perfectamente a cualquier dispositivo, brindando una experiencia de usuario óptima en todo momento.</p>
           </div>
@@ -103,6 +103,10 @@ export default {
   background-color: #68a506;
 }
 
+.services .services-container .service .content .icono {
+  transition: transform 0.8s ease;
+}
+
 .services .services-container .service .custom-border {
   position: absolute;
   width: 100%;
@@ -116,6 +120,10 @@ export default {
 
 .services .services-container .service:hover .custom-border {
   transform: translate(1rem, 1rem);
+}
+
+.services .services-container .service:hover .content .icono {
+  transform: rotateY(360deg);
 }
 
 
