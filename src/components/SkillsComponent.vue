@@ -4,46 +4,63 @@
       <div class="loop-slider" style="--duration:20000ms; --direction:normal;">
         <div class="inner">
           <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> webdev</div>
-          <div class="tag"><span>#</span> Typescript</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> UI/UX</div>
-          <!-- duplicated content -->
+          <div class="tag"><span>#</span> CSS</div>
+          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> Vue.js</div>
+          <div class="tag"><span>#</span> Nuxt</div>
+
           <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> webdev</div>
-          <div class="tag"><span>#</span> Typescript</div>
-          <div class="tag"><span>#</span> Next.js</div>
-          <div class="tag"><span>#</span> UI/UX</div>
+          <div class="tag"><span>#</span> CSS</div>
+          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> Vue.js</div>
+          <div class="tag"><span>#</span> Nuxt</div>
+
+          <div class="tag"><span>#</span> JavaScript</div>
+          <div class="tag"><span>#</span> CSS</div>
+          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> Vue.js</div>
+          <div class="tag"><span>#</span> Nuxt</div>
         </div>
       </div>
       <div class="loop-slider" style="--duration:11000ms; --direction:reverse;">
         <div class="inner">
-          <div class="tag"><span>#</span> webdev</div>
-          <div class="tag"><span>#</span> Gatsby</div>
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> Tailwind</div>
-          <div class="tag"><span>#</span> Typescript</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> webdev</div>
-          <div class="tag"><span>#</span> Gatsby</div>
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> Tailwind</div>
-          <div class="tag"><span>#</span> Typescript</div>
+          <div class="tag"><span>#</span> PHP</div>
+          <div class="tag"><span>#</span> MySQL</div>
+          <div class="tag"><span>#</span> REST API</div>
+          <div class="tag"><span>#</span> Doctrine</div>
+          <div class="tag"><span>#</span> Java</div>
+
+          <div class="tag"><span>#</span> PHP</div>
+          <div class="tag"><span>#</span> MySQL</div>
+          <div class="tag"><span>#</span> REST API</div>
+          <div class="tag"><span>#</span> Doctrine</div>
+          <div class="tag"><span>#</span> Java</div>
+
+          <div class="tag"><span>#</span> PHP</div>
+          <div class="tag"><span>#</span> MySQL</div>
+          <div class="tag"><span>#</span> REST API</div>
+          <div class="tag"><span>#</span> Doctrine</div>
+          <div class="tag"><span>#</span> Java</div>
         </div>
       </div>
       <div class="loop-slider" style="--duration:6449ms; --direction:normal;">
         <div class="inner">
-          <div class="tag"><span>#</span> animation</div>
-          <div class="tag"><span>#</span> Tailwind</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> SVG</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <!-- duplicated content -->
-          <div class="tag"><span>#</span> animation</div>
-          <div class="tag"><span>#</span> Tailwind</div>
-          <div class="tag"><span>#</span> React</div>
-          <div class="tag"><span>#</span> SVG</div>
-          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> jQuery</div>
+          <div class="tag"><span>#</span> Bootstrap</div>
+          <div class="tag"><span>#</span> Axios</div>
+          <div class="tag"><span>#</span> Git</div>
+
+          <div class="tag"><span>#</span> jQuery</div>
+          <div class="tag"><span>#</span> Bootstrap</div>
+          <div class="tag"><span>#</span> Axios</div>
+          <div class="tag"><span>#</span> Git</div>
+          <div class="tag"><span>#</span> Strapi</div>
+
+          <div class="tag"><span>#</span> jQuery</div>
+          <div class="tag"><span>#</span> Bootstrap</div>
+          <div class="tag"><span>#</span> Axios</div>
+          <div class="tag"><span>#</span> Git</div>
+          <div class="tag"><span>#</span> Strapi</div>
         </div>
       </div>
       <div class="fade-app"></div>
@@ -67,13 +84,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #1e293b;
+  background: #68a506;
   color: #f8fafc;
 }
 
 
 .tag-list {
-  width: 50rem;
+  width: 60rem;
   max-width: 90vw;
   display: flex;
   flex-shrink: 0;
@@ -101,10 +118,11 @@ body {
   gap: 0 0.2rem;
   color: #e2e8f0;
   font-size: 0.9rem;
-  background-color: #334155;
+  background-color: black;
   border-radius: 0.4rem;
   padding: 0.7rem 1rem;
   margin-right: 1rem;
+  white-space: nowrap;
   box-shadow:
   0 0.1rem 0.2rem rgb(0 0 0 / 20%),
   0 0.1rem 0.5rem rgb(0 0 0 / 30%),
@@ -119,7 +137,7 @@ body {
 
 .fade-app {
   pointer-events: none;
-  background: linear-gradient(90deg, #1e293b, transparent 30%, transparent 70%, #1e293b);
+  background: linear-gradient(90deg, #68a506, transparent 30%, transparent 70%, #68a506);
   position: absolute;
   inset: 0;
 }
@@ -129,7 +147,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-20%);
   }
 }
 

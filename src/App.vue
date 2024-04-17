@@ -39,12 +39,6 @@
           >Servicios</b-nav-item
           >
           <b-nav-item
-              @click="setActive('habilidades', false)"
-              :active="activeSection === 'habilidades'"
-              class="mb-2"
-          >Habilidades</b-nav-item
-          >
-          <b-nav-item
               @click="setActive('experience', false)"
               :active="activeSection === 'experience'"
               class="mb-2"
@@ -72,7 +66,6 @@
       <home-component :key="sectionsKeys.home" class="section" :class="{ visible: sectionAnimationState.home }" @scroll-down="setActive('about', false)" id="home"></home-component>
       <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }" id="about"></about-component>
       <services-component :key="sectionsKeys.services" class="section" :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
-      <br><br><br><br>
       <skills-component></skills-component>
       <br><br><br><br>
     </div>
@@ -159,7 +152,7 @@ export default {
   color: black;
 }
 
-.mi-portfolio .main-container {
+.mi-portfolio .main-container .section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
