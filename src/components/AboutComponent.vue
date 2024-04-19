@@ -16,11 +16,11 @@
             Con una trayectoria de <b>3 años</b> en el campo del <b>Desarrollo Web</b>, me destaco por mi capacidad de
             aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.
           </p>
-          <a class="card1" :href="pdfUrl" download>
+          <a class="download-button" :href="pdfUrl" download>
             <h3>Descargar CV</h3>
             <div class="go-corner">
               <div class="go-arrow">
-                <b-icon class="download" icon="download"></b-icon>
+                <b-icon class="download-icon" icon="download"></b-icon>
               </div>
             </div>
           </a>
@@ -150,10 +150,7 @@ export default {
   fill: #68a506;
 }
 
-
-
-
-.card1 h3 {
+.about .about-me-description .description-container .description .download-button h3 {
   color: black;
   font-size: 17px;
   line-height: 24px;
@@ -161,19 +158,19 @@ export default {
   margin-bottom: 4px;
 }
 
-.card1 p {
+.about .about-me-description .description-container .description .download-button p {
   font-size: 17px;
   font-weight: 400;
   line-height: 20px;
   color: #666666;
 }
 
-.card1 p.small {
+.about .about-me-description .description-container .description .download-button p.small {
   font-size: 14px;
 }
 
 
-.go-corner {
+.about .about-me-description .description-container .description .download-button .go-corner {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,28 +184,28 @@ export default {
   border-radius: 0 0 0 58px;
 }
 
-.go-arrow {
+.about .about-me-description .description-container .description .download-button .go-arrow {
   margin-top: -10px;
   margin-right: -10px;
   color: white;
 }
-.go-arrow .download {
+
+.about .about-me-description .description-container .description .download-button .go-arrow .download-icon {
   width: 20px;
   height: 20px;
 }
 
-
-.card1 {
+.download-button {
   display: block;
   position: relative;
-  max-width: 245px;
+  max-width: 250px;
   background-color: #f2f8f9;
   padding: 15px 25px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
 }
-.card1:before {
+.download-button:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -223,17 +220,17 @@ export default {
   transition: transform 0.5s ease-out;
 }
 
-.card1:hover:before {
+.download-button:hover:before {
   transform: scale(21);
 }
 
 
-.card1:hover p {
+.download-button:hover p {
   transition: all 0.6s ease-out;
   color: rgba(255, 255, 255, 0.8);
 }
 
-.card1:hover h3 {
+.download-button:hover h3 {
   transition: all 0.6s ease-out;
   color: #ffffff;
 }
@@ -298,7 +295,7 @@ export default {
   }
 
   .about .about-me-description .description-container .description {
-    text-align: center;
+    text-align: -webkit-center;
   }
 
   .about .about-me-description .description-container .description .text-description {

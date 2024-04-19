@@ -1,14 +1,8 @@
 <template>
-  <div class="app">
+  <div class="skills">
     <div class="tag-list">
-      <div class="loop-slider" style="--duration:20000ms; --direction:normal;">
+      <div class="loop-slider" style="--duration:15951ms; --direction:normal;">
         <div class="inner">
-          <div class="tag"><span>#</span> JavaScript</div>
-          <div class="tag"><span>#</span> CSS</div>
-          <div class="tag"><span>#</span> HTML</div>
-          <div class="tag"><span>#</span> Vue.js</div>
-          <div class="tag"><span>#</span> Nuxt</div>
-
           <div class="tag"><span>#</span> JavaScript</div>
           <div class="tag"><span>#</span> CSS</div>
           <div class="tag"><span>#</span> HTML</div>
@@ -22,14 +16,8 @@
           <div class="tag"><span>#</span> Nuxt</div>
         </div>
       </div>
-      <div class="loop-slider" style="--duration:11000ms; --direction:reverse;">
+      <div class="loop-slider" style="--duration:19260ms; --direction:reverse;">
         <div class="inner">
-          <div class="tag"><span>#</span> PHP</div>
-          <div class="tag"><span>#</span> MySQL</div>
-          <div class="tag"><span>#</span> REST API</div>
-          <div class="tag"><span>#</span> Doctrine</div>
-          <div class="tag"><span>#</span> Java</div>
-
           <div class="tag"><span>#</span> PHP</div>
           <div class="tag"><span>#</span> MySQL</div>
           <div class="tag"><span>#</span> REST API</div>
@@ -43,13 +31,8 @@
           <div class="tag"><span>#</span> Java</div>
         </div>
       </div>
-      <div class="loop-slider" style="--duration:6449ms; --direction:normal;">
+      <div class="loop-slider" style="--duration:10449ms; --direction:normal;">
         <div class="inner">
-          <div class="tag"><span>#</span> jQuery</div>
-          <div class="tag"><span>#</span> Bootstrap</div>
-          <div class="tag"><span>#</span> Axios</div>
-          <div class="tag"><span>#</span> Git</div>
-
           <div class="tag"><span>#</span> jQuery</div>
           <div class="tag"><span>#</span> Bootstrap</div>
           <div class="tag"><span>#</span> Axios</div>
@@ -63,7 +46,39 @@
           <div class="tag"><span>#</span> Strapi</div>
         </div>
       </div>
-      <div class="fade-app"></div>
+
+      <div class="loop-slider" style="--duration:16638ms; --direction:reverse;">
+        <div class="inner">
+          <div class="tag"><span>#</span> Vue.js</div>
+          <div class="tag"><span>#</span> JavaScript</div>
+          <div class="tag"><span>#</span> CSS</div>
+          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> jQuery</div>
+
+          <div class="tag"><span>#</span> Vue.js</div>
+          <div class="tag"><span>#</span> JavaScript</div>
+          <div class="tag"><span>#</span> CSS</div>
+          <div class="tag"><span>#</span> HTML</div>
+          <div class="tag"><span>#</span> jQuery</div>
+        </div>
+      </div>
+
+      <div class="loop-slider" style="--duration:15936ms; --direction:normal;">
+        <div class="inner">
+          <div class="tag"><span>#</span> Git</div>
+          <div class="tag"><span>#</span> PHP</div>
+          <div class="tag"><span>#</span> Java</div>
+          <div class="tag"><span>#</span> MySQL</div>
+          <div class="tag"><span>#</span> Doctrine</div>
+
+          <div class="tag"><span>#</span> Git</div>
+          <div class="tag"><span>#</span> PHP</div>
+          <div class="tag"><span>#</span> Java</div>
+          <div class="tag"><span>#</span> MySQL</div>
+          <div class="tag"><span>#</span> Doctrine</div>
+        </div>
+      </div>
+      <div class="fade-skills"></div>
     </div>
   </div>
 </template>
@@ -79,7 +94,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.app {
+.skills {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,8 +104,8 @@ body {
 }
 
 
-.tag-list {
-  width: 60rem;
+.skills .tag-list {
+  width: 30rem;
   max-width: 90vw;
   display: flex;
   flex-shrink: 0;
@@ -101,7 +116,7 @@ body {
   overflow: hidden;
 }
 
-.loop-slider .inner {
+.skills .loop-slider .inner {
   display: flex;
   width: fit-content;
   animation-name: loop;
@@ -112,7 +127,7 @@ body {
 
 }
 
-.tag {
+.skills .tag {
   display: flex;
   align-items: center;
   gap: 0 0.2rem;
@@ -120,7 +135,7 @@ body {
   font-size: 0.9rem;
   background-color: black;
   border-radius: 0.4rem;
-  padding: 0.7rem 1rem;
+  padding: 0.3rem 1rem;
   margin-right: 1rem;
   white-space: nowrap;
   box-shadow:
@@ -130,12 +145,12 @@ body {
 
 }
 
-.tag span {
+.skills .tag span {
   font-size: 1.2rem;
   color: #64748b;
 }
 
-.fade-app {
+.skills .fade-skills {
   pointer-events: none;
   background: linear-gradient(90deg, #68a506, transparent 30%, transparent 70%, #68a506);
   position: absolute;
@@ -147,7 +162,7 @@ body {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-20%);
+    transform: translateX(-50%);
   }
 }
 

@@ -201,7 +201,7 @@ export default {
 }
 
 .home .img-container .img-border-container img {
-  width: 62%;
+  width: 75%;
   margin-left: 10px;
   position: relative;
   border: 3px solid black;

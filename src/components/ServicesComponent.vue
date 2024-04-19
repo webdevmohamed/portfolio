@@ -200,21 +200,6 @@ export default {
     zoom: 1;
   }
 
-  .first.slide-fade-enter,
-  .first.slide-fade-leave-to {
-    transform: translateX(-30%);
-  }
-
-  .second.slide-fade-enter,
-  .second.slide-fade-leave-to {
-    transform: translateX(30%);
-  }
-
-  .third.slide-fade-enter,
-  .third.slide-fade-leave-to {
-    transform: translateX(-30%);
-  }
-
 }
 
 @media screen and (max-width: 750px) {

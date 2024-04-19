@@ -62,13 +62,12 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <div class="main-container">
+    <div class="partial-container">
       <home-component :key="sectionsKeys.home" class="section" :class="{ visible: sectionAnimationState.home }" @scroll-down="setActive('about', false)" id="home"></home-component>
       <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }" id="about"></about-component>
       <services-component :key="sectionsKeys.services" class="section" :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
-      <skills-component></skills-component>
-      <br><br><br><br>
     </div>
+    <skills-component></skills-component>
   </div>
 </template>
 <script>
@@ -152,23 +151,23 @@ export default {
   color: black;
 }
 
-.mi-portfolio .main-container .section {
+.mi-portfolio .partial-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.mi-portfolio .main-container #home {
+.mi-portfolio .partial-container #home {
   padding-top: 150px;
   padding-bottom: 120px;
 }
 
-.mi-portfolio .main-container #about {
+.mi-portfolio .partial-container #about {
   padding-top: 150px;
   padding-bottom: 120px;
 }
 
-.mi-portfolio .main-container #services {
+.mi-portfolio .partial-container #services {
   padding-top: 120px;
   padding-bottom: 120px;
 }
