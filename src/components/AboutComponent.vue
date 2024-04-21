@@ -224,15 +224,9 @@ export default {
   transform: scale(21);
 }
 
-
-.download-button:hover p {
-  transition: all 0.6s ease-out;
-  color: rgba(255, 255, 255, 0.8);
-}
-
 .download-button:hover h3 {
-  transition: all 0.6s ease-out;
-  color: #ffffff;
+  transition: all 0.3s ease-out;
+  color: white !important;
 }
 
 

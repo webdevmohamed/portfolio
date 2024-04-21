@@ -94,6 +94,10 @@ export default {
   );
 }
 
+.home .name-description-container {
+  width: 50%;
+}
+
 .home .name-description-container .scroll-down-container {
   display: flex;
   flex-direction: row;
@@ -138,7 +142,6 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-/*animated scroll arrow animation*/
 @-webkit-keyframes fade_move_down {
   0% {
     -webkit-transform: translate(0, -15px) rotate(45deg);
@@ -187,6 +190,7 @@ export default {
 }
 
 .home .img-container {
+  width: 50%;
   display: flex;
   flex-direction: row;
 }
@@ -274,6 +278,7 @@ export default {
   }
 
   .home .name-description-container {
+    width: 100%;
     text-align: center;
   }
 

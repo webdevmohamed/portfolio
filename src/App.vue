@@ -62,12 +62,14 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-    <div class="partial-container">
-      <home-component :key="sectionsKeys.home" class="section" :class="{ visible: sectionAnimationState.home }" @scroll-down="setActive('about', false)" id="home"></home-component>
-      <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }" id="about"></about-component>
-      <services-component :key="sectionsKeys.services" class="section" :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
+    <div class="main-container">
+      <home-component :key="sectionsKeys.home" class="section" :class="{visible: sectionAnimationState.home}" @scroll-down="setActive('about', false)" id="home"></home-component>
+      <about-component :key="sectionsKeys.about" class="section" :class="{visible: sectionAnimationState.about}" id="about"></about-component>
+      <services-component :key="sectionsKeys.services" class="section" :class="{visible: sectionAnimationState.services}" id="services"></services-component>
+      <skills-component id="skills"></skills-component>
+      <experience-component :key="sectionsKeys.experience" class="section" :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </div>
-    <skills-component></skills-component>
   </div>
 </template>
 <script>
@@ -76,6 +78,7 @@ import HomeComponent from "@/components/HomeComponent";
 import AboutComponent from "@/components/AboutComponent";
 import ServicesComponent from "@/components/ServicesComponent";
 import SkillsComponent from "@/components/SkillsComponent";
+import ExperienceComponent from "@/components/ExperienceComponent";
 
 export default {
   name: "App",
@@ -86,12 +89,14 @@ export default {
       sectionsKeys: {
         home: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
-        services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+        services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+        experience: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
       },
       sectionAnimationState: {
         home: true,
         about: false,
-        services: false
+        services: false,
+        experience: false
       }
     };
   },
@@ -139,7 +144,7 @@ export default {
     }
   },
 
-  components: {SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
+  components: {ExperienceComponent, SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
 };
 </script>
 <style scoped>
@@ -151,25 +156,23 @@ export default {
   color: black;
 }
 
-.mi-portfolio .partial-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.mi-portfolio .partial-container #home {
+.mi-portfolio .main-container #home {
   padding-top: 150px;
   padding-bottom: 120px;
 }
 
-.mi-portfolio .partial-container #about {
+.mi-portfolio .main-container #about {
   padding-top: 150px;
   padding-bottom: 120px;
 }
 
-.mi-portfolio .partial-container #services {
+.mi-portfolio .main-container #services {
   padding-top: 120px;
   padding-bottom: 120px;
+}
+
+.mi-portfolio .main-container #skills {
+  margin-bottom: 120px;
 }
 
 .mi-portfolio .navbar {
@@ -237,13 +240,16 @@ export default {
   font-weight: bold;
 }
 
-.section {
+.mi-portfolio .main-container .section {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease; /* Añade una transición para suavizar la aparición */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.section.visible {
+.mi-portfolio .main-container .section.visible {
   opacity: 1;
   visibility: visible;
 }
