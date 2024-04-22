@@ -2,42 +2,94 @@
   <div class="experience">
     <h2 class="title">Experiencia.</h2>
     <div class="main-timeline">
-
-      <!-- start experience section-->
       <div class="timeline">
         <div class="icon"></div>
-        <div class="date-content">
-          <div class="date-outer">
-                                    <span class="date">
-                                    <span class="years">3 años</span>
-                                            <span class="year-range">2021 - 2024</span>
-                                    </span>
+        <transition name="slide-fade">
+          <div class="date-content" v-show="showDateContent">
+            <div class="date-outer">
+            <span class="date">
+              <span class="years">3 años</span>
+              <span class="year-range">2021 - 2024</span>
+            </span>
+            </div>
           </div>
-        </div>
-        <div class="timeline-content">
-          <h5 class="title">Desarrollador Web</h5>
-          <div class="description">
-            <ul>
-              <li>Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de diseño responsive y elementos interactivos para una experiencia óptima del usuario.</li>
-              <li>Optimización de rendimiento: Implementación de estrategias para reducir significativamente los tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del flujo de funciones y llamadas asíncronas.</li>
-              <li>Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en la plataforma.</li>
-              <li>Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad para colaborar en proyectos de gran escala.</li>
-            </ul>
+        </transition>
+        <transition name="slide-fade">
+          <div class="timeline-content" v-show="showTimeLineContent">
+            <h5 class="title">Desarrollador Web</h5>
+            <div class="description">
+              <ul>
+                <li>Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de diseño responsive y elementos interactivos para una experiencia óptima del usuario.</li>
+                <li>Optimización de rendimiento: Implementación de estrategias para reducir significativamente los tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del flujo de funciones y llamadas asíncronas.</li>
+                <li>Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en la plataforma.</li>
+                <li>Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad para colaborar en proyectos de gran escala.</li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </transition>
       </div>
-      <!-- end experience section-->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ExperienceComponent"
+  name: "ExperienceComponent",
+  data() {
+    return {
+      showDateContent: false,
+      showTimeLineContent: false,
+    };
+  },
+  mounted() {
+    this.showDateContent = true;
+    this.showTimeLineContent = true;
+  }
 }
 </script>
 
 <style scoped>
+
+.slide-fade-enter-active {
+  transition: all 2s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.date-content.slide-fade-enter,
+.date-content.slide-fade-leave-to {
+  transform: translateX(-30%);
+}
+
+.timeline-content.slide-fade-enter,
+.timeline-content.slide-fade-leave-to {
+  transform: translateX(30%);
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .experience .title {
   font-weight: bold;
@@ -138,8 +190,8 @@ export default {
 }
 
 .experience .main-timeline .date-outer {
-  width: 125px;
-  height: 125px;
+  width: 135px;
+  height: 135px;
   font-size: 16px;
   text-align: center;
   margin: auto;
@@ -217,6 +269,7 @@ export default {
 .experience .main-timeline .description {
   margin-bottom: 0
 }
+
 .experience .main-timeline .description ul li {
   margin-bottom: 10px
 }
@@ -235,25 +288,8 @@ export default {
   text-align: right
 }
 
-@media only screen and (max-width: 991px) {
-  .experience .main-timeline .date-content {
-    margin-top: 35px
-  }
-  .experience .main-timeline .date-content:before {
-    width: 22.5%
-  }
-  .experience .main-timeline .timeline-content {
-    padding: 10px 0 10px 30px
-  }
-  .experience .main-timeline .title {
-    font-size: 17px
-  }
-  .experience .main-timeline .timeline:nth-child(2n) .timeline-content {
-    padding: 10px 30px 10px 0
-  }
-}
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 1200px) {
   .experience .main-timeline:before {
     margin: 0;
     left: 7px
@@ -265,40 +301,65 @@ export default {
     margin-bottom: 0
   }
   .experience .main-timeline .icon {
-    margin: auto 0
+    margin: auto 0;
+    top: 166px;
   }
   .experience .main-timeline .date-content {
-    width: 95%;
+    width: 100%;
     float: right;
     margin-top: 0
   }
   .experience .main-timeline .date-content:before {
     display: none
   }
-  .experience .main-timeline .date-outer {
-    width: 110px;
-    height: 110px
-  }
-  .experience .main-timeline .date-outer:before,
-  .experience .main-timeline .date-outer:after {
-    width: 110px;
-    height: 110px
-  }
-  .experience .main-timeline .date {
-    top: 30%
-  }
-  .experience .main-timeline .year {
-    font-size: 24px
-  }
+
   .experience .main-timeline .timeline-content,
   .experience .main-timeline .timeline:nth-child(2n) .timeline-content {
-    width: 95%;
+    width: 100%;
     text-align: center;
     padding: 10px 0
   }
   .experience .main-timeline .title {
-    margin-bottom: 10px
+    margin: 20px 0;
+    text-align: center;
   }
+
+  .experience .main-timeline .description {
+    text-align: left;
+    width: 95%;
+    float: right;
+  }
+
+  .slide-fade-enter,
+  .slide-fade-leave-to {
+    opacity: 0;
+    transform: translateY(0); /* Mantén la posición inicial */
+  }
+
+  .slide-fade-enter-to,
+  .slide-fade-leave {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .date-content.slide-fade-enter,
+  .date-content.slide-fade-leave-to {
+    transform: translateY(-30%);
+  }
+
+  .timeline-content.slide-fade-enter,
+  .timeline-content.slide-fade-leave-to {
+    transform: translateY(30%);
+  }
+
 }
+
+@media screen and (max-width: 450px) {
+  .experience .main-timeline .description {
+    font-size: 15px;
+  }
+
+}
+
 
 </style>
