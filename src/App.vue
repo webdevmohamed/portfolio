@@ -17,48 +17,29 @@
       <b-collapse
           id="nav-item-collapse"
           is-nav
-          class="ml-auto justify-content-end"
-      >
+          class="ml-auto justify-content-end">
         <b-navbar-nav>
           <b-nav-item
               @click="setActive('home', false)"
               :active="activeSection === 'home'"
-              class="mb-2"
-          >Inicio</b-nav-item
-          >
+              class="mb-2">Inicio</b-nav-item>
           <b-nav-item
               @click="setActive('about', false)"
               :active="activeSection === 'about'"
-              class="mb-2"
-          >Acerca de mí</b-nav-item
-          >
+              class="mb-2">Acerca de mí</b-nav-item>
           <b-nav-item
               @click="setActive('services', false)"
               :active="activeSection === 'services'"
-              class="mb-2"
-          >Servicios</b-nav-item
-          >
+              class="mb-2">Servicios</b-nav-item>
           <b-nav-item
               @click="setActive('experience', false)"
               :active="activeSection === 'experience'"
-              class="mb-2"
-          >Experiencia</b-nav-item
-          >
-          <b-nav-item
-              @click="setActive('projects', false)"
-              :active="activeSection === 'projects'"
-              class="mb-2"
-          >Proyectos</b-nav-item
-          >
+              class="mb-2">Experiencia</b-nav-item>
           <b-nav-item
               @click="setActive('contact', false)"
               :active="activeSection === 'contact'"
-              class="mb-2 d-inline d-lg-none"
-          >Contacto</b-nav-item
-          >
-          <b-button squared class="d-none d-lg-inline contact bg-black" variant="dark"
-          >Contacto</b-button
-          >
+              class="mb-2 d-inline d-lg-none">Contacto</b-nav-item>
+          <b-button @click="setActive('contact', false)" squared class="d-none d-lg-inline contact bg-black" variant="dark">Contacto</b-button>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -68,7 +49,7 @@
       <services-component :key="sectionsKeys.services" class="section" :class="{visible: sectionAnimationState.services}" id="services"></services-component>
       <skills-component id="skills"></skills-component>
       <experience-component :key="sectionsKeys.experience" class="section" :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <contact-component :key="sectionsKeys.contact" class="section" :class="{visible: sectionAnimationState.contact}" id="contact"></contact-component>
     </div>
   </div>
 </template>
@@ -79,6 +60,7 @@ import AboutComponent from "@/components/AboutComponent";
 import ServicesComponent from "@/components/ServicesComponent";
 import SkillsComponent from "@/components/SkillsComponent";
 import ExperienceComponent from "@/components/ExperienceComponent";
+import ContactComponent from "@/components/ContactComponent";
 
 export default {
   name: "App",
@@ -90,13 +72,15 @@ export default {
         home: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
-        experience: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+        experience: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+        contact: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
       },
       sectionAnimationState: {
         home: true,
         about: false,
         services: false,
-        experience: false
+        experience: false,
+        contact: false
       }
     };
   },
@@ -144,7 +128,7 @@ export default {
     }
   },
 
-  components: {ExperienceComponent, SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
+  components: {ContactComponent, ExperienceComponent, SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
 };
 </script>
 <style scoped>
@@ -176,6 +160,11 @@ export default {
 }
 
 .mi-portfolio .main-container #experience {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.mi-portfolio .main-container #contact {
   padding-top: 120px;
   padding-bottom: 120px;
 }

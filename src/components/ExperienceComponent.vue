@@ -50,55 +50,13 @@ export default {
 
 <style scoped>
 
-.slide-fade-enter-active {
-  transition: all 2s ease;
-}
-
-.slide-fade-leave-active {
-  transition: all 2s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter,
-.slide-fade-leave-to {
-  opacity: 0;
-  transform: translateX(0);
-}
-
-.slide-fade-enter-to,
-.slide-fade-leave {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.date-content.slide-fade-enter,
-.date-content.slide-fade-leave-to {
-  transform: translateX(-30%);
-}
-
-.timeline-content.slide-fade-enter,
-.timeline-content.slide-fade-leave-to {
-  transform: translateX(30%);
-}
-@keyframes bounce-in {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .experience .title {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 80px;
   width: 100%;
   text-align: center;
 }
-
 
 .experience .main-timeline {
   position: relative
@@ -179,13 +137,13 @@ export default {
 
 .experience .main-timeline .date-content:before {
   content: "";
-  width: 36.5%;
+  width: 36%;
   height: 2px;
   background: #c6c6c6;
   margin: auto 0;
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 11px;
   bottom: 0
 }
 
@@ -288,6 +246,36 @@ export default {
   text-align: right
 }
 
+
+.slide-fade-enter-active {
+  transition: all 2s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(0);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.date-content.slide-fade-enter,
+.date-content.slide-fade-leave-to {
+  transform: translateX(-30%);
+}
+
+.timeline-content.slide-fade-enter,
+.timeline-content.slide-fade-leave-to {
+  transform: translateX(30%);
+}
 
 @media screen and (max-width: 1200px) {
   .experience .main-timeline:before {

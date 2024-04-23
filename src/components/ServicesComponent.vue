@@ -68,7 +68,7 @@ export default {
 
 .services .title {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 80px;
   width: 100%;
   text-align: center;

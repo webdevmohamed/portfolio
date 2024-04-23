@@ -77,7 +77,7 @@ export default {
 
 .about .about-me {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 30px;
   width: 100%;
 }

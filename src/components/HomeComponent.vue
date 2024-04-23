@@ -58,7 +58,7 @@ export default {
 
 .home .name {
   font-weight: bold;
-  font-size: 45px;
+  font-size: 50px;
   margin-bottom: 30px;
   width: 100%;
   margin-top: 80px;
