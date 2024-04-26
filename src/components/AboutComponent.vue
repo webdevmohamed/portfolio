@@ -1,49 +1,50 @@
 <template>
-<div class="about">
-  <transition name="slide-fade">
-    <div class="img-container left-container" v-show="showLeft">
-      <h2 class="about-me responsive d-none">Acerca de mí.</h2>
-      <img :src="require('@/assets/about.svg')" class="img-fluid" alt="">
-    </div>
-  </transition>
-  <transition name="slide-fade">
-    <div class="about-me-description right-container" v-show="showRight">
-      <h2 class="about-me">Acerca de mí.</h2>
-      <div class="description-container">
-        <div class="border-description"></div>
-        <div class="description">
-          <p class="text-description">
-            Con una trayectoria de <b>3 años</b> en el campo del <b>Desarrollo Web</b>, me destaco por mi capacidad de
-            aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.
-          </p>
-          <a class="download-button" :href="pdfUrl" download>
-            <h3>Descargar CV</h3>
-            <div class="go-corner">
-              <div class="go-arrow">
-                <b-icon class="download-icon" icon="download"></b-icon>
-              </div>
-            </div>
-          </a>
-          <div class="contact-buttons">
-            <b-button squared variant="dark" class="contact-me-button bg-black border-0">
-              <b-icon icon="cursor"></b-icon>
-              <p>Contáctame</p>
-            </b-button>
-            <a href="https://www.linkedin.com/in/mohamedmortahil/" target="_blank" class="link-linkedin">
-              <div class="linkedin-button">
-                <b-icon class="linkedin" icon="linkedin"></b-icon>
+  <div class="about">
+    <transition name="slide-fade">
+      <div class="img-container left-container" v-show="showLeft">
+        <h2 class="about-me responsive d-none">Acerca de mí.</h2>
+        <img :src="require('@/assets/about.svg')" class="img-fluid" alt="">
+      </div>
+    </transition>
+    <transition name="slide-fade">
+      <div class="about-me-description right-container" v-show="showRight">
+        <h2 class="about-me">Acerca de mí.</h2>
+        <div class="description-container">
+          <div class="border-description"></div>
+          <div class="description">
+            <p class="text-description">
+              Con una trayectoria de <b>3 años</b> en el campo del <b>Desarrollo Web</b>, me destaco por mi capacidad de
+              aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.
+            </p>
+            <a class="download-button" :href="pdfUrl" download>
+              <h3>Descargar CV</h3>
+              <div class="go-corner">
+                <div class="go-arrow">
+                  <b-icon class="download-icon" icon="download"></b-icon>
+                </div>
               </div>
             </a>
+            <div class="contact-buttons">
+              <b-button squared variant="dark" class="contact-me-button bg-black border-0">
+                <b-icon icon="cursor"></b-icon>
+                <p>Contáctame</p>
+              </b-button>
+              <a href="https://www.linkedin.com/in/mohamedmortahil/" target="_blank" class="link-linkedin">
+                <div class="linkedin-button">
+                  <b-icon class="linkedin" icon="linkedin"></b-icon>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </transition>
-</div>
+    </transition>
+  </div>
 </template>
 
 <script>
 import pdf from '@/assets/Mohamed_Mortahil_Elaaouad_Abril_2024.pdf';
+
 export default {
   name: "AboutComponent",
   data() {
@@ -205,6 +206,7 @@ export default {
   z-index: 0;
   overflow: hidden;
 }
+
 .download-button:before {
   content: "";
   position: absolute;
@@ -265,6 +267,7 @@ export default {
     flex-direction: column;
     align-items: center;
   }
+
   .about .img-container {
     width: 60%;
   }

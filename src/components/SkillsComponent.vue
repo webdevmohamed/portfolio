@@ -138,8 +138,7 @@ body {
   padding: 0.3rem 1rem;
   margin-right: 1rem;
   white-space: nowrap;
-  box-shadow:
-  0 0.1rem 0.2rem rgb(0 0 0 / 20%),
+  box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%),
   0 0.1rem 0.5rem rgb(0 0 0 / 30%),
   0 0.2rem 1.5rem rgb(0 0 0 / 40%);
 

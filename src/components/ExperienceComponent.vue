@@ -1,6 +1,8 @@
 <template>
   <div class="experience">
-    <h2 class="title">Experiencia.</h2>
+    <transition name="slide-fade">
+      <h2 class="title" v-show="showTitle">Experiencia.</h2>
+    </transition>
     <div class="main-timeline">
       <div class="timeline">
         <div class="icon"></div>
@@ -19,10 +21,23 @@
             <h5 class="title">Desarrollador Web</h5>
             <div class="description">
               <ul>
-                <li>Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de diseño responsive y elementos interactivos para una experiencia óptima del usuario.</li>
-                <li>Optimización de rendimiento: Implementación de estrategias para reducir significativamente los tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del flujo de funciones y llamadas asíncronas.</li>
-                <li>Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en la plataforma.</li>
-                <li>Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad para colaborar en proyectos de gran escala.</li>
+                <li>Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de
+                  diseño responsive y elementos interactivos para una experiencia óptima del usuario.
+                </li>
+                <li>Optimización de rendimiento: Implementación de estrategias para reducir significativamente los
+                  tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del
+                  flujo de funciones y llamadas asíncronas.
+                </li>
+                <li>Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como
+                  buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación
+                  hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en
+                  la plataforma.
+                </li>
+                <li>Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el
+                  Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y
+                  gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad
+                  para colaborar en proyectos de gran escala.
+                </li>
               </ul>
             </div>
           </div>
@@ -39,11 +54,13 @@ export default {
     return {
       showDateContent: false,
       showTimeLineContent: false,
+      showTitle: false,
     };
   },
   mounted() {
     this.showDateContent = true;
     this.showTimeLineContent = true;
+    this.showTitle = true;
   }
 }
 </script>
@@ -267,6 +284,11 @@ export default {
   transform: translateX(0);
 }
 
+.title.slide-fade-enter,
+.title.slide-fade-leave-to {
+  transform: translateY(-100%);
+}
+
 .date-content.slide-fade-enter,
 .date-content.slide-fade-leave-to {
   transform: translateX(-30%);
@@ -282,21 +304,26 @@ export default {
     margin: 0;
     left: 7px
   }
+
   .experience .main-timeline .timeline {
     margin-bottom: 20px
   }
+
   .experience .main-timeline .timeline:last-child {
     margin-bottom: 0
   }
+
   .experience .main-timeline .icon {
     margin: auto 0;
     top: 166px;
   }
+
   .experience .main-timeline .date-content {
     width: 100%;
     float: right;
     margin-top: 0
   }
+
   .experience .main-timeline .date-content:before {
     display: none
   }
@@ -307,6 +334,7 @@ export default {
     text-align: center;
     padding: 10px 0
   }
+
   .experience .main-timeline .title {
     margin: 20px 0;
     text-align: center;

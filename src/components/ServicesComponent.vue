@@ -83,6 +83,7 @@ export default {
   position: relative;
   width: 25%;
   height: 370px;
+  cursor: pointer;
 }
 
 .services .services-container .service .content {

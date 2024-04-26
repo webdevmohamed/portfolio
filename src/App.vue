@@ -22,34 +22,46 @@
           <b-nav-item
               @click="setActive('home', false)"
               :active="activeSection === 'home'"
-              class="mb-2">Inicio</b-nav-item>
+              class="mb-2">Inicio
+          </b-nav-item>
           <b-nav-item
               @click="setActive('about', false)"
               :active="activeSection === 'about'"
-              class="mb-2">Acerca de mí</b-nav-item>
+              class="mb-2">Acerca de mí
+          </b-nav-item>
           <b-nav-item
               @click="setActive('services', false)"
               :active="activeSection === 'services'"
-              class="mb-2">Servicios</b-nav-item>
+              class="mb-2">Servicios
+          </b-nav-item>
           <b-nav-item
               @click="setActive('experience', false)"
               :active="activeSection === 'experience'"
-              class="mb-2">Experiencia</b-nav-item>
+              class="mb-2">Experiencia
+          </b-nav-item>
           <b-nav-item
               @click="setActive('contact', false)"
               :active="activeSection === 'contact'"
-              class="mb-2 d-inline d-lg-none">Contacto</b-nav-item>
-          <b-button @click="setActive('contact', false)" squared class="d-none d-lg-inline contact bg-black" variant="dark">Contacto</b-button>
+              class="mb-2 d-inline d-lg-none">Contacto
+          </b-nav-item>
+          <b-button @click="setActive('contact', false)" squared class="d-none d-lg-inline contact bg-black"
+                    variant="dark">Contacto
+          </b-button>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
     <div class="main-container">
-      <home-component :key="sectionsKeys.home" class="section" :class="{visible: sectionAnimationState.home}" @scroll-down="setActive('about', false)" id="home"></home-component>
-      <about-component :key="sectionsKeys.about" class="section" :class="{visible: sectionAnimationState.about}" id="about"></about-component>
-      <services-component :key="sectionsKeys.services" class="section" :class="{visible: sectionAnimationState.services}" id="services"></services-component>
+      <home-component :key="sectionsKeys.home" class="section" :class="{visible: sectionAnimationState.home}"
+                      @scroll-down="setActive('about', false)" id="home"></home-component>
+      <about-component :key="sectionsKeys.about" class="section" :class="{visible: sectionAnimationState.about}"
+                       id="about"></about-component>
+      <services-component :key="sectionsKeys.services" class="section"
+                          :class="{visible: sectionAnimationState.services}" id="services"></services-component>
       <skills-component id="skills"></skills-component>
-      <experience-component :key="sectionsKeys.experience" class="section" :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
-      <contact-component :key="sectionsKeys.contact" class="section" :class="{visible: sectionAnimationState.contact}" id="contact"></contact-component>
+      <experience-component :key="sectionsKeys.experience" class="section"
+                            :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
+      <contact-component :key="sectionsKeys.contact" class="section" :class="{visible: sectionAnimationState.contact}"
+                         id="contact"></contact-component>
     </div>
   </div>
 </template>
@@ -99,13 +111,13 @@ export default {
       if (this.activeSection !== section) this.sectionsKeys[section] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
       this.sectionAnimationState[section] = true;
       this.activeSection = section;
-        window.scrollTo({
-          top: document.getElementById(section).offsetTop,
-          behavior: 'smooth'
-        });
+      window.scrollTo({
+        top: document.getElementById(section).offsetTop,
+        behavior: 'smooth'
+      });
 
-      setTimeout(()=>{
-          window.addEventListener('scroll', this.handleScroll)
+      setTimeout(() => {
+        window.addEventListener('scroll', this.handleScroll)
       }, 500)
 
     },
@@ -128,7 +140,14 @@ export default {
     }
   },
 
-  components: {ContactComponent, ExperienceComponent, SkillsComponent, ServicesComponent, AboutComponent, HomeComponent },
+  components: {
+    ContactComponent,
+    ExperienceComponent,
+    SkillsComponent,
+    ServicesComponent,
+    AboutComponent,
+    HomeComponent
+  },
 };
 </script>
 <style scoped>
@@ -271,7 +290,6 @@ export default {
     align-items: center;
   }
 }
-
 
 
 </style>

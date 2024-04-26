@@ -10,20 +10,20 @@
           </p>
         </div>
         <div class="scroll-down-container">
-            <div class="flecha-scroll-down" @click="scrollDown()">
-              <div class="scroll-down"></div>
-            </div>
+          <div class="flecha-scroll-down" @click="scrollDown()">
+            <div class="scroll-down"></div>
+          </div>
           <p class="text-scroll-down">Scroll Down</p>
         </div>
-        <img class="tachado" :src="require('@/assets/tachado.png')" alt="" />
+        <img class="tachado" :src="require('@/assets/tachado.png')" alt=""/>
       </div>
     </transition>
     <transition name="slide-fade">
       <div class="img-container right-container" v-show="showRight">
-        <img class="img-flecha" :src="require('@/assets/flecha.png')" alt="" />
+        <img class="img-flecha" :src="require('@/assets/flecha.png')" alt=""/>
         <div class="img-border-container">
           <div class="img-border"></div>
-          <img :src="require('@/assets/foto-perfil.jpeg')" alt="" />
+          <img :src="require('@/assets/foto-perfil.jpeg')" alt=""/>
         </div>
       </div>
     </transition>
@@ -37,9 +37,9 @@ export default {
       showRight: false,
     };
   },
-   mounted() {
-      this.showLeft = true;
-      this.showRight = true;
+  mounted() {
+    this.showLeft = true;
+    this.showRight = true;
   },
   methods: {
     scrollDown() {
@@ -88,9 +88,9 @@ export default {
 .home .description .text-description b {
   background: rgb(104, 165, 6);
   background: linear-gradient(
-    90deg,
-    rgba(104, 165, 6, 0.7175245098039216) 0%,
-    rgba(104, 165, 6, 0) 100%
+      90deg,
+      rgba(104, 165, 6, 0.7175245098039216) 0%,
+      rgba(104, 165, 6, 0) 100%
   );
 }
 
@@ -119,10 +119,10 @@ export default {
 }
 
 .home
-  .name-description-container
-  .scroll-down-container
-  .flecha-scroll-down
-  .scroll-down {
+.name-description-container
+.scroll-down-container
+.flecha-scroll-down
+.scroll-down {
   position: absolute;
   font-size: 20px;
   text-decoration: none;
@@ -155,6 +155,7 @@ export default {
     opacity: 0;
   }
 }
+
 @-moz-keyframes fade_move_down {
   0% {
     -moz-transform: translate(0, -15px) rotate(45deg);
@@ -168,6 +169,7 @@ export default {
     opacity: 0;
   }
 }
+
 @keyframes fade_move_down {
   0% {
     transform: translate(0, -15px) rotate(45deg);
@@ -389,6 +391,7 @@ export default {
     margin-top: -11px;
     transform: rotate(-76deg);
   }
+
   .home .img-container .img-border-container::before {
     margin-top: 79px;
     zoom: 130%;
