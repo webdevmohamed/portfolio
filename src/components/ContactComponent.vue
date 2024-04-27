@@ -87,6 +87,7 @@ export default {
 .contact {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .contact .contact-text-container {
