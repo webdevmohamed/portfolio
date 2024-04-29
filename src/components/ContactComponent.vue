@@ -1,84 +1,98 @@
 <template>
 <div class="contact">
-  <div class="contact-text-container">
-    <div class="contact-me-text">
-      <h2 class="title">Contacto.</h2>
-      <p class="first-text">Leere todos los emails. Enviame el mensaje que quieras y me pondré en contacto con usted.</p>
-      <p class="second-text">Necesito tu <b>Nombre</b> y <b>Direccion de Correo electrónico</b>, pero no recibirás nada que no sea una respuesta.</p>
-    </div>
-    <div class="contact-alternative">
-      <img class="arrow" :src="require('@/assets/flecha.png')" alt=""/>
-      <div class="linkedin-github">
-        <p class="text">Escribeme en <b>LinkedIn</b> o échale un vistazo a mi repositorio <b>GitHub</b></p>
-        <div class="sites">
-          <div class="site-container">
-            <b-icon class="icon" icon="linkedin"></b-icon>
-          </div>
-          <div class="site-container">
-            <b-icon class="icon" icon="github"></b-icon>
+  <transition name="slide-fade">
+    <div class="contact-text-container" v-show="showLeft">
+      <div class="contact-me-text">
+        <h2 class="title">Contacto.</h2>
+        <p class="first-text">Leere todos los emails. Enviame el mensaje que quieras y me pondré en contacto con usted.</p>
+        <p class="second-text">Necesito tu <b>Nombre</b> y <b>Direccion de Correo electrónico</b>, pero no recibirás nada que no sea una respuesta.</p>
+      </div>
+      <div class="contact-alternative">
+        <img class="arrow" :src="require('@/assets/flecha.png')" alt=""/>
+        <div class="linkedin-github">
+          <p class="text">Escribeme en <b>LinkedIn</b> o échale un vistazo a mi repositorio <b>GitHub</b></p>
+          <div class="sites">
+            <div class="site-container">
+              <a href="https://www.linkedin.com/in/mohamedmortahil/" class="site-link" target="_blank">
+                <b-icon class="icon" icon="linkedin"></b-icon>
+              </a>
+            </div>
+            <div class="site-container">
+              <a href="https://github.com/webdevmohamed" class="site-link" target="_blank">
+                <b-icon class="icon" icon="github"></b-icon>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="contact-form-container">
-    <h3 class="form-title"><b>Envíame Un Mensaje</b></h3>
-    <b-form class="row g-3 form">
-      <b-form-group
-          id="input-group-name"
-          class="col-md-6">
-        <b-form-input
-            id="input-name"
-            type="text"
-            placeholder="Nombre"
-            required>
-        </b-form-input>
-      </b-form-group>
+  </transition>
+  <transition name="slide-fade">
+    <div class="contact-form-container" v-show="showRight">
+      <h3 class="form-title"><b>Envíame Un Mensaje</b></h3>
+      <form class="row g-3 form">
+        <div class="col-md-6 form-floating">
+          <input
+              id="input-name"
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              required>
+          <label for="input-name">Nombre</label>
+        </div>
 
-      <b-form-group
-          id="input-group-email"
-          class="col-md-6">
-        <b-form-input
-            id="input-email"
-            type="email"
-            placeholder="Correo electrónico"
-            required>
+        <div class="col-md-6 form-floating">
+          <input
+              id="input-email"
+              type="email"
+              class="form-control"
+              placeholder="Correo electrónico"
+              required>
+          <label for="input-email">Correo electrónico</label>
+        </div>
 
-        </b-form-input>
-      </b-form-group>
+        <div class="col-md-12 form-floating">
+          <input
+              id="input-subject"
+              type="text"
+              class="form-control"
+              placeholder="Asunto">
+          <label for="input-subject">Asunto</label>
+        </div>
 
-      <b-form-group
-          id="input-group-subject"
-          class="col-md-12">
-        <b-form-input
-            id="input-subject"
-            type="text"
-            placeholder="Asunto">
-        </b-form-input>
-      </b-form-group>
+        <div class="col-md-12 form-floating">
+        <textarea
+            id="textarea"
+            class="form-control"
+            placeholder="Mensaje"
+            style="height: 207px">
+        </textarea>
+          <label for="textarea">Mensaje</label>
+        </div>
 
-      <b-form-group
-          id="input-group-message"
-          class="col-md-12">
-      <b-form-textarea
-          id="textarea"
-          rows="5"
-          placeholder="Mensaje">
-      </b-form-textarea>
-      </b-form-group>
-
-      <b-button type="submit" squared class="send-message-button border-0 ms-2">
-        <b-icon icon="cursor"></b-icon>
-        <p>Enviar Mensaje</p>
-      </b-button>
-    </b-form>
-  </div>
+        <b-button type="submit" squared class="send-message-button border-0 ms-2 mt-5">
+          <b-icon icon="cursor"></b-icon>
+          <p>Enviar Mensaje</p>
+        </b-button>
+      </form>
+    </div>
+  </transition>
 </div>
 </template>
 
 <script>
 export default {
-  name: "ContactComponent"
+  name: "ContactComponent",
+  data() {
+    return {
+      showLeft: false,
+      showRight: false,
+    };
+  },
+  mounted() {
+    this.showLeft = true;
+    this.showRight = true;
+  }
 }
 </script>
 
@@ -92,8 +106,9 @@ export default {
 
 .contact .contact-text-container {
   width: 35%;
-  margin-top: 160px;
+  margin-top: 102px;
   margin-right: -70px;
+  z-index: 2;
 }
 
 .contact .contact-form-container {
@@ -149,9 +164,7 @@ export default {
   right: 80px;
   top: 15px;
   z-index: -1;
-
 }
-
 
 .contact .contact-text-container .contact-me-text .first-text {
   margin-bottom: 30px;
@@ -204,14 +217,19 @@ export default {
   transition: all 0.5s ease-out;
 }
 
-.contact .contact-text-container .contact-alternative .linkedin-github .sites .site-container .icon {
+.contact .contact-text-container .contact-alternative .linkedin-github .sites .site-container .site-link{
+  display: flex;
+}
+
+.contact .contact-text-container .contact-alternative .linkedin-github .sites .site-container .site-link .icon {
   color: white;
   font-size: 130%;
 }
 
 .contact .contact-form-container {
   background-color: black;
-  padding: 150px 100px 200px 140px;
+  padding: 150px 100px 150px 140px;
+  z-index: 1;
 }
 
 .contact .contact-form-container h3.form-title {
@@ -222,12 +240,55 @@ export default {
 .contact .contact-form-container .form .form-control {
   padding: 1rem;
   border-radius: 0;
-  border: 2px solid #d7d7d7;
+  border: 2px solid #888888;
+  background-color: black;
+  color: white;
+}
+
+.contact .contact-form-container .form .form-floating > label {
+  color: #888888;
+  margin-left: 8px;
+}
+
+.contact .contact-form-container .form .form-control:focus {
+  box-shadow: none;
+  border-color: white;
+}
+
+.contact .contact-form-container .form .form-control:focus::placeholder {
+  color: transparent;
+}
+
+.contact .contact-form-container .form .form-floating > .form-control:focus ~ label,
+.contact .contact-form-container .form .form-floating > .form-control:not(:placeholder-shown) ~ label,
+.contact .contact-form-container .form .form-floating > .form-control-plaintext ~ label, .form-floating > .form-select ~ label {
+  font-weight: bold;
+  transform: scale(0.85) translateY(-1.70rem) translateX(1.15rem);
+}
+
+.contact .contact-form-container .form .form-floating > .form-control:focus ~ label::after,
+.contact .contact-form-container .form .form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+.contact .contact-form-container .form .form-floating > .form-control-plaintext ~ label::after,
+.contact .contact-form-container .form .form-floating > .form-select ~ label::after {
+  border-radius: 0;
+  border: 0;
   background-color: black;
 }
 
-.contact .contact-form-container .form .form-control::placeholder {
-  color: #d7d7d7;
+
+.contact .contact-form-container .form .form-floating > label {
+  transition: opacity 0.4s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.contact .contact-form-container .form .form-floating > .form-control:-webkit-autofill,
+.contact .contact-form-container .form .form-floating > .form-control:-webkit-autofill:hover,
+.contact .contact-form-container .form .form-floating > .form-control:-webkit-autofill:focus,
+.contact .contact-form-container .form .form-floating > .form-control:-webkit-autofill:active{
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff;
+  caret-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
 }
 
 .contact .contact-form-container .form .send-message-button {
@@ -244,9 +305,38 @@ export default {
 }
 
 .contact .contact-form-container .form .send-message-button:hover {
-  transition: all 0.5s ease-out;
   color: black;
   background-color: white;
+}
+
+.slide-fade-enter-active {
+  transition: all 2s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all 4s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(0%);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.contact-text-container.slide-fade-enter,
+.contact-text-container.slide-fade-leave-to {
+  transform: translateX(-30%);
+}
+
+.contact-form-container.slide-fade-enter,
+.contact-form-container.slide-fade-leave-to {
+  transform: translateX(20%);
 }
 
 

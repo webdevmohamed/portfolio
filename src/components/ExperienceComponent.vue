@@ -16,32 +16,40 @@
             </div>
           </div>
         </transition>
-        <transition name="slide-fade">
-          <div class="timeline-content" v-show="showTimeLineContent">
-            <h5 class="title">Desarrollador Web</h5>
+          <div class="timeline-content">
+            <transition name="slide-fade">
+              <h5 class="job-title" v-show="showJobTitle">Desarrollador Web</h5>
+            </transition>
             <div class="description">
               <ul>
-                <li>Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de
-                  diseño responsive y elementos interactivos para una experiencia óptima del usuario.
-                </li>
-                <li>Optimización de rendimiento: Implementación de estrategias para reducir significativamente los
-                  tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del
-                  flujo de funciones y llamadas asíncronas.
-                </li>
-                <li>Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como
-                  buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación
-                  hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en
-                  la plataforma.
-                </li>
-                <li>Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el
-                  Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y
-                  gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad
-                  para colaborar en proyectos de gran escala.
-                </li>
+                <transition name="slide-fade">
+                  <li class="first-point" v-show="showFirstPoint">Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de
+                    diseño responsive y elementos interactivos para una experiencia óptima del usuario.
+                  </li>
+                </transition>
+                <transition name="slide-fade">
+                  <li class="second-point" v-show="showSecondPoint">Optimización de rendimiento: Implementación de estrategias para reducir significativamente los
+                    tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del
+                    flujo de funciones y llamadas asíncronas.
+                  </li>
+                </transition>
+                <transition name="slide-fade">
+                  <li class="third-point" v-show="showThirdPoint">Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como
+                    buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación
+                    hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en
+                    la plataforma.
+                  </li>
+                </transition>
+                <transition name="slide-fade">
+                  <li class="fourth-point" v-show="showFourthPoint">Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el
+                    Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y
+                    gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad
+                    para colaborar en proyectos de gran escala.
+                  </li>
+                </transition>
               </ul>
             </div>
           </div>
-        </transition>
       </div>
     </div>
   </div>
@@ -53,14 +61,23 @@ export default {
   data() {
     return {
       showDateContent: false,
-      showTimeLineContent: false,
+      showJobTitle: false,
       showTitle: false,
+      showFirstPoint: false,
+      showSecondPoint: false,
+      showThirdPoint: false,
+      showFourthPoint: false,
     };
   },
   mounted() {
     this.showDateContent = true;
-    this.showTimeLineContent = true;
+    this.showJobTitle = true;
     this.showTitle = true;
+    this.showFirstPoint = true;
+    this.showSecondPoint = true;
+    this.showThirdPoint = true;
+    this.showFourthPoint = true;
+
   }
 }
 </script>
@@ -233,7 +250,7 @@ export default {
   float: right
 }
 
-.experience .main-timeline .title {
+.experience .main-timeline .job-title {
   font-size: 19px;
   font-weight: 700;
   line-height: 24px;
@@ -247,6 +264,11 @@ export default {
 
 .experience .main-timeline .description ul li {
   margin-bottom: 10px
+}
+
+.experience .main-timeline .description ul li::marker {
+  color: #68a506;
+  font-size: 20px;
 }
 
 
@@ -268,8 +290,8 @@ export default {
   transition: all 2s ease;
 }
 
-.slide-fade-leave-active {
-  transition: all 2s cubic-bezier(1, 0.5, 0.8, 1);
+li.slide-fade-enter-active {
+  transition: all 2.5s ease;
 }
 
 .slide-fade-enter,
@@ -289,14 +311,34 @@ export default {
   transform: translateY(-100%);
 }
 
+.job-title.slide-fade-enter,
+.job-title.slide-fade-leave-to {
+  transform: translateX(10%);
+}
+
 .date-content.slide-fade-enter,
 .date-content.slide-fade-leave-to {
   transform: translateX(-30%);
 }
 
-.timeline-content.slide-fade-enter,
-.timeline-content.slide-fade-leave-to {
-  transform: translateX(30%);
+.first-point.slide-fade-enter,
+.first-point.slide-fade-leave-to {
+  transform: translateX(20%);
+}
+
+.second-point.slide-fade-enter,
+.second-point.slide-fade-leave-to {
+  transform: translateX(40%);
+}
+
+.third-point.slide-fade-enter,
+.third-point.slide-fade-leave-to {
+  transform: translateX(60%);
+}
+
+.fourth-point.slide-fade-enter,
+.fourth-point.slide-fade-leave-to {
+  transform: translateX(80%);
 }
 
 @media screen and (max-width: 1200px) {
@@ -335,7 +377,7 @@ export default {
     padding: 10px 0
   }
 
-  .experience .main-timeline .title {
+  .experience .main-timeline .job-title {
     margin: 20px 0;
     text-align: center;
   }
@@ -363,9 +405,29 @@ export default {
     transform: translateY(-30%);
   }
 
-  .timeline-content.slide-fade-enter,
-  .timeline-content.slide-fade-leave-to {
-    transform: translateY(30%);
+  .job-title.slide-fade-enter,
+  .job-title.slide-fade-leave-to {
+    transform: translateY(10%);
+  }
+
+  .first-point.slide-fade-enter,
+  .first-point.slide-fade-leave-to {
+    transform: translateY(20%);
+  }
+
+  .second-point.slide-fade-enter,
+  .second-point.slide-fade-leave-to {
+    transform: translateY(40%);
+  }
+
+  .third-point.slide-fade-enter,
+  .third-point.slide-fade-leave-to {
+    transform: translateY(60%);
+  }
+
+  .fourth-point.slide-fade-enter,
+  .fourth-point.slide-fade-leave-to {
+    transform: translateY(80%);
   }
 
 }
