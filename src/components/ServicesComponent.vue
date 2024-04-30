@@ -205,19 +205,17 @@ export default {
 
 @media screen and (max-width: 750px) {
   .services .services-container .service {
-    width: 70%;
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .services .services-container .service {
-    width: 90%;
+    width: 300px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .services .services-container {
     zoom: 90%;
+  }
+
+  .services .services-container .service {
+    width: 90%;
   }
 }
 

@@ -25,7 +25,7 @@
               </div>
             </a>
             <div class="contact-buttons">
-              <b-button squared variant="dark" class="contact-me-button bg-black border-0">
+              <b-button squared variant="dark" class="contact-me-button bg-black border-0" @click="scrollToContact()">
                 <b-icon icon="cursor"></b-icon>
                 <p>Contáctame</p>
               </b-button>
@@ -57,6 +57,12 @@ export default {
   mounted() {
     this.showLeft = true;
     this.showRight = true;
+  },
+
+  methods: {
+    scrollToContact() {
+      this.$emit('scroll-to-contact');
+    }
   }
 }
 </script>
@@ -130,10 +136,11 @@ export default {
 }
 
 .about .about-me-description .description-container .description .contact-buttons .linkedin-button {
-  padding: 15px 20px;
+  padding: 18px 20px;
   width: fit-content;
   border: 3px solid black;
   margin-left: 20px;
+  display: flex;
 }
 
 .about .about-me-description .description-container .description .contact-buttons .linkedin-button .linkedin {
@@ -157,6 +164,7 @@ export default {
   line-height: 24px;
   font-weight: 700;
   margin-bottom: 4px;
+  text-align: left;
 }
 
 .about .about-me-description .description-container .description .download-button p {

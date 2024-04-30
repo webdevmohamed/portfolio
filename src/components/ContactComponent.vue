@@ -1,32 +1,34 @@
 <template>
 <div class="contact">
-  <transition name="slide-fade">
-    <div class="contact-text-container" v-show="showLeft">
-      <div class="contact-me-text">
-        <h2 class="title">Contacto.</h2>
-        <p class="first-text">Leere todos los emails. Enviame el mensaje que quieras y me pondré en contacto con usted.</p>
-        <p class="second-text">Necesito tu <b>Nombre</b> y <b>Direccion de Correo electrónico</b>, pero no recibirás nada que no sea una respuesta.</p>
-      </div>
-      <div class="contact-alternative">
-        <img class="arrow" :src="require('@/assets/flecha.png')" alt=""/>
-        <div class="linkedin-github">
-          <p class="text">Escribeme en <b>LinkedIn</b> o échale un vistazo a mi repositorio <b>GitHub</b></p>
-          <div class="sites">
-            <div class="site-container">
-              <a href="https://www.linkedin.com/in/mohamedmortahil/" class="site-link" target="_blank">
-                <b-icon class="icon" icon="linkedin"></b-icon>
-              </a>
-            </div>
-            <div class="site-container">
-              <a href="https://github.com/webdevmohamed" class="site-link" target="_blank">
-                <b-icon class="icon" icon="github"></b-icon>
-              </a>
+    <div class="contact-text-container">
+      <transition name="slide-fade">
+        <div class="contact-me-text" v-show="showFirstLeft">
+          <h2 class="title">Contacto.</h2>
+          <p class="first-text">Leere todos los emails. Enviame el mensaje que quieras y me pondré en contacto con usted.</p>
+          <p class="second-text">Necesito tu <b>Nombre</b> y <b>Direccion de Correo electrónico</b>, pero no recibirás nada que no sea una respuesta.</p>
+        </div>
+      </transition>
+      <transition name="slide-fade">
+        <div class="contact-alternative" v-show="showSecondLeft">
+          <img class="arrow" :src="require('@/assets/flecha.png')" alt=""/>
+          <div class="linkedin-github">
+            <p class="text">Escribeme en <b>LinkedIn</b> o échale un vistazo a mi repositorio <b>GitHub</b></p>
+            <div class="sites">
+              <div class="site-container">
+                <a href="https://www.linkedin.com/in/mohamedmortahil/" class="site-link" target="_blank">
+                  <b-icon class="icon" icon="linkedin"></b-icon>
+                </a>
+              </div>
+              <div class="site-container">
+                <a href="https://github.com/webdevmohamed" class="site-link" target="_blank">
+                  <b-icon class="icon" icon="github"></b-icon>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
-  </transition>
   <transition name="slide-fade">
     <div class="contact-form-container" v-show="showRight">
       <h3 class="form-title"><b>Envíame Un Mensaje</b></h3>
@@ -85,12 +87,14 @@ export default {
   name: "ContactComponent",
   data() {
     return {
-      showLeft: false,
+      showFirstLeft: false,
+      showSecondLeft: false,
       showRight: false,
     };
   },
   mounted() {
-    this.showLeft = true;
+    this.showFirstLeft = true;
+    this.showSecondLeft = true;
     this.showRight = true;
   }
 }
@@ -150,7 +154,7 @@ export default {
   font-weight: bold;
   font-size: 50px;
   margin: 50px 0 30px -95px;
-  width: 100%;
+  width: fit-content;
   z-index: 1;
 }
 
@@ -161,7 +165,7 @@ export default {
   height: 50px;
   background-color: #68a506;
   opacity: 0.3;
-  right: 80px;
+  right: 0;
   top: 15px;
   z-index: -1;
 }
@@ -313,6 +317,11 @@ export default {
   transition: all 2s ease;
 }
 
+.contact-alternative.slide-fade-enter-active {
+  transition: all 2.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+
 .slide-fade-leave-active {
   transition: all 4s cubic-bezier(1, 0.5, 0.8, 1);
 }
@@ -329,8 +338,13 @@ export default {
   transform: translateX(0%);
 }
 
-.contact-text-container.slide-fade-enter,
-.contact-text-container.slide-fade-leave-to {
+.contact-me-text.slide-fade-enter,
+.contact-me-text.slide-fade-leave-to {
+  transform: translateX(-30%);
+}
+
+.contact-alternative.slide-fade-enter,
+.contact-alternative.slide-fade-leave-to {
   transform: translateX(-30%);
 }
 
@@ -338,6 +352,102 @@ export default {
 .contact-form-container.slide-fade-leave-to {
   transform: translateX(20%);
 }
+
+@media screen and (max-width: 1200px) {
+  .contact {
+    flex-direction: column;
+  }
+
+  .contact .contact-text-container {
+    width: 500px;
+    margin: 0 0 -55px;
+  }
+
+  .contact .contact-text-container .contact-me-text .title {
+    margin-left: 0;
+  }
+
+  .contact .contact-text-container .contact-alternative {
+    display: none;
+  }
+
+  .contact .contact-form-container {
+    width: 80%;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-top: 100px;
+  }
+
+  .contact .contact-form-container .form .send-message-button {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0 !important;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .contact .contact-form-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .contact .contact-form-container .form .form-floating {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact .contact-text-container {
+    width: 450px;
+  }
+
+  .contact .contact-text-container .contact-me-text .title,
+  .contact .contact-text-container .contact-me-text .first-text,
+  .contact .contact-text-container .contact-me-text .second-text {
+    zoom: 90%;
+  }
+
+  .contact .contact-form-container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact .contact-text-container {
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .contact .contact-text-container {
+    width: 100%;
+  }
+
+  .contact .contact-text-container .contact-me-text {
+    padding: 25px;
+  }
+
+  .contact .contact-text-container .contact-me-text::after {
+    top: 27px;
+  }
+
+  .contact .contact-text-container .contact-me-text .title,
+  .contact .contact-text-container .contact-me-text .first-text,
+  .contact .contact-text-container .contact-me-text .second-text {
+    zoom: 80%;
+  }
+
+  .contact .contact-form-container {
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+  }
+}
+
 
 
 </style>

@@ -20,31 +20,31 @@
           class="ml-auto justify-content-end">
         <b-navbar-nav>
           <b-nav-item
-              @click="setActive('home', false)"
+              @click="setActive('home')"
               :active="activeSection === 'home'"
               class="mb-2">Inicio
           </b-nav-item>
           <b-nav-item
-              @click="setActive('about', false)"
+              @click="setActive('about')"
               :active="activeSection === 'about'"
               class="mb-2">Acerca de mí
           </b-nav-item>
           <b-nav-item
-              @click="setActive('services', false)"
+              @click="setActive('services')"
               :active="activeSection === 'services'"
               class="mb-2">Servicios
           </b-nav-item>
           <b-nav-item
-              @click="setActive('experience', false)"
+              @click="setActive('experience')"
               :active="activeSection === 'experience'"
               class="mb-2">Experiencia
           </b-nav-item>
           <b-nav-item
-              @click="setActive('contact', false)"
+              @click="setActive('contact')"
               :active="activeSection === 'contact'"
               class="mb-2 d-inline d-lg-none">Contacto
           </b-nav-item>
-          <b-button @click="setActive('contact', false)" squared class="d-none d-lg-inline contact bg-black"
+          <b-button @click="setActive('contact')" squared class="d-none d-lg-inline contact bg-black"
                     variant="dark">Contacto
           </b-button>
         </b-navbar-nav>
@@ -52,16 +52,16 @@
     </b-navbar>
     <div class="main-container">
       <home-component :key="sectionsKeys.home" class="section" :class="{visible: sectionAnimationState.home}"
-                      @scroll-down="setActive('about', false)" id="home"></home-component>
+                      @scroll-down="setActive('about')" id="home"></home-component>
       <about-component :key="sectionsKeys.about" class="section" :class="{visible: sectionAnimationState.about}"
-                       id="about"></about-component>
+                       @scroll-to-contact="setActive('contact')" id="about"></about-component>
       <services-component :key="sectionsKeys.services" class="section"
                           :class="{visible: sectionAnimationState.services}" id="services"></services-component>
       <skills-component id="skills"></skills-component>
       <experience-component :key="sectionsKeys.experience" class="section"
                             :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
       <contact-component :key="sectionsKeys.contact" class="section" :class="{visible: sectionAnimationState.contact}"
-                         id="contact"></contact-component>
+                          id="contact"></contact-component>
     </div>
   </div>
 </template>
