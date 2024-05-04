@@ -1,11 +1,9 @@
 <template>
   <div class="mi-portfolio">
-    <b-navbar toggleable="xl" :class="['navbar', scrolled ? 'shadow' : '' ]" class="navbar">
+    <b-navbar toggleable="xl" :class="['navbar', scrolled ? 'shadow' : '']" class="navbar">
       <b-navbar-brand>
         <span class="brand">M</span>
-        <span class="name d-none d-md-inline"
-        >Mohamed | Mortahil Elaaouad</span
-        >
+        <span class="name d-none d-md-inline">Mohamed | Mortahil Elaaouad</span>
         <span class="name d-inline d-md-none">Mohamed</span>
       </b-navbar-brand>
       <b-navbar-toggle target="nav-item-collapse" class="bg-black rounded-0">
@@ -14,54 +12,37 @@
           <b-icon v-else icon="list-nested" class="text-white"></b-icon>
         </template>
       </b-navbar-toggle>
-      <b-collapse
-          id="nav-item-collapse"
-          is-nav
-          class="ml-auto justify-content-end">
+      <b-collapse id="nav-item-collapse" is-nav class="ml-auto justify-content-end">
         <b-navbar-nav>
-          <b-nav-item
-              @click="setActive('home')"
-              :active="activeSection === 'home'"
-              class="mb-2">Inicio
+          <b-nav-item @click="setActive('home')" :active="activeSection === 'home'" class="mb-2">Inicio
           </b-nav-item>
-          <b-nav-item
-              @click="setActive('about')"
-              :active="activeSection === 'about'"
-              class="mb-2">Acerca de mí
+          <b-nav-item @click="setActive('about')" :active="activeSection === 'about'" class="mb-2">Acerca de mí
           </b-nav-item>
-          <b-nav-item
-              @click="setActive('services')"
-              :active="activeSection === 'services'"
-              class="mb-2">Servicios
+          <b-nav-item @click="setActive('services')" :active="activeSection === 'services'" class="mb-2">Servicios
           </b-nav-item>
-          <b-nav-item
-              @click="setActive('experience')"
-              :active="activeSection === 'experience'"
-              class="mb-2">Experiencia
+          <b-nav-item @click="setActive('experience')" :active="activeSection === 'experience'" class="mb-2">Experiencia
           </b-nav-item>
-          <b-nav-item
-              @click="setActive('contact')"
-              :active="activeSection === 'contact'"
-              class="mb-2 d-inline d-lg-none">Contacto
+          <b-nav-item @click="setActive('contact')" :active="activeSection === 'contact'"
+            class="mb-2 d-inline d-xl-none">Contacto
           </b-nav-item>
-          <b-button @click="setActive('contact')" squared class="d-none d-lg-inline contact bg-black"
-                    variant="dark">Contacto
+          <b-button @click="setActive('contact')" squared class="d-none d-xl-inline contact bg-black"
+            variant="dark">Contacto
           </b-button>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
     <div class="main-container">
-      <home-component :key="sectionsKeys.home" class="section" :class="{visible: sectionAnimationState.home}"
-                      @scroll-down="setActive('about')" id="home"></home-component>
-      <about-component :key="sectionsKeys.about" class="section" :class="{visible: sectionAnimationState.about}"
-                       @scroll-to-contact="setActive('contact')" id="about"></about-component>
+      <home-component :key="sectionsKeys.home" class="section" :class="{ visible: sectionAnimationState.home }"
+        @scroll-down="setActive('about')" id="home"></home-component>
+      <about-component :key="sectionsKeys.about" class="section" :class="{ visible: sectionAnimationState.about }"
+        @scroll-to-contact="setActive('contact')" id="about"></about-component>
       <services-component :key="sectionsKeys.services" class="section"
-                          :class="{visible: sectionAnimationState.services}" id="services"></services-component>
+        :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
       <skills-component id="skills"></skills-component>
       <experience-component :key="sectionsKeys.experience" class="section"
-                            :class="{visible: sectionAnimationState.experience}" id="experience"></experience-component>
-      <contact-component :key="sectionsKeys.contact" class="section" :class="{visible: sectionAnimationState.contact}"
-                          id="contact"></contact-component>
+        :class="{ visible: sectionAnimationState.experience }" id="experience"></experience-component>
+      <contact-component :key="sectionsKeys.contact" class="section" :class="{ visible: sectionAnimationState.contact }"
+        id="contact"></contact-component>
     </div>
   </div>
 </template>
@@ -231,8 +212,10 @@ export default {
   bottom: 2px;
   left: 8px;
   width: 0px;
-  height: 2px; /* Altura del borde inferior */
-  background-color: transparent; /* Color del borde inferior, inicialmente transparente */
+  height: 2px;
+  /* Altura del borde inferior */
+  background-color: transparent;
+  /* Color del borde inferior, inicialmente transparente */
   transition: width 0.5s;
 }
 
@@ -256,7 +239,8 @@ export default {
 .mi-portfolio .main-container .section {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Añade una transición para suavizar la aparición */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  /* Añade una transición para suavizar la aparición */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -273,9 +257,10 @@ export default {
     padding-left: 30px;
   }
 
-}
+  .mi-portfolio .navbar .nav-link {
+    margin-right: 0;
+  }
 
-@media screen and (max-width: 991px) {
   .mi-portfolio .navbar .nav-link::after {
     left: 50%;
     transform: translate(-50%, -50%);
@@ -289,7 +274,6 @@ export default {
   .mi-portfolio .navbar #nav-item-collapse .navbar-nav {
     align-items: center;
   }
+
 }
-
-
 </style>
