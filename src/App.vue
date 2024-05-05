@@ -26,7 +26,7 @@
             class="mb-2 d-inline d-xl-none">Contacto
           </b-nav-item>
           <b-button @click="setActive('contact')" squared class="d-none d-xl-inline contact bg-black"
-            variant="dark">Contacto
+            :class="{ active: activeSection === 'contact' }" variant="dark">Contacto
           </b-button>
         </b-navbar-nav>
       </b-collapse>
@@ -206,6 +206,11 @@ export default {
   position: relative;
 }
 
+.mi-portfolio .navbar button.contact.active {
+  background-color: #68a506 !important;
+  border-color: #68a506;
+}
+
 .mi-portfolio .navbar .nav-link::after {
   content: "";
   position: absolute;
@@ -220,7 +225,7 @@ export default {
 }
 
 .mi-portfolio .navbar .nav-link.active::after {
-  background-color: black;
+  background-color: #68a506;
   width: 20px;
 }
 
