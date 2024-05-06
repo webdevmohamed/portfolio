@@ -132,6 +132,7 @@ export default {
 };
 </script>
 <style scoped>
+@import './assets/css/scrollbar.css';
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap");
 
 .mi-portfolio {
