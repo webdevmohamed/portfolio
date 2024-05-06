@@ -9,47 +9,51 @@
         <transition name="slide-fade">
           <div class="date-content" v-show="showDateContent">
             <div class="date-outer">
-            <span class="date">
-              <span class="years">3 años</span>
-              <span class="year-range">2021 - 2024</span>
-            </span>
+              <span class="date">
+                <span class="years">3 años</span>
+                <span class="year-range">2021 - 2024</span>
+              </span>
             </div>
           </div>
         </transition>
-          <div class="timeline-content">
-            <transition name="slide-fade">
-              <h5 class="job-title" v-show="showJobTitle">Desarrollador Web</h5>
-            </transition>
-            <div class="description">
-              <ul>
-                <transition name="slide-fade">
-                  <li class="first-point" v-show="showFirstPoint">Desarrollo integral de Landing Pages para líderes en turismo y ocio, destacando la implementación de
-                    diseño responsive y elementos interactivos para una experiencia óptima del usuario.
-                  </li>
-                </transition>
-                <transition name="slide-fade">
-                  <li class="second-point" v-show="showSecondPoint">Optimización de rendimiento: Implementación de estrategias para reducir significativamente los
-                    tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del
-                    flujo de funciones y llamadas asíncronas.
-                  </li>
-                </transition>
-                <transition name="slide-fade">
-                  <li class="third-point" v-show="showThirdPoint">Innovación en la experiencia de usuario: Liderazgo en el desarrollo de funcionalidades clave, como
-                    buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación
-                    hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en
-                    la plataforma.
-                  </li>
-                </transition>
-                <transition name="slide-fade">
-                  <li class="fourth-point" v-show="showFourthPoint">Ampliación de responsabilidades: Expansión del rol más allá del Front-end para incluir tareas en el
-                    Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y
-                    gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad
-                    para colaborar en proyectos de gran escala.
-                  </li>
-                </transition>
-              </ul>
-            </div>
+        <div class="timeline-content">
+          <transition name="slide-fade">
+            <h5 class="job-title" v-show="showJobTitle">Desarrollador Web <i> - Cysval Consultoría y Servicios</i></h5>
+          </transition>
+          <div class="description">
+            <ul>
+              <transition name="slide-fade">
+                <li class="first-point" v-show="showFirstPoint">Desarrollo integral de Landing Pages para líderes en
+                  turismo y ocio, destacando la implementación de
+                  diseño responsive y elementos interactivos para una experiencia óptima del usuario.
+                </li>
+              </transition>
+              <transition name="slide-fade">
+                <li class="second-point" v-show="showSecondPoint">Optimización de rendimiento: Implementación de
+                  estrategias para reducir significativamente los
+                  tiempos de carga de las Landing Pages, alcanzando una mejora del 70% mediante la optimización del
+                  flujo de funciones y llamadas asíncronas.
+                </li>
+              </transition>
+              <transition name="slide-fade">
+                <li class="third-point" v-show="showThirdPoint">Innovación en la experiencia de usuario: Liderazgo en el
+                  desarrollo de funcionalidades clave, como
+                  buscadores especializados para trenes, hoteles y actividades de ocio, abarcando desde la maquetación
+                  hasta la funcionalidad, contribuyendo así a mejorar la accesibilidad y la experiencia del usuario en
+                  la plataforma.
+                </li>
+              </transition>
+              <transition name="slide-fade">
+                <li class="fourth-point" v-show="showFourthPoint">Ampliación de responsabilidades: Expansión del rol más
+                  allá del Front-end para incluir tareas en el
+                  Back-end, como la integración de APIs de terceros, desarrollo de funciones personalizadas en PHP y
+                  gestión eficiente de bases de datos MySQL, demostrando habilidades multidisciplinarias y capacidad
+                  para colaborar en proyectos de gran escala.
+                </li>
+              </transition>
+            </ul>
           </div>
+        </div>
       </div>
     </div>
   </div>
@@ -83,7 +87,6 @@ export default {
 </script>
 
 <style scoped>
-
 .experience .title {
   font-weight: bold;
   font-size: 50px;
@@ -258,6 +261,11 @@ export default {
   text-align: left;
 }
 
+.experience .main-timeline .job-title i {
+  font-weight: normal;
+  font-size: 17px;
+}
+
 .experience .main-timeline .description {
   margin-bottom: 0
 }
@@ -378,7 +386,7 @@ li.slide-fade-enter-active {
   }
 
   .experience .main-timeline .job-title {
-    margin: 20px 0;
+    margin: 20px 40px;
     text-align: center;
   }
 
@@ -391,7 +399,8 @@ li.slide-fade-enter-active {
   .slide-fade-enter,
   .slide-fade-leave-to {
     opacity: 0;
-    transform: translateY(0); /* Mantén la posición inicial */
+    transform: translateY(0);
+    /* Mantén la posición inicial */
   }
 
   .slide-fade-enter-to,
@@ -438,6 +447,4 @@ li.slide-fade-enter-active {
   }
 
 }
-
-
 </style>

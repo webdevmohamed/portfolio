@@ -3,7 +3,7 @@
     <transition name="slide-fade">
       <div class="img-container left-container" v-show="showLeft">
         <h2 class="about-me responsive d-none">Acerca de mí.</h2>
-        <img :src="require('@/assets/about.svg')" class="img-fluid" alt="">
+        <img :src="require('@/assets/about-4.svg')" class="img-fluid" alt="">
       </div>
     </transition>
     <transition name="slide-fade">
@@ -68,7 +68,6 @@ export default {
 </script>
 
 <style scoped>
-
 .about {
   display: flex;
   align-items: center;
@@ -339,6 +338,4 @@ export default {
   }
 
 }
-
-
 </style>
