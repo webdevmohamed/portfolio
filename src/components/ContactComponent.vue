@@ -56,10 +56,10 @@
             <label for="textarea">Mensaje</label>
           </div>
 
-          <b-button type="submit" squared class="send-message-button border-0 ms-2 mt-5">
+          <button type="submit" squared class="send-message-button border-0 ms-2 mt-5">
             <b-icon icon="cursor"></b-icon>
             <p>Enviar Mensaje</p>
-          </b-button>
+          </button>
         </form>
       </div>
     </transition>
@@ -305,6 +305,7 @@ export default {
   padding: 15px 25px;
   background-color: #68a506;
   width: fit-content;
+  color: white;
 }
 
 .contact .contact-form-container .form .send-message-button p {
