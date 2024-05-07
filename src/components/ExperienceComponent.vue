@@ -11,7 +11,7 @@
             <div class="date-outer">
               <span class="date">
                 <span class="years">3 años</span>
-                <span class="year-range">2021 - 2024</span>
+                <span class="year-range"><i>2021 - 2024</i></span>
               </span>
             </div>
           </div>
@@ -250,7 +250,7 @@ export default {
 }
 
 .experience .main-timeline .year-range {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700
 }
 

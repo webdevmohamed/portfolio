@@ -34,15 +34,28 @@
     <transition name="slide-fade">
       <div class="contact-form-container" v-show="showForm">
         <h3 class="form-title"><b>Envíame Un Mensaje</b></h3>
-        <form class="row g-3 form">
+        <form @submit.prevent="submitForm()" class="row g-3 form">
           <div class="col-md-6 form-floating">
-            <input id="input-name" type="text" class="form-control" placeholder="Nombre" required>
+            <input id="input-name" type="text" class="form-control"
+              :class="{ 'is-invalid': !$v.form.name.required && $v.form.name.$dirty, 'is-valid': $v.form.name.$required && $v.form.name.$dirty }"
+              v-model="$v.form.name.$model" placeholder="Nombre" required>
             <label for="input-name">Nombre</label>
+            <div class="invalid-feedback">
+              Este campo es obligatorio.
+            </div>
           </div>
 
           <div class="col-md-6 form-floating">
-            <input id="input-email" type="email" class="form-control" placeholder="Correo electrónico" required>
+            <input id="input-email" type="email" class="form-control"
+              :class="{ 'is-invalid': $v.form.email.$invalid && $v.form.email.$dirty, 'is-valid': !$v.form.email.$invalid && $v.form.email.$dirty }"
+              v-model="$v.form.email.$model" placeholder="Correo electrónico" required>
             <label for="input-email">Correo electrónico</label>
+            <div class="invalid-feedback">
+              {{ $v.form.email.$invalid && $v.form.email.$model === "" ?
+                'Este campo es obligatorio.' : '' }}
+              {{ $v.form.email.$invalid && $v.form.email.$model !== "" ?
+                'Por favor, introduce una dirección de correo electrónico válida.' : '' }}
+            </div>
           </div>
 
           <div class="col-md-12 form-floating">
@@ -51,8 +64,7 @@
           </div>
 
           <div class="col-md-12 form-floating">
-            <textarea id="textarea" class="form-control" placeholder="Mensaje" style="height: 207px">
-        </textarea>
+            <textarea id="textarea" class="form-control" placeholder="Mensaje" style="height: 207px"></textarea>
             <label for="textarea">Mensaje</label>
           </div>
 
@@ -87,6 +99,7 @@
 </template>
 
 <script>
+import { required, email } from 'vuelidate/lib/validators';
 export default {
   name: "ContactComponent",
   data() {
@@ -94,12 +107,40 @@ export default {
       showContactText: false,
       showContactAlternative: false,
       showForm: false,
+      form: {
+        name: null,
+        email: null,
+        subject: '',
+        message: ''
+      }
     };
   },
+
+  validations: {
+    form: {
+      name: {
+        required
+      },
+      email: {
+        required,
+        email
+      }
+    }
+  },
+
   mounted() {
     this.showContactText = true;
     this.showContactAlternative = true;
     this.showForm = true;
+  },
+
+  methods: {
+    submitForm() {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        console.log("hola gango");
+      }
+    }
   }
 }
 </script>
