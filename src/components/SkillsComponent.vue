@@ -134,13 +134,13 @@ body {
   color: #e2e8f0;
   font-size: 0.9rem;
   background-color: black;
-  border-radius: 0.4rem;
   padding: 0.3rem 1rem;
   margin-right: 1rem;
   white-space: nowrap;
+  cursor: pointer;
   box-shadow: 0 0.1rem 0.2rem rgb(0 0 0 / 20%),
-  0 0.1rem 0.5rem rgb(0 0 0 / 30%),
-  0 0.2rem 1.5rem rgb(0 0 0 / 40%);
+    0 0.1rem 0.5rem rgb(0 0 0 / 30%),
+    0 0.2rem 1.5rem rgb(0 0 0 / 40%);
 
 }
 
@@ -160,9 +160,9 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
 }
-
 </style>

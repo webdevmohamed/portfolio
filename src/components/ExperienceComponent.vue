@@ -21,7 +21,7 @@
             <h5 class="job-title" v-show="showJobTitle">Desarrollador Web <i> - Cysval Consultoría y Servicios</i></h5>
           </transition>
           <div class="description">
-            <ul>
+            <ul style="list-style: square;">
               <transition name="slide-fade">
                 <li class="first-point" v-show="showFirstPoint">Desarrollo integral de Landing Pages para líderes en
                   turismo y ocio, destacando la implementación de
@@ -90,9 +90,24 @@ export default {
 .experience .title {
   font-weight: bold;
   font-size: 50px;
-  margin-bottom: 80px;
-  width: 100%;
+  margin: 0px auto 80px auto;
+  width: fit-content;
   text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+
+.experience .title::before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  background-color: #68a506;
+  opacity: 0.3;
+  right: 0;
+  top: 15px;
+  z-index: -1;
 }
 
 .experience .main-timeline {
@@ -139,7 +154,6 @@ export default {
   content: "";
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   position: absolute;
   top: 0;
   left: 0;
@@ -154,7 +168,8 @@ export default {
 
 .experience .main-timeline .icon:after {
   border: 2px solid #c6c6c6;
-  left: 3px
+  left: 3px;
+  top: 3px;
 }
 
 .experience .main-timeline .timeline:hover .icon:before {
@@ -199,7 +214,6 @@ export default {
   width: 135px;
   height: 135px;
   margin: 0 auto;
-  border-radius: 50%;
   position: absolute;
   top: 0;
   left: 0;
@@ -210,12 +224,13 @@ export default {
 .experience .main-timeline .date-outer:before {
   background: #fff;
   border: 2px solid #68a506;
-  left: -6px
+  left: -6px;
+  top: -6px;
 }
 
 .experience .main-timeline .date-outer:after {
   border: 2px solid #c6c6c6;
-  left: 6px
+  left: 6px;
 }
 
 .experience .main-timeline .timeline:hover .date-outer:before {
@@ -230,7 +245,7 @@ export default {
   width: 100%;
   margin: auto;
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 0
 }
 

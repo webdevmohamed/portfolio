@@ -15,15 +15,15 @@
           </div>
           <p class="text-scroll-down">Scroll Down</p>
         </div>
-        <img class="tachado" :src="require('@/assets/tachado.png')" alt=""/>
+        <img class="tachado" :src="require('@/assets/tachado.png')" alt="" />
       </div>
     </transition>
     <transition name="slide-fade">
       <div class="img-container right-container" v-show="showRight">
-        <img class="img-flecha" :src="require('@/assets/flecha.png')" alt=""/>
+        <img class="img-flecha" :src="require('@/assets/flecha.png')" alt="" />
         <div class="img-border-container">
           <div class="img-border"></div>
-          <img :src="require('@/assets/foto-perfil.jpeg')" alt=""/>
+          <img :src="require('@/assets/foto-perfil.jpeg')" alt="" />
         </div>
       </div>
     </transition>
@@ -81,17 +81,15 @@ export default {
 }
 
 .home .description .text-description {
-  font-size: 25px;
+  font-size: 30px;
   width: 434px;
 }
 
 .home .description .text-description b {
   background: rgb(104, 165, 6);
-  background: linear-gradient(
-      90deg,
+  background: linear-gradient(90deg,
       rgba(104, 165, 6, 0.7175245098039216) 0%,
-      rgba(104, 165, 6, 0) 100%
-  );
+      rgba(104, 165, 6, 0) 100%);
 }
 
 .home .name-description-container {
@@ -118,11 +116,7 @@ export default {
   cursor: pointer;
 }
 
-.home
-.name-description-container
-.scroll-down-container
-.flecha-scroll-down
-.scroll-down {
+.home .name-description-container .scroll-down-container .flecha-scroll-down .scroll-down {
   position: absolute;
   font-size: 20px;
   text-decoration: none;
@@ -147,9 +141,11 @@ export default {
     -webkit-transform: translate(0, -15px) rotate(45deg);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     -webkit-transform: translate(0, 15px) rotate(45deg);
     opacity: 0;
@@ -161,9 +157,11 @@ export default {
     -moz-transform: translate(0, -15px) rotate(45deg);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     -moz-transform: translate(0, 15px) rotate(45deg);
     opacity: 0;
@@ -175,9 +173,11 @@ export default {
     transform: translate(0, -15px) rotate(45deg);
     opacity: 0;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     transform: translate(0, 15px) rotate(45deg);
     opacity: 0;
@@ -254,7 +254,8 @@ export default {
 .slide-fade-enter,
 .slide-fade-leave-to {
   opacity: 0;
-  transform: translateX(0); /* Mantén la posición inicial */
+  transform: translateX(0);
+  /* Mantén la posición inicial */
 }
 
 .slide-fade-enter-to,
@@ -344,7 +345,8 @@ export default {
   .slide-fade-enter,
   .slide-fade-leave-to {
     opacity: 0;
-    transform: translateY(0); /* Mantén la posición inicial */
+    transform: translateY(0);
+    /* Mantén la posición inicial */
   }
 
   .slide-fade-enter-to,
@@ -430,5 +432,4 @@ export default {
     transform: rotate(-72deg);
   }
 }
-
 </style>

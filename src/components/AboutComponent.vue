@@ -16,24 +16,26 @@
               Con una trayectoria de <b>3 años</b> en el campo del <b>Desarrollo Web</b>, me destaco por mi capacidad de
               aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.
             </p>
-            <a class="download-button" :href="pdfUrl" download>
-              <h3>Descargar CV</h3>
-              <div class="go-corner">
-                <div class="go-arrow">
-                  <b-icon class="download-icon" icon="download"></b-icon>
-                </div>
-              </div>
-            </a>
-            <div class="contact-buttons">
-              <b-button squared variant="dark" class="contact-me-button bg-black border-0" @click="scrollToContact()">
-                <b-icon icon="cursor"></b-icon>
-                <p>Contáctame</p>
-              </b-button>
-              <a href="https://www.linkedin.com/in/mohamedmortahil/" target="_blank" class="link-linkedin">
-                <div class="linkedin-button">
-                  <b-icon class="linkedin" icon="linkedin"></b-icon>
+            <div class="buttons">
+              <a class="download-button" :href="pdfUrl" download>
+                <h3>Descargar CV</h3>
+                <div class="go-corner">
+                  <div class="go-arrow">
+                    <b-icon class="download-icon" icon="download"></b-icon>
+                  </div>
                 </div>
               </a>
+              <div class="contact-buttons">
+                <b-button squared variant="dark" class="contact-me-button bg-black border-0" @click="scrollToContact()">
+                  <b-icon icon="cursor"></b-icon>
+                  <p>Contáctame</p>
+                </b-button>
+                <a href="https://www.linkedin.com/in/mohamedmortahil/" target="_blank" class="link-linkedin">
+                  <div class="linkedin-button">
+                    <b-icon class="linkedin" icon="linkedin"></b-icon>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -71,6 +73,7 @@ export default {
 .about {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .about .img-container {
@@ -86,6 +89,21 @@ export default {
   font-size: 50px;
   margin-bottom: 30px;
   width: 100%;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+.about .about-me::before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  background-color: #68a506;
+  opacity: 0.3;
+  right: 0;
+  top: 15px;
+  z-index: -1;
 }
 
 .about .about-me-description .description-container {
@@ -102,39 +120,47 @@ export default {
 
 .about .about-me-description .description-container .description .text-description {
   font-size: 20px;
-  width: 80%;
+  width: 100%;
+  margin-bottom: 2rem
 }
 
 .about .about-me-description .description-container .description .text-description b {
   color: #68a506;
 }
 
-.about .about-me-description .description-container .description .contact-buttons {
+.about .about-me-description .description-container .description .buttons {
   display: flex;
-  margin-top: 20px;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .contact-me-button {
+.about .about-me-description .description-container .description .buttons .contact-buttons {
+  display: flex;
+  width: 50%;
+}
+
+.about .about-me-description .description-container .description .buttons .contact-buttons .contact-me-button {
   display: flex;
   align-items: center;
   padding: 15px 25px;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .contact-me-button p {
+.about .about-me-description .description-container .description .buttons .contact-buttons .contact-me-button p {
   margin-bottom: 0;
   margin-left: 5px;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .contact-me-button:hover {
+.about .about-me-description .description-container .description .buttons .contact-buttons .contact-me-button:hover {
   background-color: #68a506 !important;
 }
 
-.about .about-me-description .description-container .description .contact-buttons a.link-linkedin {
+.about .about-me-description .description-container .description .buttons .contact-buttons a.link-linkedin {
   color: black;
   text-decoration: none;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .linkedin-button {
+.about .about-me-description .description-container .description .buttons .contact-buttons .linkedin-button {
   padding: 18px 20px;
   width: fit-content;
   border: 3px solid black;
@@ -142,22 +168,22 @@ export default {
   display: flex;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .linkedin-button .linkedin {
+.about .about-me-description .description-container .description .buttons .contact-buttons .linkedin-button .linkedin {
   width: 20px;
   height: 20px;
 }
 
 
-.about .about-me-description .description-container .description .contact-buttons .linkedin-button:hover {
+.about .about-me-description .description-container .description .buttons .contact-buttons .linkedin-button:hover {
   border-color: #68a506;
   cursor: pointer;
 }
 
-.about .about-me-description .description-container .description .contact-buttons .linkedin-button:hover .linkedin {
+.about .about-me-description .description-container .description .buttons .contact-buttons .linkedin-button:hover .linkedin {
   fill: #68a506;
 }
 
-.about .about-me-description .description-container .description .download-button h3 {
+.about .about-me-description .description-container .description .buttons .download-button h3 {
   color: black;
   font-size: 17px;
   line-height: 24px;
@@ -166,25 +192,25 @@ export default {
   text-align: left;
 }
 
-.about .about-me-description .description-container .description .download-button p {
+.about .about-me-description .description-container .description .buttons .download-button p {
   font-size: 17px;
   font-weight: 400;
   line-height: 20px;
   color: #666666;
 }
 
-.about .about-me-description .description-container .description .download-button p.small {
+.about .about-me-description .description-container .description .buttons .download-button p.small {
   font-size: 14px;
 }
 
 
-.about .about-me-description .description-container .description .download-button .go-corner {
+.about .about-me-description .description-container .description .buttons .download-button .go-corner {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
   overflow: hidden;
   top: 0;
   right: 0;
@@ -192,29 +218,30 @@ export default {
   border-radius: 0 0 0 58px;
 }
 
-.about .about-me-description .description-container .description .download-button .go-arrow {
+.about .about-me-description .description-container .description .buttons .download-button .go-arrow {
   margin-top: -10px;
   margin-right: -10px;
   color: white;
 }
 
-.about .about-me-description .description-container .description .download-button .go-arrow .download-icon {
+.about .about-me-description .description-container .description .buttons .download-button .go-arrow .download-icon {
   width: 20px;
   height: 20px;
 }
 
-.download-button {
+.buttons .download-button {
   display: block;
   position: relative;
   max-width: 250px;
   background-color: #f2f8f9;
-  padding: 15px 25px;
+  padding: 17px 25px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
+  width: 100%;
 }
 
-.download-button:before {
+.buttons .download-button:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -229,11 +256,11 @@ export default {
   transition: transform 0.5s ease-out;
 }
 
-.download-button:hover:before {
+.buttons .download-button:hover:before {
   transform: scale(21);
 }
 
-.download-button:hover h3 {
+.buttons .download-button:hover h3 {
   transition: all 0.3s ease-out;
   color: white !important;
 }
@@ -273,6 +300,7 @@ export default {
   .about {
     flex-direction: column;
     align-items: center;
+    gap: 0;
   }
 
   .about .img-container {
@@ -282,7 +310,7 @@ export default {
   .about .about-me-description {
     width: 70%;
     text-align: center;
-    margin-top: 35px;
+    margin-top: -30px;
   }
 
   .about .about-me-description .about-me {
@@ -292,6 +320,7 @@ export default {
   .about .img-container .about-me.responsive {
     text-align: center;
     display: block !important;
+    margin: 0px auto 30px auto;
   }
 
   .about .about-me-description .description-container .border-description {
@@ -306,7 +335,11 @@ export default {
     width: 100%;
   }
 
-  .about .about-me-description .description-container .description .contact-buttons {
+  .about .about-me-description .description-container .description .buttons {
+    flex-direction: column;
+  }
+
+  .about .about-me-description .description-container .description .buttons .contact-buttons {
     justify-content: center;
   }
 

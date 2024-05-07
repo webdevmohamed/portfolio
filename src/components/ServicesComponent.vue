@@ -10,7 +10,8 @@
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
             <b-icon class="ms-2 mb-4 icono" icon="layout-text-window" font-scale="2"></b-icon>
             <h3><b>Diseño Web</b></h3>
-            <p class="text-secondary">Diseños bonitos y elegantes con interfaces interactivas que resultan intuitivas, eficaces y agradables de usar para el usuario.</p>
+            <p class="text-secondary">Diseños bonitos y elegantes con interfaces interactivas que resultan intuitivas,
+              eficaces y agradables de usar para el usuario.</p>
           </div>
           <div class="custom-border"></div>
         </div>
@@ -22,7 +23,8 @@
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
             <b-icon class="ms-2 mb-4 icono" icon="journal-code" font-scale="2"></b-icon>
             <h3><b>Desarrollo</b></h3>
-            <p class="text-secondary">Desarrollo web personalizado adaptado a sus especificaciones, diseñado para ofrecer una experiencia de usuario impecable.</p>
+            <p class="text-secondary">Desarrollo web personalizado adaptado a sus especificaciones, diseñado para
+              ofrecer una experiencia de usuario impecable.</p>
           </div>
           <div class="custom-border"></div>
         </div>
@@ -34,7 +36,8 @@
             <div class="green-square ms-4" style="margin-bottom: -20px"></div>
             <b-icon class="ms-2 mb-4 icono" icon="tablet" font-scale="2"></b-icon>
             <h3><b>Diseño responsivo</b></h3>
-            <p class="text-secondary">Desarrollo de sitios web que se adaptan perfectamente a cualquier dispositivo, brindando una experiencia de usuario óptima en todo momento.</p>
+            <p class="text-secondary">Desarrollo de sitios web que se adaptan perfectamente a cualquier dispositivo,
+              brindando una experiencia de usuario óptima en todo momento.</p>
           </div>
           <div class="custom-border"></div>
         </div>
@@ -65,13 +68,27 @@ export default {
 </script>
 
 <style scoped>
-
 .services .title {
   font-weight: bold;
   font-size: 50px;
-  margin-bottom: 80px;
-  width: 100%;
+  margin: 0px auto 80px auto;
   text-align: center;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+
+.services .title::before {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 50px;
+  background-color: #68a506;
+  opacity: 0.3;
+  right: 0;
+  top: 15px;
+  z-index: -1;
 }
 
 .services .services-container {
@@ -218,8 +235,4 @@ export default {
     width: 90%;
   }
 }
-
-
-
-
 </style>
