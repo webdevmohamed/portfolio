@@ -4,10 +4,11 @@
       <transition name="slide-fade">
         <div class="contact-me-text" v-show="showContactText">
           <h2 class="title">Contacto.</h2>
-          <p class="first-text">Leere todos los emails. Enviame el mensaje que quieras y me pondré en contacto con
-            usted.</p>
-          <p class="second-text">Necesito tu <b>Nombre</b> y <b>Direccion de Correo electrónico</b>, pero no recibirás
-            nada que no sea una respuesta.</p>
+          <p class="first-text">Todos los emails serán leídos atentamente. Siéntete libre de enviarme tu
+            mensaje y me pondré en contacto contigo lo antes posible.</p>
+          <p class="second-text">Por favor, incluye tu <b>Nombre</b> y dirección de <b>Correo electrónico</b> en tu
+            mensaje. No recibirás ninguna comunicación que no sea una respuesta directa a tu
+            consulta.</p>
         </div>
       </transition>
       <transition name="slide-fade">
@@ -34,13 +35,14 @@
     <transition name="slide-fade">
       <div class="contact-form-container" v-show="showForm">
         <h3 class="form-title"><b>Envíame Un Mensaje</b></h3>
-        <form @submit.prevent="submitForm()" class="row g-3 form">
+        <form @submit.prevent="submitForm()" class="row g-3 form" novalidate>
           <div class="col-md-6 form-floating">
             <input id="input-name" type="text" class="form-control"
-              :class="{ 'is-invalid': !$v.form.name.required && $v.form.name.$dirty, 'is-valid': $v.form.name.$required && $v.form.name.$dirty }"
+              :class="{ 'is-invalid': !$v.form.name.required && $v.form.name.$dirty, 'is-valid': $v.form.name.required && $v.form.name.$dirty }"
               v-model="$v.form.name.$model" placeholder="Nombre" required>
-            <label for="input-name">Nombre</label>
-            <div class="invalid-feedback">
+            <label for="input-name">Nombre *</label>
+            <div class="invalid-feedback"
+              :style="{ visibility: !$v.form.name.required && $v.form.name.$dirty ? 'visible' : 'hidden' }">
               Este campo es obligatorio.
             </div>
           </div>
@@ -49,22 +51,25 @@
             <input id="input-email" type="email" class="form-control"
               :class="{ 'is-invalid': $v.form.email.$invalid && $v.form.email.$dirty, 'is-valid': !$v.form.email.$invalid && $v.form.email.$dirty }"
               v-model="$v.form.email.$model" placeholder="Correo electrónico" required>
-            <label for="input-email">Correo electrónico</label>
-            <div class="invalid-feedback">
-              {{ $v.form.email.$invalid && $v.form.email.$model === "" ?
+            <label for="input-email">Correo electrónico *</label>
+            <div class="invalid-feedback"
+              :style="{ visibility: $v.form.email.$invalid && $v.form.email.$dirty ? 'visible' : 'hidden' }">
+              {{ $v.form.email.$invalid && !$v.form.email.$model ?
                 'Este campo es obligatorio.' : '' }}
-              {{ $v.form.email.$invalid && $v.form.email.$model !== "" ?
-                'Por favor, introduce una dirección de correo electrónico válida.' : '' }}
+              {{ $v.form.email.$invalid && $v.form.email.$model ?
+                'Formato inválido.' : '' }}
             </div>
           </div>
 
           <div class="col-md-12 form-floating">
-            <input id="input-subject" type="text" class="form-control" placeholder="Asunto">
+            <input id="input-subject" type="text" class="form-control" :class="{ 'is-valid': form.subject !== '' }"
+              placeholder="Asunto" v-model="form.subject">
             <label for="input-subject">Asunto</label>
           </div>
 
-          <div class="col-md-12 form-floating">
-            <textarea id="textarea" class="form-control" placeholder="Mensaje" style="height: 207px"></textarea>
+          <div class="col-md-12 form-floating textarea-container">
+            <textarea id="textarea" class="form-control" :class="{ 'is-valid': form.message !== '' }"
+              placeholder="Mensaje" style="min-height: 207px" v-model="form.message"></textarea>
             <label for="textarea">Mensaje</label>
           </div>
 
@@ -138,7 +143,7 @@ export default {
     submitForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        console.log("hola gango");
+        console.log("mensaje enviado");
       }
     }
   }
@@ -154,7 +159,7 @@ export default {
 
 .contact .contact-text-container {
   width: 35%;
-  margin-top: 102px;
+  margin-top: 88px;
   margin-right: -70px;
   z-index: 2;
 }
@@ -293,9 +298,28 @@ export default {
   color: white;
 }
 
+.invalid-feedback {
+  max-height: 15px;
+  display: block;
+}
+
+.textarea-container {
+  margin-top: 35px
+}
+
 .contact .contact-form-container .form .form-floating>label {
   color: #888888;
   margin-left: 8px;
+}
+
+.contact .contact-form-container .form .form-control.is-invalid,
+.contact .contact-form-container .form .form-control.is-invalid:focus {
+  border-color: var(--bs-form-invalid-border-color);
+}
+
+.contact .contact-form-container .form .form-control.is-valid,
+.contact .contact-form-container .form .form-control.is-valid:focus {
+  border-color: var(--bs-form-valid-border-color);
 }
 
 .contact .contact-form-container .form .form-control:focus {

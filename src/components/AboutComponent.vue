@@ -209,8 +209,8 @@ export default {
   align-items: center;
   justify-content: center;
   position: absolute;
-  width: 62px;
-  height: 62px;
+  width: 58px;
+  height: 58px;
   overflow: hidden;
   top: 0;
   right: 0;
@@ -234,11 +234,12 @@ export default {
   position: relative;
   max-width: 250px;
   background-color: #f2f8f9;
-  padding: 17px 25px;
+  padding: 15px 25px;
   text-decoration: none;
   z-index: 0;
   overflow: hidden;
   width: 100%;
+  border: 2px solid #68a506;
 }
 
 .buttons .download-button:before {
