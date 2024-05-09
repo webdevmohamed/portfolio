@@ -40,7 +40,7 @@
             <input id="input-name" type="text" class="form-control"
               :class="{ 'is-invalid': !$v.form.name.required && $v.form.name.$dirty, 'is-valid': $v.form.name.required && $v.form.name.$dirty }"
               v-model="$v.form.name.$model" placeholder="Nombre" required>
-            <label for="input-name">Nombre *</label>
+            <label for="input-name">Nombre*</label>
             <div class="invalid-feedback"
               :style="{ visibility: !$v.form.name.required && $v.form.name.$dirty ? 'visible' : 'hidden' }">
               Este campo es obligatorio.
@@ -51,7 +51,7 @@
             <input id="input-email" type="email" class="form-control"
               :class="{ 'is-invalid': $v.form.email.$invalid && $v.form.email.$dirty, 'is-valid': !$v.form.email.$invalid && $v.form.email.$dirty }"
               v-model="$v.form.email.$model" placeholder="Correo electrónico" required>
-            <label for="input-email">Correo electrónico *</label>
+            <label for="input-email">Correo electrónico*</label>
             <div class="invalid-feedback"
               :style="{ visibility: $v.form.email.$invalid && $v.form.email.$dirty ? 'visible' : 'hidden' }">
               {{ $v.form.email.$invalid && !$v.form.email.$model ?

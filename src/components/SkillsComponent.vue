@@ -302,8 +302,8 @@ body {
 }
 
 .skills .tag .skill-icon {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   position: absolute;
   opacity: 0;
   transition: 0.3s ease;

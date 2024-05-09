@@ -16,6 +16,9 @@
             </div>
           </div>
         </transition>
+        <transition name="slide-fade">
+          <img :src="require('@/assets/experience.svg')" class="img-fluid experience-img" alt="" v-show="showImg">
+        </transition>
         <div class="timeline-content">
           <transition name="slide-fade">
             <h5 class="job-title" v-show="showJobTitle">Desarrollador Web <i> - Cysval Consultoría y Servicios</i></h5>
@@ -65,6 +68,7 @@ export default {
   data() {
     return {
       showDateContent: false,
+      showImg: false,
       showJobTitle: false,
       showTitle: false,
       showFirstPoint: false,
@@ -75,6 +79,7 @@ export default {
   },
   mounted() {
     this.showDateContent = true;
+    this.showImg = true;
     this.showJobTitle = true;
     this.showTitle = true;
     this.showFirstPoint = true;
@@ -130,6 +135,13 @@ export default {
 .experience .main-timeline .timeline {
   margin-bottom: 40px;
   position: relative
+}
+
+.experience .main-timeline .timeline .experience-img {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .experience .main-timeline .timeline:after {
@@ -344,6 +356,11 @@ li.slide-fade-enter-active {
   transform: translateX(-30%);
 }
 
+.experience-img.slide-fade-enter,
+.experience-img.slide-fade-leave-to {
+  transform: translateY(30%);
+}
+
 .first-point.slide-fade-enter,
 .first-point.slide-fade-leave-to {
   transform: translateX(20%);
@@ -372,6 +389,10 @@ li.slide-fade-enter-active {
 
   .experience .main-timeline .timeline {
     margin-bottom: 20px
+  }
+
+  .experience .main-timeline .timeline .experience-img {
+    display: none;
   }
 
   .experience .main-timeline .timeline:last-child {
