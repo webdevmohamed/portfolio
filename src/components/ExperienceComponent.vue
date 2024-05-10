@@ -353,12 +353,12 @@ li.slide-fade-enter-active {
 
 .date-content.slide-fade-enter,
 .date-content.slide-fade-leave-to {
-  transform: translateX(-30%);
+  transform: translateX(-20%);
 }
 
 .experience-img.slide-fade-enter,
 .experience-img.slide-fade-leave-to {
-  transform: translateY(30%);
+  transform: translateX(-30%);
 }
 
 .first-point.slide-fade-enter,

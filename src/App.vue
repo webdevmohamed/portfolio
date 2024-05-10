@@ -39,6 +39,8 @@
       <services-component :key="sectionsKeys.services" class="section"
         :class="{ visible: sectionAnimationState.services }" id="services"></services-component>
       <skills-component id="skills"></skills-component>
+      <education-component :key="sectionsKeys.education" class="section"
+        :class="{ visible: sectionAnimationState.education }" id="education"></education-component>
       <experience-component :key="sectionsKeys.experience" class="section"
         :class="{ visible: sectionAnimationState.experience }" id="experience"></experience-component>
       <contact-component :key="sectionsKeys.contact" class="section" :class="{ visible: sectionAnimationState.contact }"
@@ -54,6 +56,7 @@ import ServicesComponent from "@/components/ServicesComponent";
 import SkillsComponent from "@/components/SkillsComponent";
 import ExperienceComponent from "@/components/ExperienceComponent";
 import ContactComponent from "@/components/ContactComponent";
+import EducationComponent from "@/components/EducationComponent.vue";
 
 export default {
   name: "App",
@@ -65,6 +68,7 @@ export default {
         home: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         about: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         services: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+        education: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         experience: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
         contact: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
       },
@@ -72,6 +76,7 @@ export default {
         home: true,
         about: false,
         services: false,
+        education: false,
         experience: false,
         contact: false
       }
@@ -127,7 +132,8 @@ export default {
     SkillsComponent,
     ServicesComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    EducationComponent
   },
 };
 </script>
