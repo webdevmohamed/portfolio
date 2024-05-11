@@ -5,7 +5,9 @@
             <div class="timeline">
                 <div class="timeline-content">
                     <div class="line"></div>
-                    <div class="content"> 2016 - 2018</div>
+                    <div class="content">
+                        <span>2016 - 2018</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,6 +62,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 70px;
 }
 
 .education .main-timeline .timeline .timeline-content .line {
@@ -68,6 +71,13 @@ export default {
     background: #c6c6c6;
     position: relative;
     margin-top: 15px;
+}
+
+
+.education .main-timeline .timeline .timeline-content .content {
+    position: relative;
+    top: 26px;
+    z-index: 1;
 }
 
 .education .main-timeline .timeline .timeline-content .line:before,
@@ -103,5 +113,35 @@ export default {
 
 .education .main-timeline .timeline .timeline-content:hover .line:after {
     top: -26px
+}
+
+
+.education .main-timeline .timeline .timeline-content .content:before,
+.education .main-timeline .timeline .timeline-content .content:after {
+    content: "";
+    width: 135px;
+    height: 135px;
+    line-height: 18px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-out 0s;
+    z-index: -1;
+}
+
+
+.education .main-timeline .timeline .timeline-content .content:before {
+    background: #fff;
+    border: 2px solid #68a506;
+    left: -9px;
+    top: -26px;
+
+}
+
+.education .main-timeline .timeline .timeline-content .content:after {
+    border: 2px solid #c6c6c6;
+    left: -5px;
+    top: -20px;
 }
 </style>

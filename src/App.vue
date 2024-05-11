@@ -166,6 +166,11 @@ export default {
   margin-bottom: 120px;
 }
 
+.mi-portfolio .main-container #education {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
 .mi-portfolio .main-container #experience {
   padding-top: 120px;
   padding-bottom: 120px;
