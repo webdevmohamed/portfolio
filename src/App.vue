@@ -46,6 +46,8 @@
       <contact-component :key="sectionsKeys.contact" class="section" :class="{ visible: sectionAnimationState.contact }"
         id="contact"></contact-component>
     </div>
+    <button v-show="scrollToTopButtonVisible" @click="scrollToTop()" id="scroll-to-top-button"><span
+        class="arrow"></span></button>
   </div>
 </template>
 <script>
@@ -79,7 +81,8 @@ export default {
         education: false,
         experience: false,
         contact: false
-      }
+      },
+      scrollToTopButtonVisible: false
     };
   },
 
@@ -110,6 +113,7 @@ export default {
 
     handleScroll() {
       this.scrolled = window.scrollY > 0;
+      this.scrollToTopButtonVisible = window.scrollY > 200;
       const sections = document.querySelectorAll('.section');
       let closestSectionId = null;
       let closestDistance = Infinity;
@@ -123,6 +127,13 @@ export default {
       if (!this.sectionAnimationState[closestSectionId]) this.sectionsKeys[closestSectionId] = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
       this.sectionAnimationState[closestSectionId] = true;
       this.activeSection = closestSectionId;
+    },
+
+    scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
     }
   },
 
@@ -140,6 +151,68 @@ export default {
 <style scoped>
 @import './assets/css/scrollbar.css';
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap");
+
+#scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  padding: 25px 20px;
+  transition: all .3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  font-size: 14px;
+  border: 2px solid black;
+}
+
+#scroll-to-top-button>.arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  position: relative;
+  transform: rotate(224deg);
+  margin: 0 6px;
+  transition: all .3s ease;
+}
+
+#scroll-to-top-button>.arrow::before {
+  display: block;
+  background-color: currentColor;
+  width: 3px;
+  transform-origin: bottom right;
+  height: 2px;
+  position: absolute;
+  opacity: 0;
+  bottom: calc(-2px / 2);
+  transform: rotate(45deg);
+  transition: all .3s ease;
+  content: "";
+  right: 0;
+}
+
+#scroll-to-top-button:hover>.arrow {
+  border-color: black;
+}
+
+#scroll-to-top-button:hover>.arrow::before {
+  opacity: 1;
+  width: 16px;
+  background-color: black;
+}
+
+#scroll-to-top-button:hover {
+  background-color: #68a506;
+  color: #fff;
+  border-color: black;
+}
 
 .mi-portfolio {
   background-color: #e5e5e5;
