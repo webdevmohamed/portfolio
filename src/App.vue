@@ -163,7 +163,7 @@ export default {
   color: white;
   cursor: pointer;
   display: flex;
-  padding: 25px 20px;
+  padding: 20px 15px;
   transition: all .3s ease;
   font-weight: bold;
   cursor: pointer;
@@ -200,6 +200,8 @@ export default {
 
 #scroll-to-top-button:hover>.arrow {
   border-color: black;
+  transform: rotate(224deg) translateX(5px) translateY(5px);
+  margin-bottom: -10px
 }
 
 #scroll-to-top-button:hover>.arrow::before {
