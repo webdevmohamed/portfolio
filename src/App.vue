@@ -46,8 +46,10 @@
       <contact-component :key="sectionsKeys.contact" class="section" :class="{ visible: sectionAnimationState.contact }"
         id="contact"></contact-component>
     </div>
-    <button v-show="scrollToTopButtonVisible" @click="scrollToTop()" id="scroll-to-top-button"><span
-        class="arrow"></span></button>
+    <transition name="slide-fade">
+      <button v-show="scrollToTopButtonVisible" @click="scrollToTop()" class="scroll-to-top-button"><span
+          class="arrow"></span></button>
+    </transition>
   </div>
 </template>
 <script>
@@ -152,70 +154,6 @@ export default {
 @import './assets/css/scrollbar.css';
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap");
 
-#scroll-to-top-button {
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  padding: 20px 15px;
-  transition: all .3s ease;
-  font-weight: bold;
-  cursor: pointer;
-  align-items: center;
-  font-size: 14px;
-  border: 2px solid black;
-}
-
-#scroll-to-top-button>.arrow {
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  position: relative;
-  transform: rotate(224deg);
-  margin: 0 6px;
-  transition: all .3s ease;
-}
-
-#scroll-to-top-button>.arrow::before {
-  display: block;
-  background-color: currentColor;
-  width: 3px;
-  transform-origin: bottom right;
-  height: 2px;
-  position: absolute;
-  opacity: 0;
-  bottom: calc(-2px / 2);
-  transform: rotate(45deg);
-  transition: all .3s ease;
-  content: "";
-  right: 0;
-}
-
-#scroll-to-top-button:hover>.arrow {
-  border-color: black;
-  transform: rotate(224deg) translateX(5px) translateY(5px);
-  margin-bottom: -10px
-}
-
-#scroll-to-top-button:hover>.arrow::before {
-  opacity: 1;
-  width: 16px;
-  background-color: black;
-}
-
-#scroll-to-top-button:hover {
-  background-color: #68a506;
-  color: #fff;
-  border-color: black;
-}
-
 .mi-portfolio {
   background-color: #e5e5e5;
   font-family: "Chakra Petch", sans-serif;
@@ -305,9 +243,7 @@ export default {
   left: 8px;
   width: 0px;
   height: 2px;
-  /* Altura del borde inferior */
   background-color: transparent;
-  /* Color del borde inferior, inicialmente transparente */
   transition: width 0.5s;
 }
 
@@ -332,7 +268,6 @@ export default {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-  /* Añade una transición para suavizar la aparición */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -341,6 +276,91 @@ export default {
 .mi-portfolio .main-container .section.visible {
   opacity: 1;
   visibility: visible;
+}
+
+.mi-portfolio .scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  padding: 20px 15px;
+  transition: all .3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  font-size: 14px;
+  border: 2px solid black;
+}
+
+.mi-portfolio .scroll-to-top-button>.arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  position: relative;
+  transform: rotate(224deg);
+  margin: 0 6px;
+  transition: all .3s ease;
+}
+
+.mi-portfolio .scroll-to-top-button>.arrow::before {
+  display: block;
+  background-color: currentColor;
+  width: 3px;
+  transform-origin: bottom right;
+  height: 2px;
+  position: absolute;
+  opacity: 0;
+  bottom: calc(-2px / 2);
+  transform: rotate(45deg);
+  transition: all .3s ease;
+  content: "";
+  right: 0;
+}
+
+.mi-portfolio .scroll-to-top-button:hover>.arrow {
+  border-color: black;
+  transform: rotate(224deg) translateX(5px) translateY(5px);
+  margin-bottom: -10px
+}
+
+.mi-portfolio .scroll-to-top-button:hover>.arrow::before {
+  opacity: 1;
+  width: 16px;
+  background-color: black;
+}
+
+.mi-portfolio .scroll-to-top-button:hover {
+  background-color: #68a506;
+  color: #fff;
+  border-color: black;
+}
+
+.slide-fade-enter-active {
+  transition: all 500ms ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  opacity: 0;
+  transform: translateX(0%);
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.scroll-to-top-button.slide-fade-enter,
+.scroll-to-top-button.slide-fade-leave-to {
+  transform: translateY(30%);
 }
 
 @media screen and (max-width: 1200px) {
