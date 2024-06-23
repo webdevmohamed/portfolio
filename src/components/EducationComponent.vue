@@ -3,10 +3,36 @@
         <h2 class="title">Education.</h2>
         <div class="main-timeline">
             <div class="timeline">
-                <div class="timeline-content">
+                <div class="timeline-content first-education">
+                    <div class="education-container">
+                        <div class="education-title"><b>Bachillerato</b></div>
+                        <div class="education-school"><i>IES Juan Antonio Castro</i></div>
+                    </div>
                     <div class="line"></div>
                     <div class="content">
-                        <span>2016 - 2018</span>
+                        <span><b>2016 - 2018</b></span>
+                    </div>
+                </div>
+
+                <div class="timeline-content second-education">
+                    <div class="education-container">
+                        <div class="education-title"><b>Administración de Sistemas Informáticos en Red</b></div>
+                        <div class="education-school"><i>IES Ribera del Tajo</i></div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="content">
+                        <span><b>2018 - 2020</b></span>
+                    </div>
+                </div>
+
+                <div class="timeline-content third-education">
+                    <div class="education-container">
+                        <div class="education-title"><b>Desarrollo de Aplicaciones Multiplataforma</b></div>
+                        <div class="education-school"><i>IES Ribera del Tajo</i></div>
+                    </div>
+                    <div class="line"></div>
+                    <div class="content">
+                        <span><b>2021 - Actual</b></span>
                     </div>
                 </div>
             </div>
@@ -47,10 +73,11 @@ export default {
 .education .main-timeline {
     display: flex;
     justify-content: center;
+    padding: 150px 0px;
 }
 
 .education .main-timeline .timeline {
-    width: 70%;
+    width: 90%;
     height: 2px;
     background: #c6c6c6;
     position: relative;
@@ -62,7 +89,24 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 70px;
+    top: -80px;
+}
+
+.education .main-timeline .timeline .timeline-content.first-education {
+    left: 0;
+}
+
+.education .main-timeline .timeline .timeline-content.second-education {
+    left: 30%;
+}
+
+.education .main-timeline .timeline .timeline-content.third-education {
+    right: 0;
+}
+
+.education .main-timeline .timeline .timeline-content .education-container {
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .education .main-timeline .timeline .timeline-content .line {
@@ -78,6 +122,15 @@ export default {
     position: relative;
     top: 26px;
     z-index: 1;
+    width: 135px;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 6px;
+    font-size: 20px;
+
 }
 
 .education .main-timeline .timeline .timeline-content .line:before,
@@ -120,7 +173,7 @@ export default {
 .education .main-timeline .timeline .timeline-content .content:after {
     content: "";
     width: 135px;
-    height: 135px;
+    height: 80px;
     line-height: 18px;
     margin: auto;
     position: absolute;
@@ -134,14 +187,20 @@ export default {
 .education .main-timeline .timeline .timeline-content .content:before {
     background: #fff;
     border: 2px solid #68a506;
-    left: -9px;
-    top: -26px;
 
 }
 
 .education .main-timeline .timeline .timeline-content .content:after {
     border: 2px solid #c6c6c6;
     left: -5px;
-    top: -20px;
+    top: -6px;
+}
+
+.education .main-timeline .timeline .timeline-content:hover .content:before {
+    top: -6px
+}
+
+.education .main-timeline .timeline .timeline-content:hover .content:after {
+    top: 0px
 }
 </style>

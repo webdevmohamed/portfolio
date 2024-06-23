@@ -263,7 +263,7 @@ export default {
 
 .experience .main-timeline .year-range {
   font-size: 15px;
-  font-weight: 700
+  font-weight: 100
 }
 
 .experience .main-timeline .years {

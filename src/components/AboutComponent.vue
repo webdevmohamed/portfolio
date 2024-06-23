@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import pdf from '@/assets/Mohamed_Mortahil_Elaaouad_Abril_2024.pdf';
+import pdf from '@/assets/Mohamed_Mortahil_Elaaouad_Junio_2024.pdf';
 
 export default {
   name: "AboutComponent",
