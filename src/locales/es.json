@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de mí",
+    "services": "Servicios",
+    "experience": "Experiencia",
+    "contact": "Contacto"
+  },
+  "theme": {
+    "toggle_light": "Cambiar a tema claro",
+    "toggle_dark": "Cambiar a tema oscuro"
+  }
+} 

@@ -4,8 +4,28 @@ export default {
     './public/**/*.html',
     './src/**/*.{js,jsx,ts,tsx,vue}',
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
+      colors: {
+        background: {
+          DEFAULT: 'var(--background)',
+          secondary: 'var(--background-secondary)',
+        },
+        foreground: {
+          DEFAULT: 'var(--foreground)',
+          secondary: 'var(--foreground-secondary)',
+        },
+        border: 'var(--border)',
+        primary: {
+          DEFAULT: '#68a506',
+          hover: '#7ab507',
+        }
+      },
+    },
   },
   plugins: [],
 }
