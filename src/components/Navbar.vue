@@ -4,7 +4,7 @@
       <div class="flex items-center gap-10">
         <p v-for="item in menuItems" :key="item.key" @click="setActiveItem(item)"
           class="text-md font-bold cursor-pointer relative group transition-colors duration-300"
-          :class="activeItem === item.key ? 'text-primary' : 'text-foreground hover:text-primary'">
+          :class="activeItem === item.key ? 'text-primary' : 'text-foreground hover:text-primary-hover'">
           {{ item.text }}
           <span class="absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300"
             :class="{ 'opacity-100 w-[20px]': activeItem === item.key, 'opacity-0 w-0': activeItem !== item.key }"></span>

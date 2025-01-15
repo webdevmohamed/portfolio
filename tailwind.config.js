@@ -22,7 +22,7 @@ export default {
         border: 'var(--border)',
         primary: {
           DEFAULT: '#68a506',
-          hover: '#7ab507',
+          hover: '#b4e876',
         }
       },
     },
