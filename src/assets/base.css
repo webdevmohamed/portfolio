@@ -10,7 +10,16 @@
   --foreground-secondary: #4b5563;
   --border: #e5e7eb;
   --primary: #68a506;
-  --primary-hover: #7ab507;
+  --primary-hover: #527f05;
+  --primary-light: #84c517;
+  --primary-dark: #446e04;
+  --accent-blue: #0679a5;
+  --accent-purple: #7a06a5;
+  --accent-orange: #a57906;
+  --success: #2e7d32;
+  --warning: #ed6c02;
+  --error: #d32f2f;
+  --info: #0288d1;
 }
 
 .dark {

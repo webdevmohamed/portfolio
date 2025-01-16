@@ -22,8 +22,29 @@ export default {
         border: 'var(--border)',
         primary: {
           DEFAULT: '#68a506',
-          hover: '#b4e876',
-        }
+          hover: '#527f05',
+          light: '#84c517',
+          dark: '#446e04',
+          50: '#f0f9e6',
+          100: '#dff2cc',
+          200: '#bde599',
+          300: '#9bd866',
+          400: '#79cb33',
+          500: '#68a506',
+          600: '#527f05',
+          700: '#3c5904',
+          800: '#263303',
+          900: '#100c01'
+        },
+        accent: {
+          blue: '#0679a5',
+          purple: '#7a06a5',
+          orange: '#a57906'
+        },
+        success: '#2e7d32',
+        warning: '#ed6c02',
+        error: '#d32f2f',
+        info: '#0288d1'
       },
     },
   },

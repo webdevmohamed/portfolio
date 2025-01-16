@@ -3,11 +3,11 @@
     <div class="mx-auto container">
       <div class="flex items-center gap-10">
         <p v-for="item in menuItems" :key="item.key" @click="setActiveItem(item)"
-          class="text-md font-bold cursor-pointer relative group transition-colors duration-300"
-          :class="activeItem === item.key ? 'text-primary' : 'text-foreground hover:text-primary-hover'">
+          class="text-md font-bold cursor-pointer relative group py-1 transition-all duration-300 ease-out"
+          :class="activeItem === item.key ? 'text-primary-400' : 'text-foreground hover:text-primary-dark'">
           {{ item.text }}
-          <span class="absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300"
-            :class="{ 'opacity-100 w-[20px]': activeItem === item.key, 'opacity-0 w-0': activeItem !== item.key }"></span>
+          <span class="absolute -bottom-1 left-0 h-[2px] transition-all duration-300 ease-out"
+            :class="{ 'w-full bg-primary-400 shadow-glow': activeItem === item.key, 'w-0 group-hover:w-full bg-primary-dark opacity-0 group-hover:opacity-100': activeItem !== item.key }"></span>
         </p>
       </div>
     </div>
@@ -36,4 +36,8 @@ const setActiveItem = (item) => {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.shadow-glow {
+  box-shadow: 0 0 8px var(--primary);
+}
+</style>
