@@ -24,19 +24,8 @@
 
         <!-- Content -->
         <div class="container mx-auto max-w-screen-lg relative">
-            <div class="flex items-center justify-between min-h-screen">
-                <div class="space-y-6 relative">
-                    <div
-                        class="absolute -inset-1 bg-gradient-to-r from-primary/30 to-accent-blue/30 blur-xl opacity-50 dark:opacity-30">
-                    </div>
-                    <h1
-                        class="relative text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-light">
-                        Home
-                    </h1>
-                    <p class="relative text-foreground/80 max-w-md">
-                        Lorem ipsum dolor sit amet...
-                    </p>
-                </div>
+            <div class="flex items-center justify-between gap-24 min-h-screen">
+                <HomeContent />
                 <ProfileImage />
             </div>
         </div>
@@ -45,6 +34,7 @@
 
 <script setup>
 import ProfileImage from './ProfileImage.vue'
+import HomeContent from './HomeContent.vue'
 </script>
 
 <style scoped>
