@@ -12,6 +12,30 @@
                 gran apasionado de la programación y la fotografía.
             </p>
         </div>
+
+        <!-- Modern scroll indicator -->
+        <div class="relative w-fit flex flex-col items-start gap-3 pt-16 group">
+            <div class="flex items-center gap-3 cursor-pointer">
+                <div
+                    class="relative w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-accent-blue/20 group-hover:from-primary/30 group-hover:to-accent-blue/30 transition-all duration-300 overflow-hidden flex items-center justify-center">
+                    <div class="w-3 h-3 border-r-[2px] border-b-[2px] border-primary animate-fade-move-down">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-full bg-primary/5 group-hover:bg-primary/10 blur-xl transition-all duration-300">
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="text-sm font-medium text-foreground/50 group-hover:text-primary transition-colors duration-300">
+                        Scroll
+                    </span>
+                    <span
+                        class="text-xs font-medium text-foreground/30 group-hover:text-primary/60 transition-colors duration-300">
+                        para explorar
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

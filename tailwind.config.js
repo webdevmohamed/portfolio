@@ -48,6 +48,7 @@ export default {
       },
       animation: {
         blob: 'blob 7s infinite',
+        'fade-move-down': 'fade_move_down 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite',
       },
       keyframes: {
         blob: {
@@ -63,6 +64,22 @@ export default {
           '100%': {
             transform: 'translate(0px, 0px) scale(1)',
           },
+        },
+        'fade_move_down': {
+            '0%': {
+              transform: 'translate(0, -15px) rotate(45deg)',
+              opacity: '0',
+            },
+          
+            '50%': {
+              opacity: '1',
+            },
+          
+            '100%': {
+              transform: 'translate(0, 15px) rotate(45deg)',
+              opacity: '0',
+            }
+        
         },
       },
     },
