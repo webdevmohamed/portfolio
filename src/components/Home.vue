@@ -24,7 +24,7 @@
 
         <!-- Content -->
         <div class="container mx-auto max-w-screen-lg relative">
-            <div class="flex items-center justify-between gap-24 min-h-screen">
+            <div class="flex items-center justify-between gap-5 min-h-screen">
                 <HomeContent />
                 <ProfileImage />
             </div>
