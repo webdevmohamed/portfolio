@@ -18,11 +18,8 @@
             <div class="relative w-fit flex flex-col items-start gap-3 pt-20 group">
                 <div class="flex items-center gap-3 cursor-pointer">
                     <div
-                        class="relative w-14 h-14 rounded-full bg-gradient-to-br from-primary/20 to-accent-blue/20 group-hover:from-primary/30 group-hover:to-accent-blue/30 transition-all duration-300 overflow-hidden flex items-center justify-center">
+                        class="relative w-14 h-14 animate-pulse group-hover:animate-none rounded-full bg-gradient-to-br from-primary/40 to-accent-blue/40 group-hover:from-primary/60 group-hover:to-accent-blue/60 transition-all duration-300 overflow-hidden flex items-center justify-center">
                         <div class="w-3 h-3 border-r-[2px] border-b-[2px] border-primary animate-fade-move-down">
-                        </div>
-                        <div
-                            class="absolute inset-0 rounded-full bg-primary/5 group-hover:bg-primary/10 blur-xl transition-all duration-300">
                         </div>
                     </div>
                     <div class="flex flex-col">

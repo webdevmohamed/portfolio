@@ -1,5 +1,5 @@
 <template>
-  <header class="p-5 bg-background border-b border-border">
+  <header class="p-5 bg-background">
     <div class="mx-auto container flex items-center justify-between">
       <div class="flex items-center gap-3 group cursor-pointer">
         <div class="relative w-8 h-8 bg-primary rounded-xl flex items-center justify-center">

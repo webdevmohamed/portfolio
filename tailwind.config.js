@@ -82,6 +82,12 @@ export default {
         
         },
       },
+      backgroundImage: {
+        'grid-pattern': "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(to right, var(--foreground) 1px, transparent 1px)",
+      },
+      backgroundSize: {
+        'grid': '40px 40px',
+      },
     },
   },
   plugins: [],
