@@ -36,7 +36,7 @@
         </div>
 
         <!-- Graphic element -->
-        <img class="w-[150px] h-fit mt-12 dark:filter dark:invert" src="@/assets/flecha.png" alt="" />
+        <img class="w-[150px] h-fit mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
     </div>
 </template>
 
