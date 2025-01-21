@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [    
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  content: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -34,17 +31,17 @@ export default {
           600: '#527f05',
           700: '#3c5904',
           800: '#263303',
-          900: '#100c01'
+          900: '#100c01',
         },
         accent: {
           blue: '#0679a5',
           purple: '#7a06a5',
-          orange: '#a57906'
+          orange: '#a57906',
         },
         success: '#2e7d32',
         warning: '#ed6c02',
         error: '#d32f2f',
-        info: '#0288d1'
+        info: '#0288d1',
       },
       animation: {
         blob: 'blob 7s infinite',
@@ -65,31 +62,30 @@ export default {
             transform: 'translate(0px, 0px) scale(1)',
           },
         },
-        'fade_move_down': {
-            '0%': {
-              transform: 'translate(0, -15px) rotate(45deg)',
-              opacity: '0',
-            },
-          
-            '50%': {
-              opacity: '1',
-            },
-          
-            '100%': {
-              transform: 'translate(0, 15px) rotate(45deg)',
-              opacity: '0',
-            }
-        
+        fade_move_down: {
+          '0%': {
+            transform: 'translate(0, -15px) rotate(45deg)',
+            opacity: '0',
+          },
+
+          '50%': {
+            opacity: '1',
+          },
+
+          '100%': {
+            transform: 'translate(0, 15px) rotate(45deg)',
+            opacity: '0',
+          },
         },
       },
       backgroundImage: {
-        'grid-pattern': "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(to right, var(--foreground) 1px, transparent 1px)",
+        'grid-pattern':
+          'linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(to right, var(--foreground) 1px, transparent 1px)',
       },
       backgroundSize: {
-        'grid': '40px 40px',
+        grid: '40px 40px',
       },
     },
   },
   plugins: [],
 }
-

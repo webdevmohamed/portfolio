@@ -1,5 +1,8 @@
 <template>
-  <header class="p-5 bg-background">
+  <header :class="[
+    'p-5 fixed top-0 left-0 w-full transition-all duration-300 z-50',
+    isScrolled ? 'backdrop-blur-md shadow-md' : 'bg-background'
+  ]">
     <div class="mx-auto container flex items-center justify-between">
       <div class="flex items-center gap-3 group cursor-pointer">
         <div class="relative w-8 h-8 bg-primary rounded-xl flex items-center justify-center">
@@ -24,6 +27,20 @@
 import Navbar from './Navbar.vue';
 import ThemeToggle from './ThemeToggle.vue';
 import LanguageToggle from './LanguageToggle.vue';
+import { onMounted, onUnmounted, ref } from 'vue';
+
+const isScrolled = ref(false);
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style scoped></style>
