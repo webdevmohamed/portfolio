@@ -1,5 +1,6 @@
 <template>
-    <div class="relative min-h-screen overflow-hidden">
+    <div id="about"
+        class="relative min-h-screen overflow-hidden bg-gradient-to-br from-background to-accent-blue/10 dark:from-background dark:to-accent-blue/20">
         <!-- Content -->
         <div class="container mx-auto max-w-screen-lg relative flex items-center justify-between min-h-screen">
             <div class="w-1/2">

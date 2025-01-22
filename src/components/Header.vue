@@ -1,7 +1,7 @@
 <template>
   <header :class="[
     'p-5 fixed top-0 left-0 w-full transition-all duration-300 z-50',
-    isScrolled ? 'backdrop-blur-md shadow-md' : 'bg-background'
+    isScrolled ? 'backdrop-blur-md dark:bg-black/60 bg-white/60 shadow-md' : 'bg-background'
   ]">
     <div class="mx-auto container flex items-center justify-between">
       <div class="flex items-center gap-3 group cursor-pointer">

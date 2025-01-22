@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto max-w-screen-lg relative">
+    <div id="home" class="container mx-auto max-w-screen-lg relative">
         <div class="flex items-center justify-between gap-5 min-h-screen">
             <HomeContent />
             <ProfileImage />
