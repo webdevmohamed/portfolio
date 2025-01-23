@@ -9,14 +9,14 @@ export default {
       },
       colors: {
         background: {
-          DEFAULT: 'var(--background)',
-          secondary: 'var(--background-secondary)',
+          DEFAULT: 'rgb(var(--background))',
+          secondary: 'rgb(var(--background-secondary))',
         },
         foreground: {
-          DEFAULT: 'var(--foreground)',
-          secondary: 'var(--foreground-secondary)',
+          DEFAULT: 'rgb(var(--foreground))',
+          secondary: 'rgb(var(--foreground-secondary))',
         },
-        border: 'var(--border)',
+        border: 'rgb(var(--border))',
         primary: {
           DEFAULT: '#68a506',
           hover: '#527f05',
@@ -80,7 +80,7 @@ export default {
       },
       backgroundImage: {
         'grid-pattern':
-          'linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(to right, var(--foreground) 1px, transparent 1px)',
+          'linear-gradient(rgb(var(--foreground)) 1px, transparent 1px), linear-gradient(to right, rgb(var(--foreground)) 1px, transparent 1px)',
       },
       backgroundSize: {
         grid: '40px 40px',

@@ -46,10 +46,10 @@
 
 <style scoped>
 .pattern-background {
-    background-color: var(--background);
+    background-color: rbg(var(--background));
     background: linear-gradient(135deg, #68a50655 25%, transparent 25%) -10px 0/ 20px 20px,
         linear-gradient(225deg, #68a506 25%, transparent 25%) -10px 0/ 20px 20px,
         linear-gradient(315deg, #68a50655 25%, transparent 25%) 0px 0/ 20px 20px,
-        linear-gradient(45deg, #68a506 25%, var(--background) 25%) 0px 0/ 20px 20px;
+        linear-gradient(45deg, #68a506 25%, rbg(var(--background)) 25%) 0px 0/ 20px 20px;
 }
 </style>

@@ -4,11 +4,11 @@
 
 :root {
   /* Light theme */
-  --background: #ffffff;
-  --background-secondary: #f9fafb;
-  --foreground: #111827;
-  --foreground-secondary: #4b5563;
-  --border: #e5e7eb;
+  --background: 255, 255, 255;
+  --background-secondary: 249, 250, 251;
+  --foreground: 17, 24, 39;
+  --foreground-secondary: 75, 85, 99;
+  --border: 229, 231, 235;
   --primary: #68a506;
   --primary-hover: #527f05;
   --primary-light: #84c517;
@@ -24,16 +24,16 @@
 
 .dark {
   /* Dark theme */
-  --background: #111827;
-  --background-secondary: #1f2937;
-  --foreground: #f9fafb;
-  --foreground-secondary: #e5e7eb;
-  --border: #374151;
+  --background: 17, 24, 39;
+  --background-secondary: 31, 41, 55;
+  --foreground: 249, 250, 251;
+  --foreground-secondary: 229, 231, 235;
+  --border: 55, 65, 81;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
 }
 
 @tailwind base;
