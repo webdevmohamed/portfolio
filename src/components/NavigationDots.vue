@@ -2,7 +2,7 @@
     <div class="fixed right-10 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
         <div v-for="(section, index) in sections" :key="index" :class="[
             'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border-2 cursor-pointer',
-            activeSection === section ? 'bg-transparent border-foreground scale-150 ' : 'bg-primary border-primary  rotate-45'
+            activeSection === section ? 'bg-transparent border-foreground scale-150' : 'bg-primary border-primary rotate-45'
         ]" @click="scrollToSection(section)"></div>
     </div>
 </template>
@@ -35,8 +35,4 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
-<style scoped>
-.fixed {
-    position: fixed;
-}
-</style>
+<style scoped></style>

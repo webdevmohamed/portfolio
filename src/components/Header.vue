@@ -1,7 +1,7 @@
 <template>
   <header :class="[
     'p-5 fixed top-0 left-0 w-full transition-all duration-300 z-50',
-    isScrolled ? 'backdrop-blur-xl shadow-md bg-background-with-opacity' : 'bg-background'
+    isScrolled ? 'backdrop-blur-xl shadow-md' : 'bg-background'
   ]">
     <div class="mx-auto container flex items-center justify-between">
       <div class="flex items-center gap-3 group cursor-pointer">
@@ -44,7 +44,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.bg-background-with-opacity {
-  background-color: rgba(var(--background), 0.5)
+.bg-background {
+  background-color: var(--background);
 }
 </style>
