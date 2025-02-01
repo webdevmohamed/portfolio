@@ -1,8 +1,6 @@
 <template>
   <div id="app">
     <div class="min-h-screen overflow-hidden">
-      <Header />
-
       <!-- Main bg unified -->
       <div class="fixed inset-0 -z-50 overflow-hidden">
         <!-- Dynamic gradient -->
@@ -17,15 +15,16 @@
 
         <!-- Particles Effect -->
         <div class="absolute inset-0 opacity-20 dark:opacity-10">
-          <div v-for="i in 10" :key="i" class="absolute w-48 h-48 rounded-full blur-xl animate-blob"
-            :class="`bg-gradient-to-${['b', 't', 'r', 'l'][i % 2]} dark:from-primary/80 dark:to-accent-blue/80 from-primary to-accent-blue`"
-            :style="`left:${Math.random() * 100}%; top:${Math.random() * 100}%; animation-delay: -${Math.random() * 20}s;`">
+          <div v-for="(size, index) in particleSizes" :key="index" class="absolute rounded-full blur-xl animate-blob"
+               :class="`bg-gradient-to-${['b', 't', 'r', 'l'][index % 4]} dark:from-primary/80 dark:to-accent-blue/80 from-primary to-accent-blue`"
+               :style="`left:${Math.random() * 100}%; top:${Math.random() * 100}%; animation-delay: -${Math.random() * 20}s; width:${size}px; height:${size}px;`">
           </div>
         </div>
       </div>
 
       <!-- Main content -->
       <div class="relative z-10">
+        <Header />
         <Home />
         <About />
       </div>
@@ -39,6 +38,16 @@ import Header from './components/Header.vue'
 import Home from './components/Home.vue'
 import About from './components/About.vue'
 import NavigationDots from './components/NavigationDots.vue'
+import { computed } from 'vue'
+
+const particleSizes = computed(() => {
+  const sizes = []
+  for (let i = 0; i < 10; i++) {
+    const size = Math.random() * 100 + 200
+    sizes.push(size)
+  }
+  return sizes
+})
 </script>
 
 <style scoped>
@@ -49,15 +58,11 @@ import NavigationDots from './components/NavigationDots.vue'
 
 @keyframes gradient-pan {
   from {
-    background-position: 0% 0%;
+    background-position: 0 0;
   }
 
   to {
     background-position: 100% 100%;
   }
-}
-
-.animate-float {
-  animation: animation-blob 25s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 </style>
