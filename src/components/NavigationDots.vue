@@ -1,52 +1,65 @@
 <template>
-    <div class="fixed right-10 top-1/2 transform -translate-y-1/2 flex flex-col items-center">
-        <div v-for="(section, index) in sections" :key="index" :class="[
-            'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border-2 cursor-pointer',
-            currentSectionIndex === index ? 'bg-transparent border-foreground scale-150' : 'bg-primary border-primary rotate-45'
-        ]" @click="scrollToSection(index)"></div>
-    </div>
+  <div class="fixed right-10 top-1/2 transform -translate-y-1/2 flex flex-col items-center z-10">
+    <div
+      v-for="(index) in sections"
+      :key="index"
+      :class="[
+        'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border-2 cursor-pointer',
+        currentSectionIndex === index
+          ? 'bg-transparent border-foreground scale-150'
+          : 'bg-primary border-primary rotate-45',
+      ]"
+      @click="scrollToSection(index)"
+    ></div>
+  </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const sections = ['home', 'about'];
-const currentSectionIndex = ref(0);
+const sections = ['home', 'about']
+const currentSectionIndex = ref(0)
+let isScrolling = false
 
-const handleScroll = (event) => {
-    const delta = Math.sign(event.deltaY); // Determina la dirección del scroll
-    if (delta > 0 && currentSectionIndex.value < sections.length - 1) {
-        // Scroll hacia abajo
-        currentSectionIndex.value++;
-    } else if (delta < 0 && currentSectionIndex.value > 0) {
-        // Scroll hacia arriba
-        currentSectionIndex.value--;
-    }
+const scrollToSection = (index) => {
+  if (isScrolling || index === currentSectionIndex.value) return
 
-    const targetSection = document.getElementById(sections[currentSectionIndex.value]);
-    if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-    }
-};
+  isScrolling = true
+  currentSectionIndex.value = index
+  const element = document.getElementById(sections[index])
 
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start' // Ensure consistent alignment
+    })
+  }
 
-const scrollToSection = (sectionIndex) => {
-    currentSectionIndex.value = sectionIndex;
-    const section = sections[currentSectionIndex.value];
-    const element = document.getElementById(section);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
-};
+  // Reset after the animation duration 0.3 seconds
+  setTimeout(() => isScrolling = false, 300)
+}
 
+const handleWheel = (e) => {
+  if (isScrolling) {
+    e.preventDefault()
+    return
+  }
+
+  const delta = Math.sign(e.deltaY)
+  const newIndex = currentSectionIndex.value + delta
+
+  if (newIndex >= 0 && newIndex < sections.length) {
+    scrollToSection(newIndex)
+  }
+}
 
 onMounted(() => {
-    window.addEventListener('wheel', handleScroll);
-});
+  window.addEventListener('wheel', handleWheel, { passive: false })
+})
 
 onUnmounted(() => {
-    window.removeEventListener('wheel', handleScroll);
-});
+  window.removeEventListener('wheel', handleWheel)
+})
 </script>
 
 <style scoped></style>
