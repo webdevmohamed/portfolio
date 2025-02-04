@@ -1,55 +1,35 @@
 <template>
   <div class="fixed right-10 top-1/2 transform -translate-y-1/2 flex flex-col items-center z-10">
     <div
-      v-for="(index) in sections"
+      v-for="(section, index) in store.sections"
       :key="index"
       :class="[
         'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border-2 cursor-pointer',
-        currentSectionIndex === index
+        store.currentSectionIndex === index
           ? 'bg-transparent border-foreground scale-150'
           : 'bg-primary border-primary rotate-45',
       ]"
-      @click="scrollToSection(index)"
+      @click="store.scrollToSection(index)"
     ></div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-
-const sections = ['home', 'about']
-const currentSectionIndex = ref(0)
-let isScrolling = false
-
-const scrollToSection = (index) => {
-  if (isScrolling || index === currentSectionIndex.value) return
-
-  isScrolling = true
-  currentSectionIndex.value = index
-  const element = document.getElementById(sections[index])
-
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start' // Ensure consistent alignment
-    })
-  }
-
-  // Reset after the animation duration 0.3 seconds
-  setTimeout(() => isScrolling = false, 300)
-}
+import {onMounted, onUnmounted } from 'vue'
+import { useNavigationStore } from '@/stores/navigation'
+const store = useNavigationStore()
 
 const handleWheel = (e) => {
-  if (isScrolling) {
+  if (store.isScrolling) {
     e.preventDefault()
     return
   }
 
   const delta = Math.sign(e.deltaY)
-  const newIndex = currentSectionIndex.value + delta
+  const newIndex = store.currentSectionIndex + delta
 
-  if (newIndex >= 0 && newIndex < sections.length) {
-    scrollToSection(newIndex)
+  if (newIndex >= 0 && newIndex < store.sections.length) {
+    store.scrollToSection(newIndex)
   }
 }
 
