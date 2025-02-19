@@ -6,14 +6,12 @@
       <HomeContent />
       <ProfileImage />
     </div>
-    <SectionName name="Home" />
   </div>
 </template>
 
 <script setup>
 import ProfileImage from './ProfileImage.vue'
 import HomeContent from './HomeContent.vue'
-import SectionName from '@/components/UI/SectionName.vue'
 </script>
 
 <style scoped></style>

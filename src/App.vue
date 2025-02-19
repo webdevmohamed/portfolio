@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <div class="min-h-screen overflow-hidden">
+  <div class="min-h-screen overflow-hidden">
       <!-- Main bg unified -->
       <div class="fixed inset-0 -z-50 overflow-hidden">
         <!-- Dynamic gradient -->
@@ -29,8 +28,10 @@
         <About />
       </div>
       <NavigationDots />
+    <Transition>
+      <SectionName v-if="!store.isScrolling" :name="currentSectionName" />
+    </Transition>
     </div>
-  </div>
 </template>
 
 <script setup>
@@ -39,6 +40,8 @@ import Home from './components/Home.vue'
 import About from './components/About.vue'
 import NavigationDots from './components/NavigationDots.vue'
 import { computed } from 'vue'
+import SectionName from '@/components/UI/SectionName.vue'
+import { useNavigationStore } from '@/stores/navigation.js'
 
 const particleSizes = computed(() => {
   const sizes = []
@@ -48,6 +51,10 @@ const particleSizes = computed(() => {
   }
   return sizes
 })
+
+
+const store = useNavigationStore();
+const currentSectionName = computed(() => store.currentSectionObject.name);
 </script>
 
 <style scoped>
@@ -64,5 +71,15 @@ const particleSizes = computed(() => {
   to {
     background-position: 100% 100%;
   }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

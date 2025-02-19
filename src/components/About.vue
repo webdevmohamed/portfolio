@@ -18,7 +18,6 @@
             </div>
             <img src="@/assets/about-4.svg" alt="About" class="w-1/2 h-auto" />
         </div>
-      <SectionName name="About" />
     </div>
 </template>
 
@@ -26,7 +25,6 @@
 import DownloadCV from './Buttons/DownloadCV.vue';
 import ContactMe from './Buttons/ContactMe.vue';
 import Github from './Buttons/Github.vue';
-import SectionName from '@/components/UI/SectionName.vue'
 </script>
 
 <style scoped></style>

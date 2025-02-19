@@ -1,18 +1,33 @@
 // stores/navigation.js
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export const useNavigationStore = defineStore('navigation', () => {
-  const currentSectionIndex = ref(0)
-  const sections = ref(['home', 'about'])
+  const { t } = useI18n();
+
+  const currentSectionId = ref('home');
+  const sections = ref([
+    {
+      id: 'home',
+      name: t('nav.home'),
+      order: 0
+    },
+    {
+      id: 'about',
+      name: t('nav.about'),
+      order: 1
+    },
+  ]);
+  const currentSectionObject = computed(() => sections.value.find(section => section.id === currentSectionId.value));
   const isScrolling = ref(false)
 
-  const scrollToSection = (index) => {
-    if (isScrolling.value || index === currentSectionIndex.value) return
+  const scrollToSection = (sectionId) => {
+    if (isScrolling.value || sectionId === currentSectionId.value) return
 
     isScrolling.value = true
-    currentSectionIndex.value = index
-    const element = document.getElementById(sections.value[index])
+    currentSectionId.value = sectionId
+    const element = document.getElementById(currentSectionObject.value.id)
 
     if (element) {
       element.scrollIntoView({
@@ -25,8 +40,9 @@ export const useNavigationStore = defineStore('navigation', () => {
   }
 
   return {
-    currentSectionIndex,
     sections,
+    currentSectionId,
+    currentSectionObject,
     isScrolling,
     scrollToSection
   }

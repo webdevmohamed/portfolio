@@ -15,7 +15,7 @@
 
         <div class="flex justify-between">
             <!-- Modern scroll indicator -->
-            <div @click="store.scrollToSection(1)" class="relative w-fit flex flex-col items-start gap-3 pt-20 group">
+            <div @click="store.scrollToSection('about')" class="relative w-fit flex flex-col items-start gap-3 pt-20 group">
                 <div class="flex items-center gap-3 cursor-pointer">
                     <div
                         class="relative w-14 h-14 group-hover:animate-none rounded-full bg-gradient-to-br from-primary/50 to-accent-blue/50 group-hover:from-primary/70 group-hover:to-accent-blue/70 transition-all duration-300 overflow-hidden flex items-center justify-center">
