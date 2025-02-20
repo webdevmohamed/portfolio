@@ -1,15 +1,15 @@
 <template>
     <div class="w-1/2">
         <h1 class="text-5xl font-bold bg-clip-text text-foreground">
-            Hola, soy <span class="text-primary-light">Mohamed</span>
+            {{ t('home.hiIm') }} <span class="text-primary-light">Mohamed</span>
         </h1>
         <div class="flex items-baseline gap-2 mt-10">
             <div class="h-[2px] w-8 bg-foreground"></div>
             <p class="text-2xl text-foreground leading-loose w-10/12">
                 <span class="bg-gradient-to-r from-primary to-accent-blue/30 pl-2 py-1 mr-1 rounded-md font-semibold">
-                    Desarrollador Web,
+                    {{ t('home.webDeveloper') }},
                 </span>
-                gran apasionado de la programación y la fotografía.
+              {{ t('home.paragraph') }}
             </p>
         </div>
 
@@ -29,7 +29,7 @@
                         </span>
                         <span
                             class="text-xs font-medium text-foreground/30 group-hover:text-primary/60 transition-colors duration-300">
-                            para explorar
+                            {{ t('home.toExplore') }}
                         </span>
                     </div>
                 </div>
@@ -43,8 +43,12 @@
 
 <script setup>
 import { useNavigationStore } from '@/stores/navigation.js'
+import { useI18n } from 'vue-i18n'
 
 const store = useNavigationStore()
+
+const { t } = useI18n();
+
 </script>
 
 <style scoped></style>

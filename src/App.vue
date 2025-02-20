@@ -23,9 +23,9 @@
 
       <!-- Main content -->
       <div class="relative z-10">
-        <Header />
-        <Home />
-        <About />
+        <HeaderComponent />
+        <HomeComponent />
+        <AboutComponent />
       </div>
       <NavigationDots />
     <Transition>
@@ -35,9 +35,9 @@
 </template>
 
 <script setup>
-import Header from './components/Header.vue'
-import Home from './components/Home.vue'
-import About from './components/About.vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import HomeComponent from './components/HomeComponent.vue'
+import AboutComponent from './components/AboutComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
 import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
