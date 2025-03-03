@@ -2,13 +2,17 @@
   <nav class="relative flex">
     <button @click="toggleMenu" class="menu-toggle relative z-50 w-8 h-4 flex bg-transparent" :class="{'opened': opened}"></button>
     <Transition name="menu-container">
-      <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 py-20 px-14 bg-background shadow-xl rounded-xl flex flex-col gap-10">
+      <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 pt-14 pb-20 px-10 bg-background shadow-xl rounded-xl flex flex-col gap-10">
         <p v-for="(item, index) in menuItems"
-           :key="item.key"
-           :class="['menu-item text-md font-bold cursor-pointer relative group py-1', {'animated': animateItems}]"
+           @click="store.scrollToSection(item.id)"
+           :key="item.id"
+           :class="['menu-item text-md font-bold cursor-pointer relative group py-1 flex items-center gap-4', {'animated': animateItems}]"
            :style="{ animationDelay: `${index * 100}ms` }">
-          {{ item.text }}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span>
+          <span v-if="store.currentSectionId !== item.id" class="w-0 h-3 rounded-sm bg-primary group-hover:w-3 group-hover:rotate-45 transition-all duration-300"></span>
+          <span v-else class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
+          <span>
+            {{ item.text }}
+          </span>
         </p>
       </div>
     </Transition>
@@ -18,17 +22,21 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
 import { computed, ref } from 'vue';
+import { useNavigationStore } from '@/stores/navigation.js'
 
 const { t } = useI18n();
+
+const store = useNavigationStore();
+
 const opened = ref(false);
 const animateItems = ref(false);
 
 const menuItems = computed(() => [
-  { key: 'home', text: t('nav.home') },
-  { key: 'about', text: t('nav.about') },
-  { key: 'services', text: t('nav.services') },
-  { key: 'experience', text: t('nav.experience') },
-  { key: 'contact', text: t('nav.contact') }
+  { id: 'home', text: t('nav.home') },
+  { id: 'about', text: t('nav.about') },
+  { id: 'services', text: t('nav.services') },
+  { id: 'experience', text: t('nav.experience') },
+  { id: 'contact', text: t('nav.contact') }
 ]);
 
 const toggleMenu = () => {
@@ -77,13 +85,20 @@ const toggleMenu = () => {
 
 .menu-container-enter-active,
 .menu-container-leave-active {
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .menu-container-enter-from,
 .menu-container-leave-to {
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0);
+  transform-origin: top right;
+}
+
+.menu-container-enter-to,
+.menu-container-leave-from {
+  opacity: 1;
+  transform: scale(1);
   transform-origin: top right;
 }
 
