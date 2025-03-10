@@ -2,15 +2,17 @@
   <nav class="relative flex">
     <button @click="toggleMenu" class="menu-toggle relative z-50 w-8 h-4 flex bg-transparent" :class="{'opened': opened}"></button>
     <Transition name="menu-container">
-      <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 pt-14 pb-20 px-10 bg-background shadow-xl rounded-xl flex flex-col gap-10">
+      <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 pt-14 pb-20 px-10 bg-background shadow-xl rounded-xl flex flex-col gap-5">
         <p v-for="(item, index) in menuItems"
            @click="store.scrollToSection(item.id)"
            :key="item.id"
-           :class="['menu-item text-md font-bold cursor-pointer relative group py-1 flex items-center gap-4', {'animated': animateItems}]"
+           :class="['menu-item text-md font-bold cursor-pointer relative group py-1 flex items-center', {'animated': animateItems}]"
            :style="{ animationDelay: `${index * 100}ms` }">
           <span v-if="store.currentSectionId !== item.id" class="w-0 h-3 rounded-sm bg-primary group-hover:w-3 group-hover:rotate-45 transition-all duration-300"></span>
-          <span v-else class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
-          <span>
+          <Transition name="menu-item">
+            <span v-if="store.currentSectionId === item.id" class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
+          </Transition>
+          <span class="ml-4">
             {{ item.text }}
           </span>
         </p>
@@ -100,6 +102,23 @@ const toggleMenu = () => {
   opacity: 1;
   transform: scale(1);
   transform-origin: top right;
+}
+
+.menu-item-enter-active,
+.menu-item-leave-active {
+  transition: all 0.5s ease;
+}
+
+.menu-item-enter-from,
+.menu-item-leave-to {
+  opacity: 0;
+  width: 0;
+}
+
+.menu-item-enter-to,
+.menu-item-leave-from {
+  opacity: 1;
+  width: 2.5rem;
 }
 
 .menu-item {
