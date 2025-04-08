@@ -7,7 +7,7 @@
         </svg>
         <span class="font-semibold">{{ t('about.contactMe') }}</span>
         <div
-            class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary-light/30 transition-colors duration-300">
+            class="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-foreground transition-colors duration-300">
         </div>
     </a>
 </template>
