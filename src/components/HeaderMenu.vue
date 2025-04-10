@@ -6,13 +6,14 @@
         <p v-for="(item, index) in menuItems"
            @click="store.scrollToSection(item.id)"
            :key="item.id"
-           :class="['menu-item text-md font-bold cursor-pointer relative group py-1 flex items-center', {'animated': animateItems}]"
+           :class="['menu-item text-md cursor-pointer relative group py-1 flex items-center', {'animated': animateItems}]"
            :style="{ animationDelay: `${index * 100}ms` }">
           <span v-if="store.currentSectionId !== item.id" class="w-0 h-3 rounded-sm bg-primary group-hover:w-3 group-hover:rotate-45 transition-all duration-300"></span>
           <Transition name="menu-item">
             <span v-if="store.currentSectionId === item.id" class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
           </Transition>
-          <span class="ml-4">
+          <span class="ml-4"
+          :class="{'dark:text-white/50 text-black/50': store.currentSectionId !== item.id}">
             {{ item.text }}
           </span>
         </p>
