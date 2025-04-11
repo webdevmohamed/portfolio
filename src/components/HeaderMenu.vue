@@ -35,11 +35,9 @@ const opened = ref(false);
 const animateItems = ref(false);
 
 const menuItems = computed(() => [
-  { id: 'home', text: t('nav.home') },
-  { id: 'about', text: t('nav.about') },
-  { id: 'services', text: t('nav.services') },
-  { id: 'experience', text: t('nav.experience') },
-  { id: 'contact', text: t('nav.contact') }
+  { id: 'home', text: t('home.title') },
+  { id: 'about', text: t('about.title') },
+  { id: 'services', text: t('services.title') },
 ]);
 
 const toggleMenu = () => {

@@ -26,6 +26,7 @@
         <HeaderComponent />
         <HomeComponent />
         <AboutComponent />
+        <ServicesComponent />
       </div>
       <NavigationDots />
     <Transition>
@@ -38,6 +39,7 @@
 import HeaderComponent from './components/HeaderComponent.vue'
 import HomeComponent from './components/HomeComponent.vue'
 import AboutComponent from './components/AboutComponent.vue'
+import ServicesComponent from '@/components/ServicesComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
 import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'

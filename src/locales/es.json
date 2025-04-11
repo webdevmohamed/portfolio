@@ -11,6 +11,7 @@
     "toggle_dark": "Cambiar a tema oscuro"
   },
   "home": {
+    "title": "Inicio",
     "hiIm": "Hola, soy",
     "webDeveloper": "Desarrollador Web",
     "paragraph": "gran apasionado de la programación y la fotografía.",
@@ -18,9 +19,12 @@
   },
 
   "about": {
-    "aboutMe": "Acerca de mí",
+    "title": "Acerca de mí",
     "paragraph": "Con una trayectoria de más de 3 años en el campo del Desarrollo Web, me destaco por mi capacidad de aprendizaje continuo y mi eficacia en la resolución de desafíos en cada proyecto que emprendo.",
     "downloadCV": "Descargar CV",
     "contactMe": "Contáctame"
+  },
+  "services": {
+    "title": "Servicios"
   }
-} 
+}

@@ -10,13 +10,18 @@ export const useNavigationStore = defineStore('navigation', () => {
   const sections = ref([
     {
       id: 'home',
-      name: t('nav.home'),
+      name: t('home.title'),
       order: 0
     },
     {
       id: 'about',
-      name: t('nav.about'),
+      name: t('about.title'),
       order: 1
+    },
+    {
+      id: 'services',
+      name: t('services.title'),
+      order: 2
     },
   ]);
   const currentSectionObject = computed(() => sections.value.find(section => section.id === currentSectionId.value));

@@ -4,7 +4,7 @@
         <div class="container mx-auto max-w-screen-lg relative flex items-center justify-between min-h-screen">
             <div class="w-1/2">
                 <h1 class="text-5xl font-bold bg-clip-text text-foreground">
-                    {{ t('about.aboutMe') }}
+                    {{ t('about.title') }}
                 </h1>
                 <p class="text-xl text-foreground leading-loose mt-4">
                     {{ t('about.paragraph') }}

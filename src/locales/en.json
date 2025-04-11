@@ -1,16 +1,10 @@
 {
-  "nav": {
-    "home": "Home",
-    "about": "About me",
-    "services": "Services",
-    "experience": "Experience",
-    "contact": "Contact"
-  },
   "theme": {
     "toggle_light": "Switch to light theme",
     "toggle_dark": "Switch to dark theme"
   },
   "home": {
+    "title": "Home",
     "hiIm": "Hi, I'm",
     "webDeveloper": "Web Developer",
     "paragraph": "a passionate about programming and photography.",
@@ -18,9 +12,12 @@
   },
 
   "about": {
-    "aboutMe": "About Me",
+    "title": "About Me",
     "paragraph": "With more than 3 years of experience in the Web Development field, I stand out for my capacity for continuous learning and my efficiency in solving challenges in every project I undertake.",
     "downloadCV": "Download CV",
     "contactMe": "Contact Me"
+  },
+  "services": {
+    "title": "Services"
   }
 } 
