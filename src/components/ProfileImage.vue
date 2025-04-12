@@ -3,8 +3,8 @@
         <div class="relative group cursor-pointer">
             <!-- Main image with container -->
             <div class="relative transform-gpu transition-all duration-500 ease-out group-hover:scale-[1.02]">
-                <div class="h-[500px] w-[340px] bg-[url('@/assets/foto-perfil.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
-                before:absolute before:inset-0 before:rounded-xl before:border-2 before:border-foreground before:opacity-0 before:transition-all before:duration-500 before:scale-105
+                <div class="h-[500px] w-[340px] bg-[url('@/assets/picture-of-me-2.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
+                before:absolute before:inset-0 before:rounded-xl before:opacity-0 before:transition-all before:duration-500 before:scale-105
                 group-hover:before:opacity-100 group-hover:before:scale-100">
                     <!-- Overlay with soft gradient -->
                     <div
@@ -46,10 +46,10 @@
 
 <style scoped>
 .pattern-background {
-    background-color: var(--background);
-    background: linear-gradient(135deg, #68a50655 25%, transparent 25%) -10px 0/ 20px 20px,
-        linear-gradient(225deg, #68a506 25%, transparent 25%) -10px 0/ 20px 20px,
-        linear-gradient(315deg, #68a50655 25%, transparent 25%) 0px 0/ 20px 20px,
-        linear-gradient(45deg, #68a506 25%, var(--background) 25%) 0px 0/ 20px 20px;
+  background-color: #e5e5f7;
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, var(--background) 15px ), repeating-linear-gradient( #68a50655, #68a506 );
 }
+
+
+
 </style>
