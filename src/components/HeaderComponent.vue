@@ -15,8 +15,8 @@
       </div>
       <div class="flex items-center gap-4">
         <HeaderMenu />
-        <LanguageToggle />
         <ThemeToggle />
+        <LanguageToggle />
       </div>
     </div>
   </header>
