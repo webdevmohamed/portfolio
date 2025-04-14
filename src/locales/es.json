@@ -25,6 +25,18 @@
     "contactMe": "Contáctame"
   },
   "services": {
-    "title": "Servicios"
+    "title": "Servicios",
+    "design": {
+      "title": "Diseño Web",
+      "description": "Diseños bonitos y elegantes con interfaces interactivas que resultan intuitivas, eficaces y agradables de usar para el usuario."
+    },
+    "development": {
+      "title": "Desarrollo",
+      "description": "Desarrollo web personalizado adaptado a sus especificaciones, diseñado para ofrecer una experiencia de usuario impecable."
+    },
+    "responsive": {
+      "title": "Diseño responsivo",
+      "description": "Desarrollo de sitios web que se adaptan perfectamente a cualquier dispositivo, brindando una experiencia de usuario óptima en todo momento."
+    }
   }
 }

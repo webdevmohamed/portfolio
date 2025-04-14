@@ -18,6 +18,18 @@
     "contactMe": "Contact Me"
   },
   "services": {
-    "title": "Services"
+    "title": "Services",
+    "design": {
+      "title": "Web Design",
+      "description": "Beautiful and elegant designs with interactive interfaces that are intuitive, effective and pleasant to use for the user."
+    },
+    "development": {
+      "title": "Development",
+      "description": "Custom web development tailored to your specifications, designed to deliver a flawless user experience."
+    },
+    "responsive": {
+      "title": "Responsive Design",
+      "description": "Development of websites that perfectly adapt to any device, providing an optimal user experience at all times."
+    }
   }
 } 
