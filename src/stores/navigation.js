@@ -7,7 +7,7 @@ export const useNavigationStore = defineStore('navigation', () => {
   const { t } = useI18n();
 
   const currentSectionId = ref('home');
-  const sections = ref([
+  const sections = computed(() => [
     {
       id: 'home',
       name: t('home.title'),
