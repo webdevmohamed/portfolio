@@ -36,7 +36,7 @@
             </div>
 
             <!-- Graphic element -->
-            <img class="w-[150px] h-fit dark:filter dark:invert opacity-30" src="@/assets/tachado.png" alt="" />
+            <img class="w-[150px] h-fit dark:filter dark:invert opacity-30 hover:opacity-100 transition-all duration-300" src="@/assets/tachado.png" alt="" />
         </div>
     </div>
 </template>
