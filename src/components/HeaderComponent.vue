@@ -10,7 +10,8 @@
             class="absolute z-[1] inset-0 bg-primary/60 rounded-xl blur-md transform group-hover:scale-125 transition-transform">
           </div>
         </div>
-        <p class="text-md font-bold group-hover:ml-2 transition-all duration-300">Mohamed | <span
+        <p class="text-md font-bold lagroup-hover:ml-2 transition-all duration-300"
+           :class="{'-translate-x-5 opacity-0 -z-10': isScrolled}">Mohamed | <span
             class="text-primary">Mortahil Elaaouad</span></p>
       </div>
       <div class="flex items-center gap-4">
