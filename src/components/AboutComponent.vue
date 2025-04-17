@@ -10,9 +10,9 @@
                     {{ t('about.paragraph') }}
                 </p>
                 <div class="flex gap-4 mt-6">
-                    <DownloadCV />
-                    <ContactMe />
-                    <Github />
+                    <DownloadCvButton />
+                    <ContactMeButton />
+                    <GithubButton />
                 </div>
             </div>
             <img src="@/assets/about-4.svg" alt="About" class="w-1/2 h-auto" />
@@ -21,9 +21,9 @@
 </template>
 
 <script setup>
-import DownloadCV from './Buttons/DownloadCV.vue';
-import ContactMe from './Buttons/ContactMe.vue';
-import Github from './Buttons/Github.vue';
+import DownloadCvButton from './Buttons/DownloadCVButton.vue';
+import ContactMeButton from './Buttons/ContactMeButton.vue';
+import GithubButton from './Buttons/GithubButton.vue';
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n();
