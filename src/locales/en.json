@@ -31,5 +31,8 @@
       "title": "Responsive Design",
       "description": "Development of websites that perfectly adapt to any device, providing an optimal user experience at all times."
     }
+  },
+  "skills": {
+    "title": "Skills"
   }
 } 

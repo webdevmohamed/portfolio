@@ -38,5 +38,8 @@
       "title": "Diseño responsivo",
       "description": "Desarrollo de sitios web que se adaptan perfectamente a cualquier dispositivo, brindando una experiencia de usuario óptima en todo momento."
     }
+  },
+  "skills": {
+    "title": "Competencias"
   }
 }
