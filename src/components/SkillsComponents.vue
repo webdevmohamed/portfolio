@@ -3,6 +3,10 @@
     <div
       class="container mx-auto max-w-screen-lg relative flex flex-col items-center justify-center min-h-screen"
     >
+      <h1 class="text-5xl text-center font-bold bg-clip-text text-foreground">
+        {{ t('skills.title') }}
+      </h1>
+      <p class="text-md text-center text-foreground/80 mt-4 max-w-2xl mx-auto">{{ t('skills.description') }}</p>
       <div class="w-full overflow-hidden">
         <div class="mask-fade-edges py-10">
           <div class="flex flex-col">
@@ -38,7 +42,9 @@
 
 <script setup>
 import { Icon } from '@iconify/vue'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n();
 const skills = [
   'logos:html-5',
   'logos:css-3',

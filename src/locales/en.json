@@ -19,6 +19,7 @@
   },
   "services": {
     "title": "Services",
+    "description": "I develop modern, scalable web applications with a focus on quality and performance.",
     "design": {
       "title": "Web Design",
       "description": "Beautiful and elegant designs with interactive interfaces that are intuitive, effective and pleasant to use for the user."
@@ -33,6 +34,7 @@
     }
   },
   "skills": {
-    "title": "Skills"
+    "title": "Skills",
+    "description": "Technologies I've used in various projects throughout my career"
   }
 } 

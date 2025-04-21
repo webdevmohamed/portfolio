@@ -26,6 +26,7 @@
   },
   "services": {
     "title": "Servicios",
+    "description": "Desarrollo aplicaciones web modernas, escalables y con enfoque en calidad y rendimiento.",
     "design": {
       "title": "Diseño Web",
       "description": "Diseños bonitos y elegantes con interfaces interactivas que resultan intuitivas, eficaces y agradables de usar para el usuario."
@@ -40,6 +41,7 @@
     }
   },
   "skills": {
-    "title": "Competencias"
+    "title": "Competencias",
+    "description": "Tecnologías que he utilizado en distintos proyectos a lo largo de mi carrera"
   }
 }
