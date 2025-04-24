@@ -39,6 +39,7 @@ const menuItems = computed(() => [
   { id: 'about', text: t('about.title') },
   { id: 'services', text: t('services.title') },
   { id: 'skills', text: t('skills.title') },
+  { id: 'experience', text: t('experience.title') },
 ]);
 
 const toggleMenu = () => {

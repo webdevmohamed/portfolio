@@ -36,5 +36,8 @@
   "skills": {
     "title": "Skills",
     "description": "Technologies I've used in various projects throughout my career"
+  },
+  "experience": {
+    "title": "Experience"
   }
 } 

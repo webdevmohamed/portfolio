@@ -28,6 +28,11 @@ export const useNavigationStore = defineStore('navigation', () => {
       name: t('skills.title'),
       order: 3
     },
+    {
+      id: 'experience',
+      name: t('experience.title'),
+      order: 4
+    }
   ]);
   const currentSectionObject = computed(() => sections.value.find(section => section.id === currentSectionId.value));
   const isScrolling = ref(false)

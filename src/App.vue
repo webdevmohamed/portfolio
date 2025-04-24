@@ -28,6 +28,7 @@
         <AboutComponent />
         <ServicesComponent />
         <SkillsComponents />
+        <ExperienceComponent />
       </div>
       <NavigationDots />
     <Transition>
@@ -42,6 +43,7 @@ import HomeComponent from './components/HomeComponent.vue'
 import AboutComponent from './components/AboutComponent.vue'
 import ServicesComponent from '@/components/ServicesComponent.vue'
 import SkillsComponents from '@/components/SkillsComponents.vue'
+import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
 import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'

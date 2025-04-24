@@ -43,5 +43,8 @@
   "skills": {
     "title": "Competencias",
     "description": "Tecnologías que he utilizado en distintos proyectos a lo largo de mi carrera"
+  },
+  "experience": {
+    "title": "Experience"
   }
 }
