@@ -20,6 +20,33 @@ import { useNavigationStore } from '@/stores/navigation'
 const store = useNavigationStore()
 
 const handleWheel = (e) => {
+  // Verificar si estamos en la sección de experiencia
+  if (store.currentSectionId === 'experience') {
+    const experienceContainer = document.querySelector('.experience-container')
+    if (!experienceContainer) return
+
+    const isAtTop = experienceContainer.scrollTop === 0
+    const isAtBottom = experienceContainer.scrollTop + experienceContainer.clientHeight >= experienceContainer.scrollHeight
+
+    // Permitir scroll interno si no está en los límites
+    if (!isAtTop && !isAtBottom) {
+      return
+    }
+
+    // Cambiar sección solo si el scroll va en la dirección correcta
+    const delta = Math.sign(e.deltaY)
+    if ((isAtTop && delta < 0) || (isAtBottom && delta > 0)) {
+      const newSectionPosition = store.currentSectionObject.order + delta
+      if (newSectionPosition >= 0 && newSectionPosition < store.sections.length) {
+        e.preventDefault()
+        const newSectionId = store.sections[newSectionPosition].id
+        store.scrollToSection(newSectionId)
+      }
+    }
+    return
+  }
+
+  // Comportamiento normal para otras secciones
   if (store.isScrolling) {
     e.preventDefault()
     return
@@ -27,10 +54,9 @@ const handleWheel = (e) => {
 
   const delta = Math.sign(e.deltaY)
   const newSectionPosition = store.currentSectionObject.order + delta
-
   if (newSectionPosition >= 0 && newSectionPosition < store.sections.length) {
     const newSectionId = store.sections[newSectionPosition].id
-    store.scrollToSection(newSectionId);
+    store.scrollToSection(newSectionId)
   }
 }
 

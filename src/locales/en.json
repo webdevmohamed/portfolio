@@ -38,6 +38,16 @@
     "description": "Technologies I've used in various projects throughout my career"
   },
   "experience": {
-    "title": "Experience"
+    "title": "Experience",
+    "cysval": {
+      "position": "Web Developer",
+      "company": "Cysval Consultoría y Servicios",
+      "achievements": {
+        "landing": "Development of <b>Landing Pages</b> for <b>tourism and leisure companies</b>, focusing on <b>responsive design</b> and <b>interactive elements</b> to enhance <b>user experience</b>.",
+        "performance": "Focus on <b>performance optimization</b>, achieving a <b>70% improvement in loading times</b> through efficient use of <b>asynchronous functions and calls</b>.",
+        "ux": "Leadership in <b>UX innovation</b>, creating <b>specialized search engines</b> for trains, hotels, and leisure, from <b>layout to functionality</b>, improving <b>accessibility</b>.",
+        "backend": "Role expansion into <b>Back-end</b>, including <b>API integration</b>, <b>PHP</b> development and <b>MySQL database</b> management, demonstrating <b>multidisciplinary skills</b> and ability to work on <b>large-scale projects</b>."
+      }
+    }
   }
 } 

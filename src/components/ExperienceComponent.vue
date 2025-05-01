@@ -1,12 +1,12 @@
 <template>
   <div id="experience" class="relative min-h-screen">
     <div class="container mx-auto max-w-screen-lg relative flex flex-col items-center justify-center min-h-screen">
-      <h1 class="text-5xl text-center font-bold bg-clip-text text-foreground">
+      <h1 class="mb-14 text-5xl text-center font-bold bg-clip-text text-foreground">
         {{ t('experience.title') }}
       </h1>
 
-      <div class="mt-14 relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-full before:bg-gradient-to-b before:from-primary before:to-accent-blue">
-        <div class="experience-container cursor-pointer">
+      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-full before:bg-gradient-to-b before:from-primary before:to-accent-blue">
+        <div class="mask-fade experience-container snap-y max-h-[500px] overflow-y-scroll overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index"
              class="relative flex items-center mb-16 group experience-item transition-opacity duration-500 hover:opacity-100 peer-hover:opacity-30">
 
@@ -27,7 +27,7 @@
                 <ul class="space-y-3">
                   <li v-for="(achievement, i) in experience.achievements" :key="i"
                       class="flex items-start justify-end gap-3 text-foreground/80">
-                    <span class="text-sm">{{ achievement }}</span>
+                    <span class="text-sm" v-html="achievement"></span>
                     <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                   </li>
                 </ul>
@@ -54,7 +54,7 @@
                   <li v-for="(achievement, i) in experience.achievements" :key="i"
                       class="flex items-start gap-3 text-foreground/80">
                     <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
-                    <span class="text-sm">{{ achievement }}</span>
+                    <span class="text-sm" v-html="achievement"></span>
                   </li>
                 </ul>
               </div>
@@ -76,36 +76,56 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import { computed } from 'vue'
 
 const { t } = useI18n();
 
-const experiences = [
+const experiences = computed(() => [
+  {
+    period: '2021 - 2024',
+    position: t('experience.cysval.position'),
+    company: t('experience.cysval.company'),
+    achievements: [
+      t('experience.cysval.achievements.landing'),
+      t('experience.cysval.achievements.performance'),
+      t('experience.cysval.achievements.ux'),
+      t('experience.cysval.achievements.backend')
+    ]
+  },
   {
     period: '2022 - Presente',
-    position: 'Desarrollador Full Stack Senior',
+    position: 'Desarrollador Web',
     company: 'Empresa Actual',
     achievements: [
       'Desarrollo y mantenimiento de aplicaciones web utilizando Vue.js y Node.js',
       'Liderazgo técnico en proyectos clave mejorando el rendimiento en un 40%',
       'Implementación de arquitecturas escalables y buenas prácticas'
     ]
-  },
-  {
-    period: '2020 - 2022',
-    position: 'Desarrollador Front-end',
-    company: 'Empresa Anterior',
-    achievements: [
-      'Desarrollo de interfaces de usuario responsivas y accesibles',
-      'Optimización del rendimiento de aplicaciones web existentes',
-      'Colaboración en la implementación de nuevas características'
-    ]
-  },
-  // Puedes añadir más experiencias siguiendo el mismo formato
-];
+  }
+]);
 </script>
 
 <style scoped>
-.experience-container:hover .experience-item:not(:hover) {
+/*.experience-container:hover .experience-item:not(:hover) {
   opacity: 0.3;
+}*/
+
+.mask-fade {
+  /* Define el gradiente como máscara */
+  mask-image: linear-gradient(
+    to bottom,           /* Dirección del gradiente */
+    transparent 0%,     /* Completamente transparente al inicio (arriba) */
+    black 30px,        /* Transición a opaco en 30px */
+    black calc(100% - 30px), /* Mantiene opaco hasta 30px antes del final */
+    transparent 100%   /* Completamente transparente al final (abajo) */
+  );
 }
+
+/*.experience-container::-webkit-scrollbar {
+  display: none;
+}
+.experience-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}*/
 </style>
