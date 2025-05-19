@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen overflow-hidden">
+  <div class="relative">
       <!-- Main bg unified -->
       <div class="fixed inset-0 -z-50 overflow-hidden">
         <!-- Dynamic gradient -->
@@ -21,18 +21,20 @@
         </div>
       </div>
 
-      <!-- Main content -->
-      <div class="relative z-10">
-        <HeaderComponent />
-        <HomeComponent />
-        <AboutComponent />
-        <ServicesComponent />
-        <SkillsComponents />
-        <ExperienceComponent />
-      </div>
-      <NavigationDots />
-    <Transition>
-      <SectionName v-if="!store.isScrolling" :name="currentSectionName" />
+    <HeaderComponent />
+    <NavigationDots />
+    <!-- Main content -->
+    <div ref="contentContainerRef" class="z-10 snap-y snap-mandatory max-h-screen overflow-y-auto scroll-smooth content-container">
+      <component
+        v-for="section in store.sections.slice().sort((a, b) => a.order - b.order)"
+        :key="section.id"
+        :is="sectionComponentsMap[section.id]"
+        :id="section.id"
+        class="snap-center h-screen w-full flex flex-col items-center justify-center"
+      />
+    </div>
+    <Transition mode="out-in">
+      <SectionName :key="currentSectionName" :name="currentSectionName" />
     </Transition>
     </div>
 </template>
@@ -45,9 +47,21 @@ import ServicesComponent from '@/components/ServicesComponent.vue'
 import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
+
+const store = useNavigationStore();
+
+const sectionComponentsMap = {
+  home: HomeComponent,
+  about: AboutComponent,
+  services: ServicesComponent,
+  skills: SkillsComponents,
+  experience: ExperienceComponent,
+};
+
+const contentContainerRef = ref(null);
 
 const particleSizes = computed(() => {
   const sizes = []
@@ -58,12 +72,50 @@ const particleSizes = computed(() => {
   return sizes
 })
 
-
-const store = useNavigationStore();
 const currentSectionName = computed(() => store.currentSectionObject.name);
+
+let observer = null;
+
+onMounted(() => {
+  const sectionElements = store.sections
+    .map(section => document.getElementById(section.id))
+    .filter(el => el);
+
+  const observerOptions = {
+    root: contentContainerRef.value,
+    threshold: 0.7,
+  };
+
+  observer = new IntersectionObserver((entries) => {
+    if (store.isScrolling) {
+      return;
+    }
+
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (store.currentSectionId !== entry.target.id) {
+          store.currentSectionId = entry.target.id;
+        }
+      }
+    });
+  }, observerOptions);
+
+  sectionElements.forEach(sectionEl => observer.observe(sectionEl));
+});
+
+onBeforeUnmount(() => {
+  if (observer) {
+    observer.disconnect();
+  }
+});
 </script>
 
 <style scoped>
+.content-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 .animate-gradient-pan {
   background-size: 200% 200%;
   animation: gradient-pan 20s linear infinite;
@@ -81,11 +133,18 @@ const currentSectionName = computed(() => store.currentSectionObject.name);
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.5s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+  transform: translateY(20px);
+}
+
+.v-leave-from,
+.v-enter-to {
+  opacity: 0.5;
+  transform: translateY(0);
 }
 </style>
