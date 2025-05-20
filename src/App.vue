@@ -133,7 +133,7 @@ onBeforeUnmount(() => {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .v-enter-from,
