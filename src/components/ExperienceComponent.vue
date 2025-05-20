@@ -5,9 +5,9 @@
         {{ t('experience.title') }}
       </h1>
 
-      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-gradient-to-b before:from-primary before:to-accent-blue"
-      :class="[showHint ? 'before:h-[80%]' : 'before:h-full']">
-        <div v-if="showHint" class="absolute bottom-16 left-1/2 -translate-x-1/2">
+      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-500"
+           :class="[showHint ? 'before:h-[90%]' : 'before:h-full']">
+        <div v-if="showHint" class="absolute bottom-5 left-1/2 -translate-x-1/2">
           <div class="flex flex-col items-center gap-1 z-50">
             <div class="bg-background rounded-full p-2 flex items-center justify-center">
               <Icon icon="heroicons:chevron-double-down" width=20 height=20 class="text-primary animate-bounce animate-"/>
@@ -15,7 +15,7 @@
             <span class="text-xs text-foreground animate-pulse">Scroll</span>
           </div>
         </div>
-        <div class="mask-fade experience-container snap-y snap-mandatory max-h-[500px] overflow-y-scroll overflow-x-hidden py-8">
+        <div class="mask-fade experience-container snap-y snap-mandatory h-[500px] overflow-y-scroll overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index"
                :ref="el => experienceRefs[index] = el"
                :class="{
@@ -23,7 +23,7 @@
                 'opacity-100': activeIndex === index,
                 'opacity-40 blur-sm': activeIndex !== index
               }"
-             class="snap-center relative flex items-center mb-16 group experience-item transition-opacity duration-500">
+             class="snap-center relative flex items-center mb-16 group experience-item transition-opacity duration-500 min-h-full">
 
           <!-- Lado izquierdo -->
           <div class="w-1/2 pr-12 text-right">
