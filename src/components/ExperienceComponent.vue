@@ -15,14 +15,8 @@
             <span class="text-xs text-foreground animate-pulse">Scroll</span>
           </div>
         </div>
-        <div class="mask-fade experience-container snap-y snap-mandatory h-[500px] overflow-y-scroll overflow-x-hidden py-8">
+        <div ref="experienceContainer" class="mask-fade experience-container snap-y snap-mandatory h-[500px] overflow-y-scroll overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index"
-               :ref="el => experienceRefs[index] = el"
-               :class="{
-                 '!opacity-0': showHint && index !== 0,
-                'opacity-100': activeIndex === index,
-                'opacity-40 blur-sm': activeIndex !== index
-              }"
              class="snap-center relative flex items-center mb-16 group experience-item transition-opacity duration-500 min-h-full">
 
           <!-- Lado izquierdo -->
@@ -114,43 +108,18 @@ const experiences = computed(() => [
   }
 ]);
 
-const experienceRefs = ref([]);
-const activeIndex = ref(null);
 const showHint = ref(true);
+const experienceContainer = ref(null);
 
 onMounted(() => {
-  const container = document.querySelector('.experience-container');
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = experienceRefs.value.findIndex(el => el === entry.target);
-          if (index !== -1) {
-            activeIndex.value = index;
-          }
-        }
-      });
-    },
-    {
-      root: container,
-      threshold: 1 // ajusta esto según necesites
-    }
-  );
-
-  experienceRefs.value.forEach(el => {
-    if (el) observer.observe(el);
-  });
-
   const hideHint = () => {
     showHint.value = false;
-    container?.removeEventListener('scroll', hideHint);
+    experienceContainer?.value?.removeEventListener('scroll', hideHint);
   };
 
-  container?.addEventListener('scroll', hideHint);
+  experienceContainer?.value?.addEventListener('scroll', hideHint);
 });
 </script>
-
-
 
 <style scoped>
 .mask-fade {
