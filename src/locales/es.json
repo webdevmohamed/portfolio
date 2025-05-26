@@ -45,15 +45,25 @@
     "description": "Tecnologías que he utilizado en distintos proyectos a lo largo de mi carrera"
   },
   "experience": {
-    "title": "Experiencia",
-    "cysval": {
+    "ulandu": {
+      "period": "2024 - Actualidad",
       "position": "Desarrollador Web",
+      "company": "Ulandu",
+      "achievements": {
+        "first": "Desarrollo de interfaces web avanzadas para empresas locales e internacionales, utilizando tecnologías modernas del ecosistema Vue.",
+        "second": "Implementación de paneles KYC y sistemas CRM personalizados, con participación en tareas backend e integración de sistemas.",
+        "third": "Responsable de la arquitectura frontend en proyectos complejos, priorizando rendimiento, escalabilidad y experiencia de usuario.",
+        "fourth": "Colaboración estrecha con equipos internacionales para garantizar la cohesión y eficiencia en el desarrollo de proyectos."
+      }
+    },
+    "cysval": {
+      "period": "2021 - 2024",
+      "position": "Desarrollador Frontend",
       "company": "Cysval Consultoría y Servicios",
       "achievements": {
-        "landing": "Desarrollo de <b>Landing Pages</b> para empresas de <b>turismo y ocio</b>, con enfoque en <b>diseño responsive</b> y <b>elementos interactivos</b> para mejorar la <b>experiencia del usuario</b>.",
-        "performance": "Enfoque en la <b>optimización del rendimiento</b>, logrando una <b>mejora del 70% en tiempos de carga</b> mediante el uso eficiente de <b>funciones y llamadas asíncronas</b>.",
-        "ux": "Liderazgo en <b>innovación UX</b>, creando <b>buscadores especializados</b> para trenes, hoteles y ocio, desde la <b>maquetación hasta la funcionalidad</b>, mejorando la <b>accesibilidad</b>.",
-        "backend": "Ampliación del rol hacia el <b>Back-end</b>, incluyendo <b>integración de APIs</b>, desarrollo en <b>PHP</b> y manejo de <b>bases de datos MySQL</b>, demostrando <b>habilidades multidisciplinarias</b> y capacidad de trabajo en <b>proyectos de gran escala</b>."
+        "first": "Creación de interfaces interactivas y adaptables para el sector turístico, con enfoque en usabilidad y diseño responsivo.",
+        "second": "Optimización del rendimiento en el navegador mediante desarrollo modular y buenas prácticas de frontend.",
+        "third": "Participación en proyectos orientados al usuario con integración de APIs y mejora continua de la experiencia digital."
       }
     }
   }

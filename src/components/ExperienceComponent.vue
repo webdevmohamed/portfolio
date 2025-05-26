@@ -22,23 +22,23 @@
           <!-- Lado izquierdo -->
           <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
-              <div class="space-y-1 mb-4">
-                <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-lg font-medium text-primary">{{ experience.company }}</h4>
-              </div>
               <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm">
                 <Icon icon="heroicons:calendar" class="w-5 h-5 text-primary" />
                 <span class="text-lg font-medium text-foreground/80">{{ experience.period }}</span>
               </div>
             </template>
             <template v-else>
-                <ul class="space-y-3">
-                  <li v-for="(achievement, i) in experience.achievements" :key="i"
-                      class="flex items-start justify-end gap-3 text-foreground/80">
-                    <span class="text-sm" v-html="achievement"></span>
-                    <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
-                  </li>
-                </ul>
+              <div class="space-y-1 mb-4">
+                <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
+                <h4 class="text-lg font-medium text-primary">{{ experience.company }}</h4>
+              </div>
+              <ul class="space-y-3">
+                <li v-for="(achievement, i) in experience.achievements" :key="i"
+                    class="flex items-start justify-end gap-3 text-foreground/80">
+                  <span class="text-sm" v-html="achievement"></span>
+                  <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
+                </li>
+              </ul>
             </template>
           </div>
 
@@ -51,19 +51,19 @@
           <!-- Lado derecho -->
           <div class="w-1/2 pl-12">
             <template v-if="index % 2 === 0">
-                <ul class="space-y-3">
-                  <li v-for="(achievement, i) in experience.achievements" :key="i"
-                      class="flex items-start gap-3 text-foreground/80">
-                    <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
-                    <span class="text-sm" v-html="achievement"></span>
-                  </li>
-                </ul>
-            </template>
-            <template v-else>
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
                 <h4 class="text-lg font-medium text-primary">{{ experience.company }}</h4>
               </div>
+              <ul class="space-y-3">
+                <li v-for="(achievement, i) in experience.achievements" :key="i"
+                    class="flex items-start gap-3 text-foreground/80">
+                  <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
+                  <span class="text-sm" v-html="achievement"></span>
+                </li>
+              </ul>
+            </template>
+            <template v-else>
               <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm">
                 <Icon icon="heroicons:calendar" class="w-5 h-5 text-primary" />
                 <span class="text-lg font-medium text-foreground/80">{{ experience.period }}</span>
@@ -86,24 +86,24 @@ const { t } = useI18n();
 
 const experiences = computed(() => [
   {
-    period: '2021 - 2024',
-    position: t('experience.cysval.position'),
-    company: t('experience.cysval.company'),
+    period: t('experience.ulandu.period'),
+    position: t('experience.ulandu.position'),
+    company: t('experience.ulandu.company'),
     achievements: [
-      t('experience.cysval.achievements.landing'),
-      t('experience.cysval.achievements.performance'),
-      t('experience.cysval.achievements.ux'),
-      t('experience.cysval.achievements.backend')
+      t('experience.ulandu.achievements.first'),
+      t('experience.ulandu.achievements.second'),
+      t('experience.ulandu.achievements.third'),
+      t('experience.ulandu.achievements.fourth')
     ]
   },
   {
-    period: '2022 - Presente',
-    position: 'Desarrollador Web',
-    company: 'Empresa Actual',
+    period: t('experience.cysval.period'),
+    position: t('experience.cysval.position'),
+    company: t('experience.cysval.company'),
     achievements: [
-      'Desarrollo y mantenimiento de aplicaciones web utilizando Vue.js y Node.js',
-      'Liderazgo técnico en proyectos clave mejorando el rendimiento en un 40%',
-      'Implementación de arquitecturas escalables y buenas prácticas'
+      t('experience.cysval.achievements.first'),
+      t('experience.cysval.achievements.second'),
+      t('experience.cysval.achievements.third')
     ]
   }
 ]);
