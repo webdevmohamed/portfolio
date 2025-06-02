@@ -22,21 +22,26 @@
           <!-- Lado izquierdo -->
             <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
-              <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary bg-primary/10 backdrop-blur-sm">
-                  <Icon icon="heroicons:calendar-solid" class="w-5 h-5 text-primary" />
-                  <span class="text-lg font-medium text-foreground/80">{{ experience.period }}</span>
+              <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-sm">
+                  <Icon
+                    icon="heroicons:calendar"
+                    class="w-5 h-5 text-primary"
+                  />
+                  <span class="text-base font-medium text-foreground/80">
+                    {{ experience.period }}
+                  </span>
                 </div>
-                <div class="flex flex-wrap justify-end gap-4">
+                <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-12 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-12 rounded-lg overflow-hidden bg-background/50 backdrop-blur-sm p-2 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain filter grayscale brightness-150 opacity-75 dark:brightness-200 group-hover:brightness-100 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      class="w-full h-full object-contain filter grayscale brightness-125 opacity-75 dark:brightness-150 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>
-              </div>
+                </div>
               </div>
             </template>
             <template v-else>
@@ -76,21 +81,26 @@
               </ul>
             </template>
             <template v-else>
-              <div class="space-y-6">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary bg-primary/10 backdrop-blur-sm">
-                  <Icon icon="heroicons:calendar-solid" class="w-5 h-5 text-primary" />
-                  <span class="text-lg font-medium text-foreground/80">{{ experience.period }}</span>
+              <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-sm">
+                  <Icon
+                    icon="heroicons:calendar"
+                    class="w-5 h-5 text-primary"
+                  />
+                  <span class="text-base font-medium text-foreground/80">
+                    {{ experience.period }}
+                  </span>
                 </div>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-12 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-12 rounded-lg overflow-hidden bg-background/50 backdrop-blur-sm p-2 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain filter grayscale brightness-150 opacity-75 dark:brightness-200 group-hover:brightness-100 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      class="w-full h-full object-contain filter grayscale brightness-125 opacity-75 dark:brightness-150 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>
-              </div>
+                </div>
               </div>
             </template>
           </div>
@@ -115,12 +125,16 @@ const experiences = computed(() => [
     company: t('experience.ulandu.company'),
     clients: [
       {
-        name: 'Ociotour',
-        logo: '/images/experience/cysval/ociotour.png'
+        name: 'Hiwood',
+        logo: '/images/experience/ulandu/hiwood.png'
       },
       {
-        name: 'Renfe',
-        logo: '/images/experience/cysval/renfe.png'
+        name: 'Avioparts',
+        logo: '/images/experience/ulandu/avioparts.png'
+      },
+      {
+        name: 'Utande',
+        logo: '/images/experience/ulandu/utande.png'
       },
     ],
     achievements: [
@@ -136,12 +150,12 @@ const experiences = computed(() => [
     company: t('experience.cysval.company'),
     clients: [
       {
-        name: 'Hiwood',
-        logo: '/images/experience/ulandu/hiwood.png'
+        name: 'Ociotour',
+        logo: '/images/experience/cysval/ociotour.png'
       },
       {
-        name: 'Cliente 4',
-        logo: '/images/experience/ulandu/avioparts.png'
+        name: 'Renfe',
+        logo: '/images/experience/cysval/renfe.png'
       },
     ],
     achievements: [
