@@ -17,12 +17,10 @@
         </div>
         <div ref="experienceContainer" class="mask-fade experience-container snap-y snap-mandatory h-[500px] overflow-y-scroll overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index"
-               class="snap-center relative flex items-center mb-16 group min-h-full hover:bg-primary/[0.02] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1">
-
-            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 to-accent-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10"></div>
+               class="snap-center relative flex items-center mb-16 min-h-full rounded-2xl p-8">
 
           <!-- Lado izquierdo -->
-            <div class="w-1/2 pr-12 text-right group-hover:pr-14 transition-all duration-300">
+            <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
               <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm">
                 <Icon icon="heroicons:calendar" class="w-5 h-5 text-primary" />
@@ -46,12 +44,12 @@
 
           <!-- Punto central -->
           <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <div class="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/80 group-hover:scale-110 group-hover:shadow-primary transition-all duration-300"></div>
-            <div class="h-full w-px bg-gradient-to-b from-primary to-transparent group-hover:from-accent-blue transition-colors duration-300"></div>
+            <div class="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/80"></div>
+            <div class="h-full w-px bg-gradient-to-b from-primary to-transparent"></div>
           </div>
 
           <!-- Lado derecho -->
-            <div class="w-1/2 pl-12 group-hover:pl-14 transition-all duration-300">
+            <div class="w-1/2 pl-12">
             <template v-if="index % 2 === 0">
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
