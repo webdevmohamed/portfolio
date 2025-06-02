@@ -83,7 +83,7 @@
                 </div>
                 <div class="flex flex-wrap gap-4">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-12 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:scale-110 hover:z-10 group">
+                       class="relative h-12 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
