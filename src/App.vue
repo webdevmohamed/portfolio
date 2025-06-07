@@ -34,7 +34,7 @@
       tabindex="0"
     >
       <div
-        class="transition-all duration-300 ease-out"
+        class="transition-all duration-500 ease-in-out"
         :style="{ transform: `translateY(-${store.currentSectionIndex * 100}vh)` }"
       >
         <component
