@@ -6,7 +6,9 @@ import { useI18n } from 'vue-i18n'
 export const useNavigationStore = defineStore('navigation', () => {
   const { t } = useI18n();
 
-  const currentSectionId = ref('home');
+  const currentSectionIndex = ref(0);
+  const isScrolling = ref(false);
+
   const sections = computed(() => [
     {
       id: 'home',
@@ -34,31 +36,34 @@ export const useNavigationStore = defineStore('navigation', () => {
       order: 4
     }
   ]);
-  const currentSectionObject = computed(() => sections.value.find(section => section.id === currentSectionId.value));
-  const isScrolling = ref(false)
 
-  const scrollToSection = (sectionId) => {
-    if (isScrolling.value || sectionId === currentSectionId.value) return
+  const currentSectionObject = computed(() => sections.value[currentSectionIndex.value]);
 
-    isScrolling.value = true
-    currentSectionId.value = sectionId
-    const element = document.getElementById(currentSectionObject.value.id)
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+  const goToSection = (index) => {
+    if (index >= 0 && index < sections.value.length) {
+      currentSectionIndex.value = index;
     }
+  };
 
-    setTimeout(() => isScrolling.value = false, 300)
-  }
+  const nextSection = () => {
+    if (currentSectionIndex.value < sections.value.length - 1) {
+      currentSectionIndex.value++;
+    }
+  };
+
+  const prevSection = () => {
+    if (currentSectionIndex.value > 0) {
+      currentSectionIndex.value--;
+    }
+  };
 
   return {
     sections,
-    currentSectionId,
+    currentSectionIndex,
     currentSectionObject,
     isScrolling,
-    scrollToSection
+    goToSection,
+    nextSection,
+    prevSection
   }
 })

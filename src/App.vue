@@ -14,25 +14,39 @@
 
         <!-- Particles Effect -->
         <div class="absolute inset-0 opacity-20 dark:opacity-10">
-          <div v-for="(size, index) in particleSizes" :key="index" class="absolute rounded-full blur-xl animate-blob"
+          <div v-for="(particle, index) in particles" :key="index" class="absolute rounded-full blur-xl animate-blob"
                :class="`bg-gradient-to-${['b', 't', 'r', 'l'][index % 4]} dark:from-primary/80 dark:to-accent-blue/80 from-primary to-accent-blue`"
-               :style="`left:${Math.random() * 100}%; top:${Math.random() * 100}%; animation-delay: -${Math.random() * 20}s; width:${size}px; height:${size}px;`">
+               :style="`left:${particle.left}%; top:${particle.top}%; animation-delay: -${particle.delay}s; width:${particle.size}px; height:${particle.size}px;`">
           </div>
         </div>
       </div>
 
     <HeaderComponent />
     <NavigationDots />
-    <!-- Main content -->
-    <div ref="contentContainerRef" class="z-10 snap-y snap-mandatory max-h-screen overflow-y-auto scroll-smooth content-container">
-      <component
-        v-for="section in store.sections.slice().sort((a, b) => a.order - b.order)"
-        :key="section.id"
-        :is="sectionComponentsMap[section.id]"
-        :id="section.id"
-        class="snap-center h-screen w-full flex flex-col items-center justify-center"
-      />
+
+    <!-- Main content con scroll minimalista -->
+    <div
+      class="w-full h-screen overflow-hidden focus:outline-none z-10"
+      @wheel="handleWheel"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @keydown="handleKeydown"
+      tabindex="0"
+    >
+      <div
+        class="transition-all duration-300 ease-out"
+        :style="{ transform: `translateY(-${store.currentSectionIndex * 100}vh)` }"
+      >
+        <component
+          v-for="section in store.sections"
+          :key="section.id"
+          :is="sectionComponentsMap[section.id]"
+          :id="section.id"
+          class="h-screen w-full flex flex-col items-center justify-center"
+        />
+      </div>
     </div>
+
     <Transition mode="out-in">
       <SectionName :key="currentSectionName" :name="currentSectionName" />
     </Transition>
@@ -47,7 +61,7 @@ import ServicesComponent from '@/components/ServicesComponent.vue'
 import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
@@ -61,61 +75,80 @@ const sectionComponentsMap = {
   experience: ExperienceComponent,
 };
 
-const contentContainerRef = ref(null);
-
-const particleSizes = computed(() => {
-  const sizes = []
-  for (let i = 0; i < 10; i++) {
-    const size = Math.random() * 100 + 200
-    sizes.push(size)
-  }
-  return sizes
-})
+const particles = ref([]);
 
 const currentSectionName = computed(() => store.currentSectionObject.name);
 
-let observer = null;
+let touchStart = 0;
 
-onMounted(() => {
-  const sectionElements = store.sections
-    .map(section => document.getElementById(section.id))
-    .filter(el => el);
+const handleWheel = (e) => {
+  if (store.isScrolling) return
+  e.preventDefault()
+  store.isScrolling = true
 
-  const observerOptions = {
-    root: contentContainerRef.value,
-    threshold: 0.7,
-  };
+  if (e.deltaY > 0) {
+    store.nextSection()
+  } else if (e.deltaY < 0) {
+    store.prevSection()
+  }
 
-  observer = new IntersectionObserver((entries) => {
-    if (store.isScrolling) {
-      return;
+  setTimeout(() => store.isScrolling = false, 300)
+}
+
+const handleTouchStart = (e) => {
+  touchStart = e.touches[0].clientY
+}
+
+const handleTouchMove = (e) => {
+  if (store.isScrolling) return
+  e.preventDefault()
+
+  const touchEnd = e.touches[0].clientY
+  const diff = touchStart - touchEnd
+
+  if (Math.abs(diff) > 50) {
+    store.isScrolling = true
+
+    if (diff > 0) {
+      store.nextSection()
+    } else {
+      store.prevSection()
     }
 
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (store.currentSectionId !== entry.target.id) {
-          store.currentSectionId = entry.target.id;
-        }
-      }
-    });
-  }, observerOptions);
-
-  sectionElements.forEach(sectionEl => observer.observe(sectionEl));
-});
-
-onBeforeUnmount(() => {
-  if (observer) {
-    observer.disconnect();
+    setTimeout(() => store.isScrolling = false, 100)
   }
-});
+}
+
+const handleKeydown = (e) => {
+  if (store.isScrolling) return
+
+  if (['ArrowDown', 'Space', 'PageDown'].includes(e.key)) {
+    e.preventDefault()
+    store.nextSection()
+  } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+    e.preventDefault()
+    store.prevSection()
+  } else if (e.key === 'Home') {
+    e.preventDefault()
+    store.goToSection(0)
+  } else if (e.key === 'End') {
+    e.preventDefault()
+    store.goToSection(store.sections.length - 1)
+  }
+}
+
+onBeforeMount(() => {
+    for (let i = 0; i < 10; i++) {
+      const size = Math.random() * 100 + 200
+      const delay = Math.random() * 20
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      particles.value.push({ size, delay, left, top });
+    }
+})
 </script>
 
 <style scoped>
-.content-container {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
 .animate-gradient-pan {
   background-size: 200% 200%;
   animation: gradient-pan 20s linear infinite;
@@ -125,7 +158,6 @@ onBeforeUnmount(() => {
   from {
     background-position: 0 0;
   }
-
   to {
     background-position: 100% 100%;
   }

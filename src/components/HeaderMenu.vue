@@ -3,18 +3,18 @@
     <button @click="toggleMenu" class="menu-toggle relative z-50 w-8 h-4 flex bg-transparent" :class="{'opened': opened}"></button>
     <Transition name="menu-container">
       <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 pt-14 pb-20 px-10 bg-background shadow-xl rounded-xl flex flex-col gap-5 border border-border">
-        <p v-for="(item, index) in menuItems"
-           @click="store.scrollToSection(item.id)"
-           :key="item.id"
+        <p v-for="(section, index) in store.sections"
+           @click="store.goToSection(index)"
+           :key="section.id"
            :class="['menu-item text-md cursor-pointer relative group py-1 flex items-center', {'animated': animateItems}]"
            :style="{ animationDelay: `${index * 100}ms` }">
-          <span v-if="store.currentSectionId !== item.id" class="w-0 h-3 rounded-sm bg-primary group-hover:w-3 group-hover:rotate-45 transition-all duration-300"></span>
+          <span v-if="store.currentSectionIndex !== index" class="w-0 h-3 rounded-sm bg-primary group-hover:w-3 group-hover:rotate-45 transition-all duration-300"></span>
           <Transition name="menu-item">
-            <span v-if="store.currentSectionId === item.id" class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
+            <span v-if="store.currentSectionIndex === index" class="w-10 h-0.5 bg-primary transition-all duration-300"></span>
           </Transition>
           <span class="ml-4"
-          :class="{'dark:text-white/50 text-black/50': store.currentSectionId !== item.id}">
-            {{ item.text }}
+          :class="{'dark:text-white/50 text-black/50': store.currentSectionIndex !== index}">
+            {{ section.name }}
           </span>
         </p>
       </div>
@@ -23,24 +23,13 @@
 </template>
 
 <script setup>
-import { useI18n } from 'vue-i18n';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useNavigationStore } from '@/stores/navigation.js'
-
-const { t } = useI18n();
 
 const store = useNavigationStore();
 
 const opened = ref(false);
 const animateItems = ref(false);
-
-const menuItems = computed(() => [
-  { id: 'home', text: t('home.title') },
-  { id: 'about', text: t('about.title') },
-  { id: 'services', text: t('services.title') },
-  { id: 'skills', text: t('skills.title') },
-  { id: 'experience', text: t('experience.title') },
-]);
 
 const toggleMenu = () => {
   if (!opened.value) {
