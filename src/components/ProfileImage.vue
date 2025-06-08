@@ -1,9 +1,9 @@
 <template>
-    <div class="flex flex-row-reverse gap-5 w-1/2">
+    <div class="flex flex-row-reverse gap-5">
         <div class="relative group cursor-pointer">
             <!-- Main image with container -->
             <div class="relative transform-gpu transition-all duration-500 ease-out group-hover:scale-[1.02]">
-                <div class="h-[500px] w-[340px] bg-[url('@/assets/picture-of-me-2.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
+                <div class="h-[500px] w-[340px] max-xl:h-[400px] max-xl:w-[240px] bg-[url('@/assets/picture-of-me-2.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
                 before:absolute before:inset-0 before:rounded-xl before:opacity-0 before:transition-all before:duration-500 before:scale-105
                 group-hover:before:opacity-100 group-hover:before:scale-100">
                     <!-- Overlay with soft gradient -->
@@ -36,7 +36,7 @@
         </div>
 
         <!-- Graphic element -->
-        <img class="w-[150px] h-fit mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
+        <img class="w-[150px] max-xl:w-[100px] h-fit mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
     </div>
 </template>
 
