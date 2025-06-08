@@ -10,14 +10,14 @@
             class="absolute z-[1] inset-0 bg-primary/60 rounded-xl blur-md transform group-hover:scale-125 transition-transform">
           </div>
         </div>
-        <p class="text-md font-bold lagroup-hover:ml-2 transition-all duration-300"
+        <p class="text-md font-bold lagroup-hover:ml-2 transition-all duration-300 max-sm:hidden"
            :class="{'-translate-x-5 opacity-0 -z-10': isScrolled}">Mohamed | <span
             class="text-primary">Mortahil Elaaouad</span></p>
       </div>
       <div class="flex items-center gap-4">
-        <HeaderMenu />
-        <ThemeToggle />
-        <LanguageToggle />
+        <HeaderMenu class="max-sm:order-3"/>
+        <ThemeToggle class="max-sm:order-1" />
+        <LanguageToggle class="max-sm:order-2" />
       </div>
     </div>
   </header>
