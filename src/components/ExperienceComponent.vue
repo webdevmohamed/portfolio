@@ -34,11 +34,11 @@
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain filter grayscale brightness-150 opacity-50 dark:brightness-200 group-hover:brightness-100 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      class="w-full h-full object-contain"
                     />
                   </div>
                 </div>
@@ -93,11 +93,11 @@
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-background to-background/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border border-primary/10 transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain filter grayscale brightness-150 opacity-50 dark:brightness-200 group-hover:brightness-100 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      class="w-full h-full object-contain"
                     />
                   </div>
                 </div>
@@ -129,12 +129,12 @@ const experiences = computed(() => [
         logo: '/images/experience/ulandu/hiwood.png'
       },
       {
-        name: 'Avioparts',
-        logo: '/images/experience/ulandu/avioparts.png'
-      },
-      {
         name: 'Utande',
         logo: '/images/experience/ulandu/utande.png'
+      },
+      {
+        name: 'Avioparts',
+        logo: '/images/experience/ulandu/avioparts.png'
       },
     ],
     achievements: [

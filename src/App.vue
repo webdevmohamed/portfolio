@@ -2,22 +2,14 @@
   <div class="relative">
       <!-- Main bg unified -->
       <div class="fixed inset-0 -z-50 overflow-hidden">
-        <!-- Dynamic gradient -->
+        <!-- Gradient -->
         <div
-          class="absolute inset-0 opacity-40 dark:opacity-30 transition-opacity duration-300 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/40 via-accent-blue/30 to-background dark:from-primary-dark/40 dark:via-accent-blue/30 dark:to-background animate-gradient-pan">
+          class="absolute inset-0 opacity-40 dark:opacity-30 transition-opacity duration-300 bg-gradient-to-br from-primary/40 via-accent-blue/30 to-background dark:from-primary-dark/40 dark:via-accent-blue/30 dark:to-background">
         </div>
 
         <!-- Grid pattern -->
         <div
           class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03] dark:opacity-[0.015] backdrop-blur-[1px] transition-opacity duration-300">
-        </div>
-
-        <!-- Particles Effect -->
-        <div class="absolute inset-0 opacity-20 dark:opacity-10">
-          <div v-for="(particle, index) in particles" :key="index" class="absolute rounded-full blur-xl animate-blob"
-               :class="`bg-gradient-to-${['b', 't', 'r', 'l'][index % 4]} dark:from-primary/80 dark:to-accent-blue/80 from-primary to-accent-blue`"
-               :style="`left:${particle.left}%; top:${particle.top}%; animation-delay: -${particle.delay}s; width:${particle.size}px; height:${particle.size}px;`">
-          </div>
         </div>
       </div>
 
@@ -34,7 +26,7 @@
       tabindex="0"
     >
       <div
-        class="transition-all duration-500 ease-in-out"
+        class="transition-all duration-300"
         :style="{ transform: `translateY(-${store.currentSectionIndex * 100}vh)` }"
       >
         <component
@@ -61,7 +53,7 @@ import ServicesComponent from '@/components/ServicesComponent.vue'
 import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
@@ -74,8 +66,6 @@ const sectionComponentsMap = {
   skills: SkillsComponents,
   experience: ExperienceComponent,
 };
-
-const particles = ref([]);
 
 const currentSectionName = computed(() => store.currentSectionObject.name);
 
@@ -137,16 +127,6 @@ const handleKeydown = (e) => {
     store.goToSection(store.sections.length - 1)
   }
 }
-
-onBeforeMount(() => {
-    for (let i = 0; i < 10; i++) {
-      const size = Math.random() * 100 + 200
-      const delay = Math.random() * 20
-      const left = Math.random() * 100;
-      const top = Math.random() * 100;
-      particles.value.push({ size, delay, left, top });
-    }
-})
 </script>
 
 <style scoped>

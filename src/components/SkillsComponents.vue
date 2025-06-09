@@ -7,33 +7,18 @@
         {{ t('skills.title') }}
       </h1>
       <p class="text-md text-center text-foreground/80 mt-4 max-w-2xl mx-auto">{{ t('skills.description') }}</p>
-      <div class="w-full overflow-hidden">
-        <div class="mask-fade-edges py-10">
-          <div class="flex flex-col">
-            <div v-for="i in 3" :key="i">
-              <div class="flex py-2 gap-7 w-fit cursor-pointer skill-track" :class="`track-${i}`">
-                <div v-for="j in 2" :key="j">
-                  <div class="flex items-center gap-7 shrink-0">
-                    <div
-                      v-for="(skill, index) in skills"
-                      :key="index"
-                      class="relative flex items-center justify-center py-3 px-8 bg-white/10 border-2 border-foreground rounded-xl shadow-lg group hover:border-primary/30 hover:shadow-primary/50 dark:hover:shadow-primary/20 transition-all duration-300 overflow-hidden"
-                    >
-                      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent-blue/20 opacity-0
-         group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <Icon
-                        class="group-hover:-translate-y-1 transition-all duration-300"
-                        :icon="skill"
-                        width="50"
-                        height="50"
-                      >
-                      </Icon>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
+      <!-- Spacious Modern Layout -->
+      <div class="flex flex-wrap justify-center gap-8 mt-16 w-full max-w-6xl">
+        <div
+          v-for="(skill, index) in skills"
+          :key="index"
+          class="group flex items-center justify-center w-20 h-20 rounded-xl border-2 border-foreground hover:bg-primary/10 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 cursor-pointer"
+        >
+          <Icon
+            class="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
+            :icon="skill"
+          />
         </div>
       </div>
     </div>
@@ -63,43 +48,3 @@ const skills = [
   'logos:bootstrap',
 ]
 </script>
-
-<style scoped>
-.track-1 {
-  animation: scroll-left 15s linear infinite;
-}
-
-.track-2 {
-  animation: scroll-right 17s linear infinite;
-}
-
-.track-3 {
-  animation: scroll-left 13s linear infinite;
-}
-
-.skill-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes scroll-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.mask-fade-edges {
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent 100%);
-}
-</style>

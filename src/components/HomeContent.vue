@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="text-5xl max-xl:text-3xl font-bold bg-clip-text text-foreground">
-            {{ t('home.hiIm') }} <span class="text-primary-light">Mohamed</span>
+            {{ t('home.hiIm') }} <span class="text-primary">Mohamed</span>
         </h1>
         <div class="flex items-baseline gap-2 mt-10">
             <div class="h-[2px] w-8 bg-foreground"></div>

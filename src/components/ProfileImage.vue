@@ -18,11 +18,11 @@
                 </div>
 
                 <!-- Main frame with glow and pattern -->
-                <div class="absolute -z-10 top-5 left-5 w-full h-full border-4 border-primary rounded-xl overflow-hidden
+                <div class="absolute -z-10 top-5 left-5 w-full h-full border-2 border-primary rounded-xl overflow-hidden
                 transition-all duration-500 ease-out group-hover:border-primary-400 dark:group-hover:border-primary-200 group-hover:shadow-[0_0_15px_rgba(104,165,6,0.3)]
                 group-hover:translate-x-2 group-hover:translate-y-2">
                     <!-- Pattern background -->
-                    <div class="absolute inset-0 pattern-background opacity-0 scale-110 blur-sm
+                    <div class="absolute inset-0 bg-gradient-to-b from-accent-blue/20 to-primary/20 opacity-0 scale-110 blur-sm
                     transition-all duration-500 ease-out transform
                     group-hover:opacity-100 group-hover:scale-100 group-hover:blur-none">
                     </div>
@@ -44,12 +44,4 @@
 
 </script>
 
-<style scoped>
-.pattern-background {
-  background-color: #e5e5f7;
-  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, var(--background) 15px ), repeating-linear-gradient( #68a50655, #68a506 );
-}
-
-
-
-</style>
+<style scoped></style>
