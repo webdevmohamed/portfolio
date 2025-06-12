@@ -72,7 +72,6 @@ const currentSectionName = computed(() => store.currentSectionObject.name);
 let touchStart = 0;
 
 const handleWheel = (e) => {
-  if (e.target.closest('.experience-container')) return
   if (store.isScrolling) return
   e.preventDefault()
   store.isScrolling = true

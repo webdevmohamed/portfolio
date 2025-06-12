@@ -5,19 +5,21 @@
         {{ t('experience.title') }}
       </h1>
 
-      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-500"
-           :class="[showHint ? 'before:h-[90%]' : 'before:h-full']">
-        <div v-if="showHint" class="absolute bottom-5 left-1/2 -translate-x-1/2">
-          <div class="flex flex-col items-center gap-1 z-50">
-            <div class="bg-background rounded-full p-2 flex items-center justify-center">
-              <Icon icon="heroicons:chevron-double-down" width=20 height=20 class="text-primary animate-bounce animate-"/>
+      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-[90%] before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-500"
+           :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full']">
+        <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
+          <div class="flex flex-col items-center gap-1">
+            <div class="bg-background rounded-full p-2 flex items-center justify-center"
+            :class="{'order-first': currentExperienceIndex === 0, 'order-last': currentExperienceIndex !== 0}">
+              <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" width=20 height=20 class="text-primary animate-bounce animate-"/>
+              <Icon v-else icon="heroicons:chevron-double-up" width=20 height=20 class="text-primary animate-bounce animate-"/>
             </div>
             <span class="text-xs text-foreground animate-pulse">Scroll</span>
           </div>
         </div>
-        <div ref="experienceContainer" class="mask-fade experience-container snap-y snap-mandatory h-[500px] overflow-y-scroll overflow-x-hidden py-8">
-          <div v-for="(experience, index) in experiences" :key="index"
-               class="snap-center relative flex items-center mb-16 min-h-full rounded-2xl p-8">
+        <div class="mask-fade experience-container overflow-y-hidden h-[500px] overflow-x-hidden py-8">
+          <div v-for="(experience, index) in experiences" :key="index" :id="`experience-${index}`"
+               class="relative flex items-center mb-16 min-h-full rounded-2xl p-8">
 
           <!-- Lado izquierdo -->
             <div class="w-1/2 pr-12 text-right">
@@ -114,9 +116,22 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const { t } = useI18n();
+
+
+const currentExperienceIndex = ref(0);
+
+const scrollToExperience = () => {
+  const nextIndex = (currentExperienceIndex.value + 1) % experiences.value.length;
+  currentExperienceIndex.value = nextIndex;
+
+  const targetElement = document.getElementById(`experience-${nextIndex}`);
+  if (targetElement) {
+    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+};
 
 const experiences = computed(() => [
   {
@@ -165,18 +180,6 @@ const experiences = computed(() => [
     ]
   }
 ]);
-
-const showHint = ref(true);
-const experienceContainer = ref(null);
-
-onMounted(() => {
-  const hideHint = () => {
-    showHint.value = false;
-    experienceContainer?.value?.removeEventListener('scroll', hideHint);
-  };
-
-  experienceContainer?.value?.addEventListener('scroll', hideHint);
-});
 </script>
 
 <style scoped>
