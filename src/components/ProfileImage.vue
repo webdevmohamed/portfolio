@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Main frame with glow and pattern -->
-                <div class="absolute -z-10 top-5 left-5 w-full h-full border-2 border-primary rounded-xl overflow-hidden
+                <div class="absolute -z-10 top-5 left-5 w-full h-full border border-primary rounded-xl overflow-hidden
                 transition-all duration-500 ease-out group-hover:border-primary-400 dark:group-hover:border-primary-200 group-hover:shadow-[0_0_15px_rgba(104,165,6,0.3)]
                 group-hover:translate-x-2 group-hover:translate-y-2">
                     <!-- Pattern background -->

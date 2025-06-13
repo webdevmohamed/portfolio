@@ -10,7 +10,7 @@
             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
     </svg>
     <span class="font-semibold relative z-10">{{ t('about.contactMe') }}</span>
-    <div class="absolute inset-0 border-2 border-white/20 group-hover:border-primary rounded-xl transition-all duration-300"></div>
+    <div class="absolute inset-0 border border-white/20 group-hover:border-primary rounded-xl transition-all duration-300"></div>
     <div class="absolute inset-0 bg-primary scale-x-0 group-hover:scale-x-100
                     transition-transform duration-500 origin-left"></div>
   </a>
