@@ -42,7 +42,13 @@
   },
   "skills": {
     "title": "Competencias",
-    "description": "Tecnologías que he utilizado en distintos proyectos a lo largo de mi carrera"
+    "description": "Tecnologías que he utilizado en distintos proyectos a lo largo de mi carrera",
+    "categories": {
+      "all": "Todas",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Herramientas"
+    }
   },
   "experience": {
     "title": "Experiencia",

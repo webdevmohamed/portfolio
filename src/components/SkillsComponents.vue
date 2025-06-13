@@ -1,49 +1,136 @@
 <template>
-  <div id="skills" class="relative min-h-screen">
-    <div
-      class="container mx-auto max-w-screen-lg relative flex flex-col items-center justify-center min-h-screen"
-    >
-      <h1 class="text-5xl text-center font-bold bg-clip-text text-foreground">
+  <div id="skills" class="relative min-h-screen p-5">
+    <div class="container mx-auto max-w-screen-lg">
+      <h1 class="text-5xl text-center font-bold text-foreground mb-4">
         {{ t('skills.title') }}
       </h1>
-      <p class="text-md text-center text-foreground/80 mt-4 max-w-2xl mx-auto">{{ t('skills.description') }}</p>
 
-      <div class="flex flex-wrap justify-center gap-8 mt-16 w-full max-w-6xl">
-        <div
-          v-for="(skill, index) in skills"
-          :key="index"
-          class="group flex items-center justify-center w-20 h-20 rounded-xl border-2 bg-primary/10 border-primary/40 hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 cursor-pointer"
+      <p class="text-md text-center text-foreground/80 mb-12 max-w-2xl mx-auto">
+        {{ t('skills.description') }}
+      </p>
+
+      <div class="flex justify-center gap-4 mb-8">
+        <button
+          v-for="category in categories"
+          :key="category"
+          @click="currentCategory = category"
+          class="px-4 py-2 rounded-full text-sm transition-all"
+          :class="{ 'bg-primary/20 border-primary text-foreground': currentCategory === category }"
         >
-          <Icon
-            class="w-10 h-10 transition-transform duration-300 group-hover:scale-110"
-            :icon="skill"
-          />
-        </div>
+          {{ t(`skills.categories.${category}`) }}
+        </button>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <TransitionGroup name="skill-fade">
+          <a
+            v-for="skill in filteredSkills"
+            :key="skill.name"
+            :href="skill.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex items-center justify-center p-3 rounded-lg border bg-primary/5 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-200 hover:scale-102 hover:shadow-sm w-32 sm:w-36 md:w-40"
+          >
+            <div class="flex flex-col items-center gap-2">
+              <Icon
+                :icon="skill.icon"
+                class="w-8 h-8 transition-transform duration-200 group-hover:scale-110"
+              />
+              <span class="text-xs font-medium">{{ skill.name }}</span>
+            </div>
+          </a>
+        </TransitionGroup>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref, computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
+const { t } = useI18n()
+
+const categories = ['all', 'frontend', 'backend', 'tools']
+const currentCategory = ref('all')
+
 const skills = [
-  'logos:html-5',
-  'logos:css-3',
-  'logos:javascript',
-  'logos:vue',
-  'logos:tailwindcss-icon',
-  'logos:java',
-  'logos:php',
-  'logos:git-icon',
-  'logos:jquery',
-  'logos:postman-icon',
-  'logos:nuxt-icon',
-  'logos:mysql',
-  'logos:strapi-icon',
-  'logos:laravel',
-  'logos:bootstrap',
+  {
+    icon: 'logos:html-5',
+    name: 'HTML5',
+    category: 'frontend',
+    url: 'https://developer.mozilla.org/es/docs/Web/HTML',
+  },
+  {
+    icon: 'logos:css-3',
+    name: 'CSS3',
+    category: 'frontend',
+    url: 'https://developer.mozilla.org/es/docs/Web/CSS',
+  },
+  {
+    icon: 'logos:javascript',
+    name: 'JavaScript',
+    category: 'frontend',
+    url: 'https://developer.mozilla.org/es/docs/Web/JavaScript',
+  },
+  { icon: 'logos:vue', name: 'Vue.js', category: 'frontend', url: 'https://vuejs.org/' },
+  {
+    icon: 'logos:tailwindcss-icon',
+    name: 'Tailwind',
+    category: 'frontend',
+    url: 'https://tailwindcss.com/',
+  },
+  { icon: 'logos:java', name: 'Java', category: 'backend', url: 'https://www.java.com/' },
+  { icon: 'logos:php', name: 'PHP', category: 'backend', url: 'https://www.php.net/' },
+  { icon: 'logos:git-icon', name: 'Git', category: 'tools', url: 'https://git-scm.com/' },
+  { icon: 'logos:jquery', name: 'jQuery', category: 'frontend', url: 'https://jquery.com/' },
+  {
+    icon: 'logos:postman-icon',
+    name: 'Postman',
+    category: 'tools',
+    url: 'https://www.postman.com/',
+  },
+  { icon: 'logos:nuxt-icon', name: 'Nuxt.js', category: 'frontend', url: 'https://nuxt.com/' },
+  { icon: 'logos:mysql', name: 'MySQL', category: 'backend', url: 'https://www.mysql.com/' },
+  { icon: 'logos:strapi-icon', name: 'Strapi', category: 'backend', url: 'https://strapi.io/' },
+  { icon: 'logos:laravel', name: 'Laravel', category: 'backend', url: 'https://laravel.com/' },
+  {
+    icon: 'logos:bootstrap',
+    name: 'Bootstrap',
+    category: 'frontend',
+    url: 'https://getbootstrap.com/',
+  },
 ]
+
+const filteredSkills = computed(() =>
+  currentCategory.value === 'all'
+    ? skills
+    : skills.filter((skill) => skill.category === currentCategory.value),
+)
 </script>
+
+<style scoped>
+.skill-fade-enter-active,
+.skill-fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.skill-fade-enter-from {
+  opacity: 0;
+  transform: translateY(20%) scale(0.8);
+}
+
+.skill-fade-leave-to {
+  opacity: 0;
+  transform: translateY(20%) scale(0.8);
+}
+
+.skill-fade-leave-active {
+  position: absolute;
+}
+
+.skill-fade-move {
+  transition: all 0.3s ease;
+}
+</style>

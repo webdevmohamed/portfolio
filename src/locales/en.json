@@ -35,7 +35,13 @@
   },
   "skills": {
     "title": "Skills",
-    "description": "Technologies I've used in various projects throughout my career"
+    "description": "Technologies I've used in various projects throughout my career",
+    "categories": {
+      "all": "All",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tools"
+    }
   },
   "experience": {
     "title": "Experience",
