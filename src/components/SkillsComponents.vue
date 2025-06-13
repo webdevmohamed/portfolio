@@ -21,7 +21,7 @@
         </button>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-5">
         <TransitionGroup name="skill-fade">
           <a
             v-for="skill in filteredSkills"
@@ -29,7 +29,7 @@
             :href="skill.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-center p-3 rounded-lg border bg-primary/5 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-200 hover:scale-102 hover:shadow-sm w-32 sm:w-36 md:w-40"
+            class="group flex items-center justify-center p-3 rounded-xl border bg-primary/10 border-primary/40 hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 w-20 md:w-24 aspect-square"
           >
             <div class="flex flex-col items-center gap-2">
               <Icon
