@@ -36,7 +36,7 @@
                 :icon="skill.icon"
                 class="w-8 h-8 transition-transform duration-200 group-hover:scale-110"
               />
-              <span class="text-[10px] font-medium">{{ skill.name }}</span>
+              <span class="text-xs">{{ skill.name }}</span>
             </div>
           </a>
         </TransitionGroup>
