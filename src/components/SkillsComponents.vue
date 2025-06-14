@@ -29,14 +29,14 @@
             :href="skill.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-center p-3 rounded-full border bg-primary/10 border-primary/40 hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 w-20 md:w-24 aspect-square"
+            class="relative overflow-hidden group flex items-center justify-center p-3 rounded-full border bg-primary/10 border-primary/40 hover:border-primary/50 hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 w-20 md:w-24 aspect-square"
           >
             <div class="flex flex-col items-center gap-2">
               <Icon
                 :icon="skill.icon"
-                class="w-8 h-8 transition-transform duration-200 group-hover:scale-110"
+                class="w-10 h-10 transition-all duration-300 group-hover:-translate-y-10 group-hover:opacity-0"
               />
-              <span class="text-xs">{{ skill.name }}</span>
+              <span class="text-xs font-semibold absolute opacity-0 top-1/2 transform group-hover:opacity-100 group-hover:-translate-y-1/2 transition-all duration-300">{{ skill.name }}</span>
             </div>
           </a>
         </TransitionGroup>
