@@ -6,7 +6,7 @@
       </h1>
 
       <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-[90%] before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-500"
-           :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full']">
+           :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full before:mt-[50px]']">
         <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
           <div class="flex flex-col items-center gap-1">
             <div class="bg-background rounded-full p-2 flex items-center justify-center"
@@ -17,7 +17,7 @@
             <span class="text-xs text-foreground animate-pulse">Scroll</span>
           </div>
         </div>
-        <div class="mask-fade experience-container overflow-y-hidden h-[500px] overflow-x-hidden py-8">
+        <div ref="experienceContainer" class="mask-fade experience-container overflow-y-hidden h-[500px] overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index" :id="`experience-${index}`"
                class="relative flex items-center mb-16 min-h-full rounded-2xl p-8">
 
@@ -116,22 +116,45 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const { t } = useI18n();
 
 
 const currentExperienceIndex = ref(0);
 
+const experienceContainer = ref(null);
+
 const scrollToExperience = () => {
   const nextIndex = (currentExperienceIndex.value + 1) % experiences.value.length;
   currentExperienceIndex.value = nextIndex;
 
   const targetElement = document.getElementById(`experience-${nextIndex}`);
-  if (targetElement) {
-    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (targetElement && experienceContainer.value) {
+    const containerHeight = experienceContainer.value.clientHeight;
+    const elementHeight = targetElement.clientHeight;
+    const scrollPosition = targetElement.offsetTop - (containerHeight - elementHeight) / 2;
+
+    experienceContainer.value.scrollTo({
+      top: scrollPosition,
+      behavior: 'smooth'
+    });
   }
 };
+
+const resetExperienceScroll = () => {
+  currentExperienceIndex.value = 0;
+  if (experienceContainer.value) {
+    experienceContainer.value.scrollTo({
+      top: 0,
+      behavior: 'instant'
+    });
+  }
+};
+
+onMounted(() => {
+  resetExperienceScroll();
+});
 
 const experiences = computed(() => [
   {
