@@ -9,10 +9,14 @@
            :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full before:mt-[50px]']">
         <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
           <div class="flex flex-col items-center gap-1">
-            <div class="bg-background rounded-full p-2 flex items-center justify-center"
-            :class="{'order-first': currentExperienceIndex === 0, 'order-last': currentExperienceIndex !== 0}">
-              <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" width=20 height=20 class="text-primary animate-bounce animate-"/>
-              <Icon v-else icon="heroicons:chevron-double-up" width=20 height=20 class="text-primary animate-bounce animate-"/>
+            <div class="bg-background border rounded-full p-2 flex items-center justify-center"
+            :class="currentExperienceIndex === 0 ? 'order-first border-accent-blue' : 'order-last border-primary'">
+              <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" width=20 height=20
+                    :class="currentExperienceIndex === 0 ? 'text-accent-blue' : 'text-primary'"
+              />
+              <Icon v-else icon="heroicons:chevron-double-up" width=20 height=20
+                    :class="currentExperienceIndex === 0 ? 'text-accent-blue' : 'text-primary'"
+              />
             </div>
             <span class="text-xs text-foreground animate-pulse">
               {{ currentExperienceIndex === 0 ? t('experience.previousExperience') : t('experience.nextExperience') }}
