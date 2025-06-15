@@ -52,6 +52,7 @@ import AboutComponent from './components/AboutComponent.vue'
 import ServicesComponent from '@/components/ServicesComponent.vue'
 import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
+import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
 import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
@@ -65,6 +66,7 @@ const sectionComponentsMap = {
   services: ServicesComponent,
   skills: SkillsComponents,
   experience: ExperienceComponent,
+  contact: ContactComponent
 };
 
 const currentSectionName = computed(() => store.currentSectionObject.name);

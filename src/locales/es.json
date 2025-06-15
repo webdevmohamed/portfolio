@@ -75,5 +75,26 @@
     },
     "nextExperience": "Siguiente",
     "previousExperience": "Anterior"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¡Hablemos!",
+    "description": "Si tienes algún proyecto en mente o quieres colaborar, no dudes en contactarme.",
+    "form": {
+      "label": {
+        "name": "Tu Nombre",
+        "email": "Tu Correo electrónico",
+        "message": "Tu Mensaje"
+      },
+      "placeholder": {
+        "name": "Introduzce tu nombre",
+        "email": "Introduzce tu correo electrónico",
+        "message": "Hola, me gustaría discutir la posibilidad de una colaboración para un proyecto web..."
+      },
+      "send": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado con éxito!",
+      "error": "Hubo un error al enviar el mensaje"
+    }
   }
 }

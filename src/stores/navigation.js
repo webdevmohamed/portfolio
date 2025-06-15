@@ -34,6 +34,11 @@ export const useNavigationStore = defineStore('navigation', () => {
       id: 'experience',
       name: t('experience.title'),
       order: 4
+    },
+    {
+      id: 'contact',
+      name: t('contact.title'),
+      order: 5
     }
   ]);
 
