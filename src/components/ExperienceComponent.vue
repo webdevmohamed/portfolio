@@ -5,7 +5,7 @@
         {{ t('experience.title') }}
       </h1>
 
-      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-[90%] before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-500"
+      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:h-[90%] before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-300"
            :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full before:mt-[50px]']">
         <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
           <div class="flex flex-col items-center gap-1">
@@ -14,7 +14,9 @@
               <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" width=20 height=20 class="text-primary animate-bounce animate-"/>
               <Icon v-else icon="heroicons:chevron-double-up" width=20 height=20 class="text-primary animate-bounce animate-"/>
             </div>
-            <span class="text-xs text-foreground animate-pulse">Scroll</span>
+            <span class="text-xs text-foreground animate-pulse">
+              {{ currentExperienceIndex === 0 ? t('experience.previousExperience') : t('experience.nextExperience') }}
+            </span>
           </div>
         </div>
         <div ref="experienceContainer" class="mask-fade experience-container overflow-y-hidden h-[500px] overflow-x-hidden py-8">
