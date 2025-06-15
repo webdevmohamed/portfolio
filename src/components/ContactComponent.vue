@@ -9,16 +9,16 @@
         <div class="grid grid-cols-2 gap-10 w-full">
           <div class="flex flex-col gap-2 group">
             <label for="name" class="text-primary/70 text-sm font-light group-focus-within:text-accent-blue">{{ t('contact.form.label.name') }}</label>
-            <input id="name" type="text" :placeholder="t('contact.form.placeholder.name')" class="py-3 font-light text-primary placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-primary">
+            <input id="name" type="text" :placeholder="t('contact.form.placeholder.name')" class="py-3 font-light text-primary placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
           </div>
           <div class="flex flex-col gap-2 group">
             <label for="email" class="text-primary/70 text-sm font-light group-focus-within:text-accent-blue">{{ t('contact.form.label.email') }}</label>
-            <input id="email" type="email" :placeholder="t('contact.form.placeholder.email')" class="py-3 font-light text-primary placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-primary">
+            <input id="email" type="email" :placeholder="t('contact.form.placeholder.email')" class="py-3 font-light text-primary placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
           </div>
         </div>
         <div class="flex flex-col gap-2 group">
           <label for="message" class="text-primary/70 text-sm font-light group-focus-within:text-accent-blue transition-all duration-300">{{ t('contact.form.label.message') }}</label>
-          <textarea id="message" :placeholder="t('contact.form.placeholder.message')" class="py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-primary"></textarea>
+          <textarea id="message" :placeholder="t('contact.form.placeholder.message')" class="py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue"></textarea>
         </div>
 
         <div class="flex items-center justify-center w-full">
