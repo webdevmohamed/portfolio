@@ -51,7 +51,7 @@ const toggleMenu = () => {
   height: 2px;
   position: absolute;
   transition: 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  background-color: #68A506;
+  @apply bg-primary;
   right: 0;
 }
 
