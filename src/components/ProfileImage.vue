@@ -1,9 +1,12 @@
 <template>
-    <div class="flex flex-row-reverse gap-5">
-        <div class="relative group cursor-pointer">
+    <div class="flex flex-row-reverse justify-center gap-5 max-md:gap-12 max-md:items-center max-md:flex-col">
+      <h1 class="md:hidden text-5xl max-xl:text-3xl max-lg:text-2xl font-bold bg-clip-text text-foreground">
+        {{ t('home.hiIm') }} <span class="text-primary">Mohamed</span>
+      </h1>
+        <div class="relative group cursor-pointer w-fit" @click="goToLinkedin">
             <!-- Main image with container -->
-            <div class="relative transform-gpu transition-all duration-500 ease-out group-hover:scale-[1.02]">
-                <div class="h-[500px] w-[340px] max-xl:h-[400px] max-xl:w-[240px] bg-[url('@/assets/picture-of-me-2.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
+            <div class="h-[500px] w-[340px] max-xl:h-[350px] max-xl:w-[238px] max-lg:h-[300px] max-lg:w-[204px] relative transform-gpu transition-all duration-500 ease-out group-hover:scale-[1.02]">
+                <div class="w-full h-full bg-[url('@/assets/picture-of-me-2.jpeg')] bg-cover bg-center relative rounded-xl overflow-hidden
                 before:absolute before:inset-0 before:rounded-xl before:opacity-0 before:transition-all before:duration-500 before:scale-105
                 group-hover:before:opacity-100 group-hover:before:scale-100">
                     <!-- Overlay with soft gradient -->
@@ -36,12 +39,17 @@
         </div>
 
         <!-- Graphic element -->
-        <img class="w-[150px] max-xl:w-[100px] h-fit mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
+        <img class="w-[150px] max-xl:w-[100px] max-lg:w-[80px] max-md:-rotate-12 h-fit md:mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
     </div>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n();
+const goToLinkedin = () => {
+  window.open('https://www.linkedin.com/in/mohamed-mortahil-elaaouad/', '_blank')
+}
 </script>
 
 <style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed right-10 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+  <div class="fixed right-6 top-1/2 -translate-y-1/2 flex flex-col items-center z-10">
     <div
       v-for="(section, index) in store.sections"
       :key="section.id"

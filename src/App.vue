@@ -14,15 +14,16 @@
       </div>
 
     <HeaderComponent />
-    <NavigationDots />
+    <NavigationDots v-if="!isMobile"/>
 
     <!-- Main content con scroll minimalista -->
     <div
-      class="w-full h-screen overflow-hidden focus:outline-none z-10"
-      @wheel="handleWheel"
-      @touchstart="handleTouchStart"
-      @touchmove="handleTouchMove"
-      @keydown="handleKeydown"
+      class="w-full md:h-screen md:overflow-hidden focus:outline-none z-10"
+      v-bind="$attrs"
+      @wheel="isMobile ? null : handleWheel"
+      @touchstart="isMobile ? null : handleTouchStart"
+      @touchmove="isMobile ? null : handleTouchMove"
+      @keydown="isMobile ? null : handleKeydown"
       tabindex="0"
     >
       <div
@@ -34,13 +35,13 @@
           :key="section.id"
           :is="sectionComponentsMap[section.id]"
           :id="section.id"
-          class="h-screen w-full flex flex-col items-center justify-center"
+          class="w-full flex flex-col items-center justify-center"
         />
       </div>
     </div>
 
     <Transition mode="out-in">
-      <SectionName :key="currentSectionName" :name="currentSectionName" />
+      <SectionName v-if="!isMobile" :key="currentSectionName" :name="currentSectionName" />
     </Transition>
     </div>
 </template>
@@ -54,11 +55,17 @@ import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
 const store = useNavigationStore();
+
+const isMobile = ref(false)
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768
+}
 
 const sectionComponentsMap = {
   home: HomeComponent,
@@ -128,6 +135,15 @@ const handleKeydown = (e) => {
     store.goToSection(store.sections.length - 1)
   }
 }
+
+onMounted(() => {
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+})
+
+onUnmounted(() => {
+  window.addEventListener('resize', checkMobile)
+})
 </script>
 
 <style scoped>

@@ -4,6 +4,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xxs': '320px',
+        'xs': '480px',
+      },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
       },
