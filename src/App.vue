@@ -11,13 +11,6 @@
         <div
           class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03] dark:opacity-[0.015] backdrop-blur-[1px] transition-opacity duration-300">
         </div>
-
-        <div class="absolute inset-0 opacity-20 dark:opacity-10">
-          <div v-for="(particle, index) in particles" :key="index" class="absolute rounded-full blur-xl"
-               :class="`bg-gradient-to-${['b', 't', 'r', 'l'][index % 4]} dark:from-primary/80 dark:to-accent-blue/80 from-primary to-accent-blue`"
-               :style="`left:${particle.left}%; top:${particle.top}%; width:${particle.size}px; height:${particle.size}px;`">
-          </div>
-        </div>
       </div>
 
     <HeaderComponent />
@@ -61,13 +54,11 @@ import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
 const store = useNavigationStore();
-
-const particles = ref([]);
 
 const sectionComponentsMap = {
   home: HomeComponent,
@@ -137,15 +128,6 @@ const handleKeydown = (e) => {
     store.goToSection(store.sections.length - 1)
   }
 }
-
-onBeforeMount(() => {
-  for (let i = 0; i < 10; i++) {
-    const size = Math.random() * 100 + 200
-    const left = Math.random() * 100;
-    const top = Math.random() * 100;
-    particles.value.push({ size, left, top });
-  }
-})
 </script>
 
 <style scoped>
