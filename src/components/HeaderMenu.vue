@@ -4,7 +4,7 @@
     <Transition name="menu-container">
       <div v-show="opened" class="w-[300px] absolute -top-3 -right-3 pt-14 pb-20 px-10 bg-background shadow-xl rounded-xl flex flex-col gap-5 border border-border z-10">
         <p v-for="(section, index) in store.sections"
-           @click="store.goToSection(index)"
+           @click="scrollToSection(index)"
            :key="section.id"
            :class="['menu-item text-md cursor-pointer relative group py-1 flex items-center', {'animated': animateItems}]"
            :style="{ animationDelay: `${index * 100}ms` }">
@@ -23,8 +23,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { useNavigationStore } from '@/stores/navigation.js'
+
+const isMobile = inject('isMobile')
 
 const store = useNavigationStore();
 
@@ -38,6 +40,14 @@ const toggleMenu = () => {
       animateItems.value = true;
     }, 100);
   } else {
+    animateItems.value = false;
+    opened.value = false;
+  }
+};
+
+const scrollToSection = (index) => {
+  store.goToSection(index, isMobile)
+  if (isMobile.value) {
     animateItems.value = false;
     opened.value = false;
   }

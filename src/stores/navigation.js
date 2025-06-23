@@ -44,9 +44,16 @@ export const useNavigationStore = defineStore('navigation', () => {
 
   const currentSectionObject = computed(() => sections.value[currentSectionIndex.value]);
 
-  const goToSection = (index) => {
+  const goToSection = (index, isMobile) => {
     if (index >= 0 && index < sections.value.length) {
       currentSectionIndex.value = index;
+    }
+
+    if (isMobile) {
+      document.getElementById(sections.value[index].id).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 

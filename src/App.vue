@@ -27,7 +27,7 @@
     >
       <div
         class="transition-all duration-300"
-        :style="{ transform: `translateY(-${store.currentSectionIndex * 100}vh)` }"
+        :style="!isMobile ? { transform: `translateY(-${store.currentSectionIndex * 100}vh)` } : {}"
       >
         <component
           v-for="section in store.sections"
@@ -54,13 +54,15 @@ import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, provide } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
 const store = useNavigationStore();
 
 const isMobile = ref(false)
+
+provide('isMobile', isMobile)
 
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768
