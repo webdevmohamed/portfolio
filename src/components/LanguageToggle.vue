@@ -10,7 +10,7 @@
 
     <!-- Dropdown menu -->
     <Transition name="menu-container">
-      <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-32 bg-background border-2 border-border-2 rounded-lg shadow-lg">
+      <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-32 bg-background border border-border rounded-lg shadow-lg">
         <button v-for="(lang, index) in availableLanguages"
                 :key="lang.code"
                 @click="changeLanguage(lang.code)"
