@@ -24,7 +24,7 @@
         <div class="flex items-center justify-center w-full">
           <button
             type="submit"
-            class="group flex items-center justify-center gap-3 w-fit px-8 py-4 rounded-full border-2 border-transparent bg-gradient-to-r from-primary to-accent-blue hover:bg-none hover:border-primary transition-all duration-300"
+            class="group flex items-center justify-center gap-3 w-fit px-8 py-4 rounded-full ring-2 ring-transparent bg-gradient-to-r from-primary to-accent-blue hover:bg-none hover:ring-primary transition-all duration-300"
           >
             <span class="text-background font-medium group-hover:text-primary transition-all duration-300">{{ t('contact.form.send') }}</span>
             <Icon
