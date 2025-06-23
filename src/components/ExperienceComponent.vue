@@ -42,7 +42,7 @@
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
@@ -101,7 +101,7 @@
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-primary/10 transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
