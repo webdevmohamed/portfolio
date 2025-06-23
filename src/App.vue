@@ -20,11 +20,10 @@
     <div
       class="w-full md:h-screen md:overflow-hidden focus:outline-none z-10"
       v-bind="$attrs"
-      @wheel="isMobile ? null : handleWheel"
-      @touchstart="isMobile ? null : handleTouchStart"
-      @touchmove="isMobile ? null : handleTouchMove"
-      @keydown="isMobile ? null : handleKeydown"
-      tabindex="0"
+      @wheel="handleWheel"
+      @touchstart="handleTouchStart"
+      @touchmove="handleTouchMove"
+      @keydown="handleKeydown"
     >
       <div
         class="transition-all duration-300"
@@ -81,7 +80,7 @@ const currentSectionName = computed(() => store.currentSectionObject.name);
 let touchStart = 0;
 
 const handleWheel = (e) => {
-  if (store.isScrolling) return
+  if (isMobile.value || store.isScrolling) return
   e.preventDefault()
   store.isScrolling = true
 
@@ -95,11 +94,12 @@ const handleWheel = (e) => {
 }
 
 const handleTouchStart = (e) => {
+  if (isMobile.value) return
   touchStart = e.touches[0].clientY
 }
 
 const handleTouchMove = (e) => {
-  if (store.isScrolling) return
+  if (isMobile.value || store.isScrolling) return
   e.preventDefault()
 
   const touchEnd = e.touches[0].clientY
@@ -119,7 +119,7 @@ const handleTouchMove = (e) => {
 }
 
 const handleKeydown = (e) => {
-  if (store.isScrolling) return
+  if (isMobile.value || store.isScrolling) return
 
   if (['ArrowDown', 'Space', 'PageDown'].includes(e.key)) {
     e.preventDefault()
@@ -142,7 +142,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  window.addEventListener('resize', checkMobile)
+  window.removeEventListener('resize', checkMobile)
 })
 </script>
 
