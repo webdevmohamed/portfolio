@@ -6,7 +6,7 @@
       </h1>
       <p class="text-md text-center text-foreground/80 mt-4 max-w-2xl mx-auto">{{ t('services.description') }}</p>
       <div class="grid grid-cols-3 gap-24 mt-14 w-full">
-        <div v-for="(service, index) in services" :key="index" class="flex flex-col justify-center relative cursor-pointer group p-8 border border-foreground w-full h-[300px] rounded-xl shadow-lg
+        <div v-for="(service, index) in services" :key="index" class="flex flex-col justify-center relative cursor-pointer group p-8 border-2 border-foreground w-full h-[300px] rounded-xl shadow-lg
        hover:shadow-2xl hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 ease-out overflow-hidden">
           <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent-blue/5 opacity-0
          group-hover:opacity-100 transition-opacity duration-300"></div>

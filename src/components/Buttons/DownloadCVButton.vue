@@ -7,7 +7,7 @@
             d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
     </svg>
     <span class="font-semibold text-foreground">{{ t('about.downloadCV') }}</span>
-    <div class="absolute inset-0 rounded-xl border border-black/10 dark:border-white/10
+    <div class="absolute inset-0 rounded-xl border-2 border-black/10 dark:border-white/10
                     group-hover:border-primary/30 transition-colors duration-300">
     </div>
   </a>

@@ -4,7 +4,7 @@
       v-for="(section, index) in store.sections"
       :key="section.id"
       :class="[
-        'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border cursor-pointer',
+        'w-3 h-3 rounded-sm mb-5 transition-all duration-300 border-2 cursor-pointer',
         store.currentSectionIndex === index
           ? 'bg-transparent border-foreground scale-150'
           : 'bg-primary border-primary rotate-45 hover:scale-110',
