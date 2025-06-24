@@ -1,6 +1,6 @@
 // stores/navigation.js
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export const useNavigationStore = defineStore('navigation', () => {
@@ -42,39 +42,54 @@ export const useNavigationStore = defineStore('navigation', () => {
     }
   ]);
 
-  const currentSectionObject = computed(() => sections.value[currentSectionIndex.value]);
+  const currentSectionId = computed(() => sections.value[currentSectionIndex.value].id);
+  const currentSectionName = computed(() => sections.value[currentSectionIndex.value].name);
+  const isFirstSection = computed(() => currentSectionIndex.value === 0)
+  const isLastSection = computed(() => currentSectionIndex.value === sections.value.length - 1)
 
-  const goToSection = (index, isMobile) => {
+  const navigateToSection = (index) => {
     if (index >= 0 && index < sections.value.length) {
-      currentSectionIndex.value = index;
+      currentSectionIndex.value = index
+      scrollToSection()
     }
-
-    if (isMobile) {
-      document.getElementById(sections.value[index].id).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
+  }
 
   const nextSection = () => {
-    if (currentSectionIndex.value < sections.value.length - 1) {
-      currentSectionIndex.value++;
+    if (!isLastSection.value) {
+      navigateToSection(currentSectionIndex.value + 1)
     }
-  };
+  }
 
   const prevSection = () => {
-    if (currentSectionIndex.value > 0) {
-      currentSectionIndex.value--;
+    if (!isFirstSection.value) {
+      navigateToSection(currentSectionIndex.value - 1)
     }
-  };
+  }
+
+  const scrollToSection = () => {
+    const element = document.getElementById(currentSectionId.value)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+
+  onMounted(() => {
+    currentSectionIndex.value = 0
+    document.getElementById('home').scrollIntoView({
+      top: 0,
+      behavior: 'instant'
+    })
+  })
 
   return {
     sections,
     currentSectionIndex,
-    currentSectionObject,
+    currentSectionName,
     isScrolling,
-    goToSection,
+    navigateToSection,
     nextSection,
     prevSection
   }

@@ -9,7 +9,7 @@
           ? 'bg-transparent border-foreground scale-150'
           : 'bg-primary border-primary rotate-45 hover:scale-110',
       ]"
-      @click="store.goToSection(index)"
+      @click="store.navigateToSection(index)"
     />
   </div>
 </template>

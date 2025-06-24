@@ -46,7 +46,7 @@ const toggleMenu = () => {
 };
 
 const scrollToSection = (index) => {
-  store.goToSection(index, isMobile)
+  store.navigateToSection(index)
   if (isMobile.value) {
     animateItems.value = false;
     opened.value = false;

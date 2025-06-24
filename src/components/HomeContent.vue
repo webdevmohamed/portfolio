@@ -15,7 +15,7 @@
 
         <div class="flex max-md:flex-col-reverse justify-between">
             <!-- Modern scroll indicator -->
-            <a @click="store.goToSection(1)" class="relative w-fit flex flex-col items-start gap-3 pt-20 max-md:pt-10 group self-center">
+            <a @click="store.navigateToSection(1)" class="relative w-fit flex flex-col items-start gap-3 pt-20 max-md:pt-10 group self-center">
                 <div class="flex items-center gap-3 cursor-pointer max-sm:flex-col max-sm:items-center">
                     <div
                         class="relative w-10 h-10 group-hover:animate-none rounded-full bg-gradient-to-br from-primary/50 to-accent-blue/50 group-hover:from-primary/70 group-hover:to-accent-blue/70 transition-all duration-300 overflow-hidden flex items-center justify-center">

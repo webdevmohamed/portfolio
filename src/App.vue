@@ -19,16 +19,13 @@
     <!-- Main content con scroll minimalista -->
     <div
       class="w-full md:h-screen md:overflow-hidden focus:outline-none z-10"
-      v-bind="$attrs"
       @wheel="handleWheel"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @keydown="handleKeydown"
+      tabindex="0"
     >
-      <div
-        class="transition-all duration-300"
-        :style="!isMobile ? { transform: `translateY(-${store.currentSectionIndex * 100}vh)` } : {}"
-      >
+      <div>
         <component
           v-for="section in store.sections"
           :key="section.id"
@@ -40,7 +37,7 @@
     </div>
 
     <Transition mode="out-in">
-      <SectionName v-if="!isMobile" :key="currentSectionName" :name="currentSectionName" />
+      <SectionName v-if="!isMobile" :key="store.currentSectionName" :name="store.currentSectionName" />
     </Transition>
     </div>
 </template>
@@ -54,7 +51,7 @@ import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { computed, onMounted, onUnmounted, ref, provide } from 'vue'
+import { onMounted, onUnmounted, ref, provide } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
 
@@ -77,8 +74,6 @@ const sectionComponentsMap = {
   contact: ContactComponent
 };
 
-const currentSectionName = computed(() => store.currentSectionObject.name);
-
 let touchStart = 0;
 
 const handleWheel = (e) => {
@@ -92,7 +87,7 @@ const handleWheel = (e) => {
     store.prevSection()
   }
 
-  setTimeout(() => store.isScrolling = false, 300)
+  setTimeout(() => store.isScrolling = false, 500)
 }
 
 const handleTouchStart = (e) => {
@@ -116,7 +111,7 @@ const handleTouchMove = (e) => {
       store.prevSection()
     }
 
-    setTimeout(() => store.isScrolling = false, 100)
+    setTimeout(() => store.isScrolling = false, 500)
   }
 }
 
@@ -131,11 +126,13 @@ const handleKeydown = (e) => {
     store.prevSection()
   } else if (e.key === 'Home') {
     e.preventDefault()
-    store.goToSection(0)
+    store.navigateToSection(0)
   } else if (e.key === 'End') {
     e.preventDefault()
-    store.goToSection(store.sections.length - 1)
+    store.navigateToSection(store.sections.length - 1)
   }
+
+  setTimeout(() => store.isScrolling = false, 500)
 }
 
 onMounted(() => {
@@ -149,20 +146,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.animate-gradient-pan {
-  background-size: 200% 200%;
-  animation: gradient-pan 20s linear infinite;
-}
-
-@keyframes gradient-pan {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 100% 100%;
-  }
-}
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.2s ease, transform 0.2s ease;
