@@ -3,9 +3,9 @@
     <div class="mx-auto container flex items-center justify-between">
       <div class="flex items-center gap-3 group cursor-pointer">
         <div class="relative w-8 h-8 bg-primary rounded-xl flex items-center justify-center transition-all duration-300"
-        :class="[isScrolled ? 'rotate-45 scale-105' : '' ]">
+        :class="[isScrolled && !isMobile ? 'rotate-45 scale-105' : '' ]">
           <p class="text-background text-xl font-semibold z-[2] transition-all duration-300"
-             :class="[isScrolled ? '-rotate-45' : '' ]">M</p>
+             :class="[isScrolled && !isMobile ? '-rotate-45' : '' ]">M</p>
           <div
             class="absolute z-[1] inset-0 bg-primary/60 rounded-xl transform group-hover:scale-125 transition-transform">
           </div>
@@ -27,20 +27,17 @@
 import HeaderMenu from './HeaderMenu.vue';
 import ThemeToggle from './ThemeToggle.vue';
 import LanguageToggle from './LanguageToggle.vue';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, inject } from 'vue'
+import { useNavigationStore } from '@/stores/navigation.js'
 
-const isScrolled = ref(false);
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
-};
+const store = useNavigationStore();
 
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
-});
+const isMobile = inject('isMobile');
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
+const isScrolled = computed(() => {
+  return store.currentSectionIndex > 0;
+})
+
 </script>
 
 <style scoped></style>
