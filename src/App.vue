@@ -9,7 +9,7 @@
 
         <!-- Grid pattern -->
         <div
-          class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03] dark:opacity-[0.015] backdrop-blur-[1px] transition-opacity duration-300">
+          class="absolute inset-0 bg-grid-pattern bg-grid opacity-[0.03] dark:opacity-[0.015] transition-opacity duration-300">
         </div>
       </div>
 

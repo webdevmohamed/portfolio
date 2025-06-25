@@ -31,7 +31,7 @@
             <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
               <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10 backdrop-blur-sm">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
                     class="w-5 h-5 text-primary"
@@ -42,7 +42,7 @@
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
@@ -90,7 +90,7 @@
             </template>
             <template v-else>
               <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10 backdrop-blur-sm">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
                     class="w-5 h-5 text-primary"
@@ -101,7 +101,7 @@
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 backdrop-blur-lg p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"

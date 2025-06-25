@@ -7,7 +7,7 @@
           <p class="text-background text-xl font-semibold z-[2] transition-all duration-300"
              :class="[isScrolled ? '-rotate-45' : '' ]">M</p>
           <div
-            class="absolute z-[1] inset-0 bg-primary/60 rounded-xl blur-md transform group-hover:scale-125 transition-transform">
+            class="absolute z-[1] inset-0 bg-primary/60 rounded-xl transform group-hover:scale-125 transition-transform">
           </div>
         </div>
         <p class="text-md font-bold lagroup-hover:ml-2 transition-all duration-300 max-sm:hidden"
