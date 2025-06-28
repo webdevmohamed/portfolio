@@ -79,7 +79,6 @@ export const useNavigationStore = defineStore('navigation', () => {
   onMounted(() => {
     currentSectionIndex.value = 0
     document.getElementById('home').scrollIntoView({
-      top: 0,
       behavior: 'instant'
     })
   })
