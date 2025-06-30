@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        'xxs': '320px',
+        'xxs': '360px',
         'xs': '480px',
       },
       fontFamily: {

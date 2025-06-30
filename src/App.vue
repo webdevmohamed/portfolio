@@ -14,7 +14,7 @@
       </div>
 
     <HeaderComponent />
-    <NavigationDots v-if="!isMobile"/>
+    <NavigationDots class="lg:block hidden"/>
 
     <!-- Main content con scroll minimalista -->
     <div
