@@ -77,6 +77,10 @@ const sectionComponentsMap = {
 let touchStart = 0;
 
 const handleWheel = (e) => {
+  if (e.ctrlKey || e.metaKey) {
+    return
+  }
+
   if (isMobile.value || store.isScrolling) return
   e.preventDefault()
   store.isScrolling = true
