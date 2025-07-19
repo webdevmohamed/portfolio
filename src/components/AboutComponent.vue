@@ -3,16 +3,16 @@
         <!-- Content -->
         <div class="container mx-auto xl:max-w-screen-lg max-w-screen-md max-xl:justify-center max-md:flex-col-reverse lg:px-0 md:px-[30px] flex items-center justify-between gap-5">
             <div class="w-1/2 max-md:w-full">
-                <h1 class="text-5xl max-xl:text-3xl max-lg:text-2xl font-bold bg-clip-text text-foreground">
+                <h1 class="text-5xl max-md:text-4xl font-bold bg-clip-text text-foreground">
                     {{ t('about.title') }}
                 </h1>
-                <p class="text-xl max-xl:text-lg max-lg:text-base text-foreground leading-loose mt-4">
+                <p class="text-xl max-xl:text-lg max-lg:text-base text-foreground leading-loose mt-5">
                     {{ t('about.paragraph') }}
                 </p>
-                <div class="flex max-lg:grid max-lg:grid-cols-2 max-md:flex max-sm:grid max-xs:grid-cols-1 gap-4 max-xl:gap-2 max-xl:items-start mt-6">
-                    <DownloadCvButton />
-                    <ContactMeButton />
-                    <GithubButton class="xs:col-span-2" />
+                <div class="flex max-lg:grid max-lg:grid-cols-2 max-md:flex max-sm:grid max-xs:grid-cols-1 gap-4 max-xl:gap-3 max-xl:items-start mt-6">
+                    <DownloadCvButton class="max-md:flex-1" />
+                    <ContactMeButton class="max-md:flex-1" />
+                    <GithubButton class="max-md:flex-1 xs:col-span-2" />
                 </div>
             </div>
             <img src="@/assets/about-4.svg" alt="About" class="w-1/2 max-md:w-2/3 max-sm:w-4/6 max-xs:w-full" />

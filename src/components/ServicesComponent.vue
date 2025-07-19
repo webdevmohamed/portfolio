@@ -1,12 +1,12 @@
 <template>
   <div id="services" class="relative md:min-h-screen py-5 px-5 max-md:py-16 max-md:px-20 max-sm:px-16 max-xs:px-12 max-xxs:px-5">
-    <div class="container mx-auto xl:max-w-screen-lg max-w-screen-md relative flex flex-col items-center justify-center lg:px-0 md:px-[30px]">
-      <h1 class="text-5xl text-center font-bold bg-clip-text text-foreground">
+    <div class="container mx-auto xl:max-w-screen-lg max-w-screen-md relative flex flex-col items-center justify-center max-md:items-start lg:px-0 md:px-[30px]">
+      <h1 class="text-5xl max-md:text-4xl font-bold bg-clip-text text-foreground">
         {{ t('services.title') }}
       </h1>
-      <p class="text-md text-center text-foreground/80 mt-4 max-w-2xl mx-auto">{{ t('services.description') }}</p>
+      <p class="text-md text-center max-md:text-left text-foreground/80 mt-5 max-w-2xl mx-auto">{{ t('services.description') }}</p>
       <div class="grid grid-cols-3 max-md:grid-cols-1 gap-24 max-xl:gap-12 mt-14 w-full">
-        <div v-for="(service, index) in services" :key="index" class="flex flex-col justify-center max-sm:items-center max-sm:text-center relative cursor-pointer group p-8 max-xl:p-4 border-2 border-foreground w-full max-md:w-[85%] max-md:mx-auto max-sm:w-full min-h-[300px] max-xl:min-h-[200px] rounded-xl shadow-lg
+        <div v-for="(service, index) in services" :key="index" class="flex flex-col justify-center relative cursor-pointer group p-8 max-xl:p-4 border-2 border-foreground w-full max-sm:w-full min-h-[300px] max-xl:min-h-[200px] rounded-xl shadow-lg
      hover:shadow-2xl hover:-translate-y-1 hover:border-primary/30 transition-all duration-300 ease-out overflow-hidden">
           <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent-blue/5 opacity-0
        group-hover:opacity-100 transition-opacity duration-300"></div>
