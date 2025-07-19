@@ -4,7 +4,7 @@
                shadow-lg hover:shadow-primary/50 dark:hover:shadow-primary/20 transition-all duration-300">
     <Icon icon="mdi:github" class="flex-shrink-0 w-6 max-xl:w-5 h-auto text-foreground group-hover:text-primary-400 transition-all duration-300" />
     <span class="lg:hidden font-semibold relative z-10 max-xl:text-sm">GitHub</span>
-    <div class="absolute inset-0 rounded-xl border-2 border-black/70 dark:border-white/10
+    <div class="absolute inset-0 rounded-xl border-2 border-foreground dark:border-white/10
                     group-hover:border-primary/30 transition-colors duration-300">
     </div>
   </a>
