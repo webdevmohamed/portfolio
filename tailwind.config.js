@@ -94,9 +94,5 @@ export default {
       },
     },
   },
-  plugins: [
-    function({ addVariant }) {
-      addVariant('hover', '@media (hover: hover) { &:hover }')
-    }
-  ]
+  plugins: []
 }
