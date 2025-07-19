@@ -1,5 +1,5 @@
 <template>
-  <div id="skills" class="relative  md:min-h-screen py-5 px-5 max-md:py-16 max-md:px-20 max-sm:px-16 max-xs:px-12 max-xxs:px-5">
+  <div id="skills" class="relative md:min-h-screen py-5 px-5 max-md:py-16 max-md:px-20 max-sm:px-16 max-xs:px-12 max-xxs:px-5">
     <div class="container mx-auto xl:max-w-screen-lg max-w-screen-md relative flex flex-col items-center justify-center max-md:items-start lg:px-0 md:px-[30px]">
       <h1 class="text-5xl max-md:text-4xl font-bold text-foreground mb-4">
         {{ t('skills.title') }}

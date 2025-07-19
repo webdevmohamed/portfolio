@@ -1,7 +1,7 @@
 <template>
-  <div id="experience" class="relative min-h-screen">
-    <div class="container mx-auto max-w-screen-lg relative flex flex-col items-center justify-center min-h-screen">
-      <h1 class="mb-14 text-5xl text-center font-bold bg-clip-text text-foreground">
+  <div id="experience" class="relative md:min-h-screen py-5 px-5 max-md:py-16 max-md:px-20 max-sm:px-16 max-xs:px-12 max-xxs:px-5">
+    <div class="container mx-auto xl:max-w-screen-lg max-w-screen-md relative flex flex-col items-center justify-center max-md:items-start lg:px-0 md:px-[30px]">
+      <h1 class="mb-12 text-5xl max-md:text-4xl font-bold bg-clip-text text-foreground">
         {{ t('experience.title') }}
       </h1>
 
@@ -25,7 +25,7 @@
         </div>
         <div ref="experienceContainer" class="mask-fade experience-container overflow-y-hidden h-[500px] overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index" :id="`experience-${index}`"
-               class="relative flex items-center mb-16 min-h-full rounded-2xl p-8">
+               class="relative flex items-center mb-16 min-h-full rounded-2xl py-8">
 
           <!-- Lado izquierdo -->
             <div class="w-1/2 pr-12 text-right">
@@ -36,13 +36,13 @@
                     icon="heroicons:calendar"
                     class="w-5 h-5 text-primary"
                   />
-                  <span class="text-base font-medium text-foreground/80">
+                  <span class="text-base max-lg:text-sm font-medium text-foreground/80">
                     {{ experience.period }}
                   </span>
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
@@ -54,13 +54,13 @@
             </template>
             <template v-else>
               <div class="space-y-1 mb-4">
-                <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-lg font-medium text-primary">{{ experience.company }}</h4>
+                <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
+                <h4 class="text-lg max-lg:text-base font-medium text-primary">{{ experience.company }}</h4>
               </div>
               <ul class="space-y-3">
                 <li v-for="(achievement, i) in experience.achievements" :key="i"
                     class="flex items-start justify-end gap-3 text-foreground/80">
-                  <span class="text-sm" v-html="achievement"></span>
+                  <span class="text-sm max-lg:text-xs">{{ achievement }}</span>
                   <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
                 </li>
               </ul>
@@ -77,14 +77,14 @@
             <div class="w-1/2 pl-12">
             <template v-if="index % 2 === 0">
               <div class="space-y-1 mb-4">
-                <h3 class="text-2xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-lg font-medium text-primary">{{ experience.company }}</h4>
+                <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
+                <h4 class="text-lg max-lg:text-base font-medium text-primary">{{ experience.company }}</h4>
               </div>
               <ul class="space-y-3">
                 <li v-for="(achievement, i) in experience.achievements" :key="i"
                     class="flex items-start gap-3 text-foreground/80">
                   <span class="w-1.5 h-1.5 mt-2 rounded-full bg-primary flex-shrink-0"></span>
-                  <span class="text-sm" v-html="achievement"></span>
+                  <span class="text-sm max-lg:text-xs">{{ achievement }}</span>
                 </li>
               </ul>
             </template>
@@ -95,13 +95,13 @@
                     icon="heroicons:calendar"
                     class="w-5 h-5 text-primary"
                   />
-                  <span class="text-base font-medium text-foreground/80">
+                  <span class="text-base max-lg:text-sm font-medium text-foreground/80">
                     {{ experience.period }}
                   </span>
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
                     <img
                       :src="client.logo"
                       :alt="client.name"
