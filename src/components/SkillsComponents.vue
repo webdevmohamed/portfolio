@@ -5,7 +5,7 @@
         {{ t('skills.title') }}
       </h1>
 
-      <p class="text-md text-center max-md:text-left text-foreground/80 mb-12 max-w-2xl mx-auto">
+      <p class="text-md text-center max-md:text-left text-foreground/80 mb-12 max-w-2xl md:mx-auto">
         {{ t('skills.description') }}
       </p>
 
