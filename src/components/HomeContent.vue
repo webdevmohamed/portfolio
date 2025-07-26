@@ -6,7 +6,7 @@
         <div class="flex items-baseline gap-2 mt-10 max-md:mt-4">
             <div class="h-[2px] w-8 bg-foreground max-md:hidden"></div>
             <p class="text-2xl max-xl:text-xl max-lg:text-lg max-md:text-base max-md:text-center text-foreground !leading-loose w-10/12 max-lg:w-full">
-                <span class="bg-gradient-to-r from-primary to-accent-blue/30 pl-2 py-1 mr-1 rounded-md font-semibold">
+                <span class="bg-gradient-to-r text-background from-primary to-accent-blue/30 pl-2 py-1 mr-1 rounded-md font-semibold">
                     {{ t('home.webDeveloper') }},
                 </span>
               {{ t('home.paragraph') }}
