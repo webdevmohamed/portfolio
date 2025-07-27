@@ -38,12 +38,11 @@
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
-                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 hover:bg-black/10 dark:bg-white/10 hover:dark:bg-white/15 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 hover:from-black/15 to-transparent dark:from-white/15 hover:dark:from-white/20"></div>
+                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain"
+                      class="w-full h-full object-contain grayscale dark:invert transition-all duration-300"
                     />
                   </a>
                 </div>
@@ -104,12 +103,11 @@
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
-                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 hover:bg-black/10 dark:bg-white/10 hover:dark:bg-white/15 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 hover:from-black/15 to-transparent dark:from-white/15 hover:dark:from-white/20"></div>
+                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain"
+                      class="w-full h-full object-contain grayscale dark:invert transition-all duration-300"
                     />
                   </a>
                 </div>
