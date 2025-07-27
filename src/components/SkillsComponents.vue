@@ -30,7 +30,7 @@
             :href="skill.url"
             target="_blank"
             rel="noopener noreferrer"
-            class="relative overflow-hidden group flex items-center justify-center p-3 rounded-full ring-2 ring-transparent bg-gradient-to-b from-accent-blue/20 to-primary/20 border-transparent hover:ring-foreground hover:bg-none transition-all duration-300 hover:scale-105 hover:shadow-lg w-24 max-xl:w-20 max-xs:w-16 aspect-square"
+            class="relative overflow-hidden group flex items-center justify-center p-3 rounded-full ring-2 ring-transparent bg-gradient-to-b from-primary/30 to-transparent border-transparent hover:ring-foreground hover:bg-none transition-all duration-300 hover:scale-105 hover:shadow-lg w-24 max-xl:w-20 max-xs:w-16 aspect-square"
           >
             <div class="flex flex-col items-center gap-2">
               <Icon
