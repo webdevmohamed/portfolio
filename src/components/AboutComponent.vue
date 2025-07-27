@@ -9,7 +9,7 @@
                 <p class="text-xl max-xl:text-lg max-lg:text-base text-foreground leading-loose mt-5">
                     {{ t('about.paragraph') }}
                 </p>
-                <div class="flex max-lg:grid max-lg:grid-cols-2 max-md:flex max-sm:grid max-xs:grid-cols-1 gap-4 max-xl:gap-3 max-xl:items-start mt-6">
+                <div class="flex max-lg:grid max-lg:grid-cols-2 max-md:flex max-sm:grid max-xs:grid-cols-1 gap-4 max-xl:gap-3 mt-6">
                     <DownloadCvButton class="max-md:flex-1" />
                     <ContactMeButton class="max-md:flex-1" />
                     <GithubButton class="max-md:flex-1 xs:col-span-2" />
