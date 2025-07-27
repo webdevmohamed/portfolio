@@ -26,7 +26,7 @@
           <!-- Lado izquierdo -->
             <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
-              <div class="space-y-8">
+              <div class="space-y-5">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
@@ -42,7 +42,7 @@
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain grayscale dark:invert transition-all duration-300"
+                      class="w-full h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
                     />
                   </a>
                 </div>
@@ -91,7 +91,7 @@
               </ul>
             </template>
             <template v-else>
-              <div class="space-y-8">
+              <div class="space-y-5">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
@@ -107,7 +107,7 @@
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain grayscale dark:invert transition-all duration-300"
+                      class="w-full h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
                     />
                   </a>
                 </div>
