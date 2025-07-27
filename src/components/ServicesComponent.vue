@@ -19,7 +19,7 @@
             {{ service.title }}
           </p>
 
-          <p class="text-sm max-xl:text-xs text-foreground/70 mt-2 group-hover:text-primary/80 transition-all duration-300">
+          <p class="text-sm max-xl:text-xs max-md:text-sm max-xs:text-xs text-foreground/70 mt-2 group-hover:text-primary/80 transition-all duration-300">
             {{ service.description }}
           </p>
         </div>
