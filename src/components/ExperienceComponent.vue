@@ -27,33 +27,33 @@
             <div class="w-1/2 pr-12 text-right">
             <template v-if="index % 2 === 0">
               <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
-                    class="w-5 h-5 text-primary"
+                    class="w-4 h-4 text-primary"
                   />
-                  <span class="text-base max-lg:text-sm font-medium text-foreground/80">
+                  <span class="text-base max-lg:text-sm font-medium text-primary">
                     {{ experience.period }}
                   </span>
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
-                  <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 dark:bg-white/10 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent dark:from-white/15"></div>
+                  <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
+                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 hover:bg-black/10 dark:bg-white/10 hover:dark:bg-white/15 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 hover:from-black/15 to-transparent dark:from-white/15 hover:dark:from-white/20"></div>
                     <img
                       :src="client.logo"
                       :alt="client.name"
                       class="w-full h-full object-contain"
                     />
-                  </div>
+                  </a>
                 </div>
               </div>
             </template>
             <template v-else>
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-end gap-1">
-                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 mr-1" />
+                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-end gap-2">
+                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4" />
                   <span>{{ experience.company }}</span>
                 </h4>
               </div>
@@ -78,8 +78,8 @@
             <template v-if="index % 2 === 0">
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-start gap-1">
-                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 mr-1" />
+                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-start gap-2">
+                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4" />
                   <span>{{ experience.company }}</span>
                 </h4>
               </div>
@@ -93,25 +93,25 @@
             </template>
             <template v-else>
               <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary/20 bg-primary/10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border-2 border-primary/30 bg-primary/10">
                   <Icon
                     icon="heroicons:calendar"
-                    class="w-5 h-5 text-primary"
+                    class="w-4 h-4 text-primary"
                   />
-                  <span class="text-base max-lg:text-sm font-medium text-foreground/80">
+                  <span class="text-base max-lg:text-sm font-medium text-primary">
                     {{ experience.period }}
                   </span>
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
-                  <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 dark:bg-white/10 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent dark:from-white/15"></div>
+                  <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
+                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 hover:bg-black/10 dark:bg-white/10 hover:dark:bg-white/15 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 hover:from-black/15 to-transparent dark:from-white/15 hover:dark:from-white/20"></div>
                     <img
                       :src="client.logo"
                       :alt="client.name"
                       class="w-full h-full object-contain"
                     />
-                  </div>
+                  </a>
                 </div>
               </div>
             </template>
@@ -174,15 +174,18 @@ const experiences = computed(() => [
     clients: [
       {
         name: 'Hiwood',
-        logo: '/images/experience/ulandu/hiwood.png'
+        logo: '/images/experience/ulandu/hiwood.png',
+        url: 'https://hiwooddesign.com/',
       },
       {
         name: 'Utande',
-        logo: '/images/experience/ulandu/utande.png'
+        logo: '/images/experience/ulandu/utande.png',
+        url: 'https://crm.utanderealestate.com/',
       },
       {
         name: 'Avioparts',
-        logo: '/images/experience/ulandu/avioparts.png'
+        logo: '/images/experience/ulandu/avioparts.png',
+        url: 'https://avioparts.com/',
       },
     ],
     achievements: [
@@ -199,11 +202,13 @@ const experiences = computed(() => [
     clients: [
       {
         name: 'Ociotour',
-        logo: '/images/experience/cysval/ociotour.png'
+        logo: '/images/experience/cysval/ociotour.png',
+        url: 'https://ociotour.es/',
       },
       {
         name: 'Renfe',
-        logo: '/images/experience/cysval/renfe.png'
+        logo: '/images/experience/cysval/renfe.png',
+        url: 'https://renfeviajes.renfe.com/',
       },
     ],
     achievements: [
