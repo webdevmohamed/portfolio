@@ -9,14 +9,10 @@
            :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full before:mt-[50px]']">
         <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
           <div class="flex flex-col items-center gap-1">
-            <div class="bg-background border-2 rounded-full p-2 flex items-center justify-center"
-            :class="currentExperienceIndex === 0 ? 'order-first border-accent-blue' : 'order-last border-primary'">
-              <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" width=20 height=20
-                    :class="currentExperienceIndex === 0 ? 'text-accent-blue' : 'text-primary'"
-              />
-              <Icon v-else icon="heroicons:chevron-double-up" width=20 height=20
-                    :class="currentExperienceIndex === 0 ? 'text-accent-blue' : 'text-primary'"
-              />
+            <div class="rounded-full p-2 flex items-center justify-center"
+            :class="currentExperienceIndex === 0 ? 'order-first bg-accent-blue' : 'order-last bg-primary'">
+              <Icon v-if="currentExperienceIndex === 0" icon="heroicons:chevron-double-down" class="text-background" width=20 height=20 />
+              <Icon v-else icon="heroicons:chevron-double-up" class="text-background" width=20 height=20 />
             </div>
             <span class="text-xs text-foreground animate-pulse">
               {{ currentExperienceIndex === 0 ? t('experience.previousExperience') : t('experience.nextExperience') }}
@@ -42,7 +38,8 @@
                 </div>
                 <div class="flex flex-wrap justify-end gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 dark:bg-white/10 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent dark:from-white/15"></div>
                     <img
                       :src="client.logo"
                       :alt="client.name"
@@ -55,7 +52,10 @@
             <template v-else>
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-lg max-lg:text-base font-medium text-primary">{{ experience.company }}</h4>
+                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-end gap-1">
+                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 mr-1" />
+                  <span>{{ experience.company }}</span>
+                </h4>
               </div>
               <ul class="space-y-3">
                 <li v-for="(achievement, i) in experience.achievements" :key="i"
@@ -78,7 +78,10 @@
             <template v-if="index % 2 === 0">
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <h4 class="text-lg max-lg:text-base font-medium text-primary">{{ experience.company }}</h4>
+                <h4 class="text-base max-lg:text-sm font-medium text-primary flex items-center justify-start gap-1">
+                  <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 mr-1" />
+                  <span>{{ experience.company }}</span>
+                </h4>
               </div>
               <ul class="space-y-3">
                 <li v-for="(achievement, i) in experience.achievements" :key="i"
@@ -101,7 +104,8 @@
                 </div>
                 <div class="flex flex-wrap justify-start gap-3">
                   <div v-for="(client, idx) in experience.clients" :key="idx"
-                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden bg-gradient-to-br from-white to-white/30 p-2 shadow-lg border-2 border-border transition-all duration-500 hover:z-10 group">
+                       class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-black/5 dark:bg-white/10 transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent dark:from-white/15"></div>
                     <img
                       :src="client.logo"
                       :alt="client.name"
