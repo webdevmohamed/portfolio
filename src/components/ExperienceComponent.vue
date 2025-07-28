@@ -5,8 +5,8 @@
         {{ t('experience.title') }}
       </h1>
 
-      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 max-md:before:left-3 max-md:before:-translate-x-0 before:w-0.5 before:h-[90%] before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-300"
-           :class="[currentExperienceIndex === 0 ? 'before:h-[90%]' : 'before:h-full before:mt-[50px]']">
+      <div class="mask-fade relative w-full before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 max-md:before:left-3 max-md:before:-translate-x-0 before:w-0.5 before:bg-gradient-to-b before:from-primary before:to-accent-blue before:transition-all before:duration-300"
+           :class="[currentExperienceIndex === 0 ? 'before:h-[90%] max-md:before:h-full' : 'before:h-full before:mt-[50px]']">
         <div @click="scrollToExperience" class="cursor-pointer z-50 absolute left-1/2 -translate-x-1/2 max-md:hidden" :class="[currentExperienceIndex === 0 ? 'bottom-5' : 'top-5']">
           <div class="flex flex-col items-center gap-1">
             <div class="rounded-full p-2 flex items-center justify-center"
@@ -21,8 +21,8 @@
         </div>
         <div ref="experienceContainer" class="mask-fade experience-container overflow-y-hidden h-[500px] max-md:h-full overflow-x-hidden py-8">
           <div v-for="(experience, index) in experiences" :key="index" :id="`experience-${index}`"
-               class="relative flex flex-row items-center max-md:items-start mb-16 min-h-full rounded-2xl py-8 max-md:py-0"
-          :class="[index % 2 === 0 ? 'max-md:flex-col-reverse' : 'max-md:flex-col']">
+               class="relative flex flex-row items-center max-md:items-start min-h-full rounded-2xl py-8 max-md:py-0"
+          :class="[index % 2 === 0 ? 'max-md:flex-col-reverse' : 'max-md:flex-col', experiences.length === index + 1 ? 'max-md:mb-0' : 'max-md:mb-16']">
 
           <!-- Lado izquierdo -->
             <div class="w-1/2 max-md:w-full pr-12 max-md:pr-0 text-right max-md:pl-12 max-md:text-left">
