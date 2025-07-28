@@ -52,8 +52,8 @@
             <template v-else>
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <div class="flex flex-wrap items-center gap-3">
-                  <h4 class="text-base max-lg:text-sm max-md:text-base font-medium text-primary flex items-center justify-end max-md:justify-start gap-2">
+                <div class="flex flex-wrap max-md:items-center md:justify-end gap-3">
+                  <h4 class="text-base max-lg:text-sm max-md:text-base font-medium text-primary flex items-center gap-2">
                     <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 shrink-0" />
                     <span>{{ experience.company }}</span>
                   </h4>
@@ -86,8 +86,8 @@
             <template v-if="index % 2 === 0">
               <div class="space-y-1 mb-4">
                 <h3 class="text-2xl max-lg:text-xl font-bold text-foreground">{{ experience.position }}</h3>
-                <div class="flex flex-wrap items-center gap-3">
-                  <h4 class="text-base max-lg:text-sm max-md:text-base font-medium text-primary flex items-center justify-start gap-2">
+                <div class="flex flex-wrap max-md:items-center gap-3">
+                  <h4 class="text-base max-lg:text-sm max-md:text-base font-medium text-primary flex items-center gap-2">
                     <Icon icon="heroicons:building-office-2" class="inline-block w-4 h-4 shrink-0" />
                     <span>{{ experience.company }}</span>
                   </h4>
