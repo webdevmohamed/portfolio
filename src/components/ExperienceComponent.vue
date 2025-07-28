@@ -78,7 +78,6 @@
           <!-- Punto central -->
           <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center max-md:left-[3px] max-md:-translate-x-0 max-md:top-1">
             <div class="w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/80"></div>
-            <div class="h-full w-px bg-gradient-to-b from-primary to-transparent"></div>
           </div>
 
           <!-- Lado derecho -->
