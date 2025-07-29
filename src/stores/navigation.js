@@ -1,10 +1,14 @@
 // stores/navigation.js
 import { defineStore } from 'pinia'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeMount, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export const useNavigationStore = defineStore('navigation', () => {
   const { t } = useI18n();
+
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
 
   const currentSectionIndex = ref(0);
   const isScrolling = ref(false);
@@ -76,12 +80,16 @@ export const useNavigationStore = defineStore('navigation', () => {
     }
   }
 
-  onMounted(() => {
+  const resetScroll = () => {
     currentSectionIndex.value = 0
     window.scrollTo({
       top: 0,
-      behavior: 'instant'
+      behavior: 'instant',
     })
+  }
+
+  onBeforeMount(() => {
+    resetScroll()
   })
 
   return {
@@ -91,6 +99,7 @@ export const useNavigationStore = defineStore('navigation', () => {
     isScrolling,
     navigateToSection,
     nextSection,
-    prevSection
+    prevSection,
+    resetScroll
   }
 })
