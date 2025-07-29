@@ -34,7 +34,7 @@
         </div>
 
         <!-- Graphic element -->
-        <img class="w-[150px] max-xl:w-[100px] max-lg:w-[80px] max-md:-rotate-12 h-fit md:mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
+        <img class="w-[150px] max-xl:w-[100px] max-lg:w-[80px] max-md:-rotate-12 aspect-square object-contain md:self-start md:mt-12 dark:filter dark:invert opacity-85" src="@/assets/flecha.png" alt="" />
     </div>
 </template>
 
