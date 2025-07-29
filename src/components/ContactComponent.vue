@@ -76,7 +76,7 @@ const showStatusMessage = (message) => {
 
   setTimeout(() => {
     showStatus.value = false
-  }, 10000)
+  }, 5000)
 }
 
 const handleSubmit = async () => {
