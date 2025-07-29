@@ -89,6 +89,7 @@ const handleSubmit = async () => {
       name.value = ''
       email.value = ''
       message.value = ''
+      bot.value = ''
     } else {
       status.value = t('contact.form.error')
     }
