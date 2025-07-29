@@ -5,21 +5,34 @@
         {{ t('contact.subtitle') }}
       </h1>
       <p class="text-md text-center max-md:text-left text-foreground/80 mb-12 max-w-2xl md:mx-auto">{{ t('contact.description') }}</p>
-      <form class="md:mt-10 flex flex-col gap-10 w-full max-w-4xl">
+      <form
+        @submit.prevent="handleSubmit"
+        class="md:mt-10 flex flex-col gap-10 w-full max-w-4xl"
+      >
         <div class="grid grid-cols-2 max-md:grid-cols-1 gap-10 w-full">
           <div class="flex flex-col gap-2 group">
             <label for="name" class="text-primary/70 text-sm max-lg:text-xs font-light group-focus-within:text-accent-blue">{{ t('contact.form.label.name') }}</label>
-            <input id="name" type="text" :placeholder="t('contact.form.placeholder.name')" class="max-lg:text-sm py-3 font-light text-primary placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
+            <input v-model="name" required id="name" name="name" type="text" :placeholder="t('contact.form.placeholder.name')" class="max-lg:text-sm py-3 font-light text-primary placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
           </div>
           <div class="flex flex-col gap-2 group">
             <label for="email" class="text-primary/70 text-sm max-lg:text-xs font-light group-focus-within:text-accent-blue">{{ t('contact.form.label.email') }}</label>
-            <input id="email" type="email" :placeholder="t('contact.form.placeholder.email')" class="max-lg:text-sm py-3 font-light text-primary placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
+            <input v-model="email" required id="email" name="email" type="email" :placeholder="t('contact.form.placeholder.email')" class="max-lg:text-sm py-3 font-light text-primary placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
+          </div>
+          <div class="hidden">
+            <div class="flex flex-col gap-2 group">
+              <label for="phone" class="text-primary/70 text-sm max-lg:text-xs font-light group-focus-within:text-accent-blue">Do not complete</label>
+              <input v-model="bot" id="phone" name="phone" type="text" placeholder="Do not complete" class="max-lg:text-sm py-3 font-light text-primary placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue">
+            </div>
           </div>
         </div>
         <div class="flex flex-col gap-2 group">
           <label for="message" class="text-primary/70 text-sm max-lg:text-xs font-light group-focus-within:text-accent-blue transition-all duration-300">{{ t('contact.form.label.message') }}</label>
-          <textarea id="message" :placeholder="t('contact.form.placeholder.message')" class="max-lg:text-sm py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue" rows="4"></textarea>
+          <textarea v-model="message" required id="message" name="message" :placeholder="t('contact.form.placeholder.message')" class="max-lg:text-sm py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue" rows="4"></textarea>
         </div>
+
+        <p v-if="status" class="text-sm md:text-center text-primary transition-all duration-300 mt-4">
+          {{ status }}
+        </p>
 
         <div class="flex items-center md:justify-center w-full">
           <button
@@ -41,8 +54,48 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
+import { ref } from 'vue'
 
 const { t } = useI18n()
+
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const bot = ref(null)
+const status = ref('')
+
+const handleSubmit = async () => {
+  status.value = ''
+
+  if (bot.value !== null && bot.value !== '') {
+    status.value = t('contact.form.honeypot')
+    return;
+  }
+
+  try {
+    status.value = t('contact.form.sending')
+    const res = await fetch("https://formsubmit.co/ajax/0073aab4429260995cc342388d6ff2ee", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        message: message.value
+      })
+    })
+
+    if (res.ok) {
+      status.value = t('contact.form.success')
+      name.value = ''
+      email.value = ''
+      message.value = ''
+    } else {
+      status.value = t('contact.form.error')
+    }
+  } catch (error) {
+    status.value = t('contact.form.error')
+  }
+}
 </script>
 
 <style scoped>

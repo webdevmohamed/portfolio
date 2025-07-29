@@ -86,7 +86,8 @@
       "send": "Send message",
       "sending": "Sending...",
       "success": "Message sent successfully!",
-      "error": "There was an error sending the message"
+      "error": "There was an error sending the message",
+      "honeypot": "If you are human, leave this field empty"
     }
   },
   "seo": {

@@ -94,7 +94,8 @@
       "send": "Enviar mensaje",
       "sending": "Enviando...",
       "success": "¡Mensaje enviado con éxito!",
-      "error": "Hubo un error al enviar el mensaje"
+      "error": "Hubo un error al enviar el mensaje",
+      "honeypot": "Si eres humano, deja este campo vacío"
     }
   },
   "seo": {
