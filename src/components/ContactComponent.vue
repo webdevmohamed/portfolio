@@ -18,7 +18,7 @@
         </div>
         <div class="flex flex-col gap-2 group">
           <label for="message" class="text-primary/70 text-sm max-lg:text-xs font-light group-focus-within:text-accent-blue transition-all duration-300">{{ t('contact.form.label.message') }}</label>
-          <textarea id="message" :placeholder="t('contact.form.placeholder.message')" class="max-lg:text-sm py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue"></textarea>
+          <textarea id="message" :placeholder="t('contact.form.placeholder.message')" class="max-lg:text-sm py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue" rows="4"></textarea>
         </div>
 
         <div class="flex items-center md:justify-center w-full">
