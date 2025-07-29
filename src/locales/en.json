@@ -88,5 +88,9 @@
       "success": "Message sent successfully!",
       "error": "There was an error sending the message"
     }
+  },
+  "seo": {
+    "title": "Mohamed Mortahil Elaaouad: Web Developer",
+    "description": "Web developer focused on building modern, fast, and accessible websites."
   }
 }

@@ -96,5 +96,9 @@
       "success": "¡Mensaje enviado con éxito!",
       "error": "Hubo un error al enviar el mensaje"
     }
+  },
+  "seo": {
+    "title": "Mohamed Mortahil Elaaouad: Desarrollador Web",
+    "description": "Desarrollador web enfocado en crear sitios modernos, rápidos y accesibles."
   }
 }

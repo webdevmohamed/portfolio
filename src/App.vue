@@ -51,9 +51,31 @@ import SkillsComponents from '@/components/SkillsComponents.vue'
 import ExperienceComponent from '@/components/ExperienceComponent.vue'
 import ContactComponent from '@/components/ContactComponent.vue'
 import NavigationDots from './components/NavigationDots.vue'
-import { onMounted, onUnmounted, ref, provide } from 'vue'
+import { onMounted, onUnmounted, ref, provide, watch } from 'vue'
 import SectionName from '@/components/UI/SectionName.vue'
 import { useNavigationStore } from '@/stores/navigation.js'
+import { useI18n } from 'vue-i18n'
+
+const { locale, t } = useI18n()
+
+const updateMetaTags = () => {
+  document.title = t('seo.title')
+
+  const descTag = document.querySelector('meta[name="description"]')
+  if (descTag) descTag.setAttribute('content', t('seo.description'))
+
+  const ogTitle = document.querySelector('meta[property="og:title"]')
+  if (ogTitle) ogTitle.setAttribute('content', t('seo.title'))
+
+  const ogDesc = document.querySelector('meta[property="og:description"]')
+  if (ogDesc) ogDesc.setAttribute('content', t('seo.description'))
+}
+
+updateMetaTags()
+
+watch(locale, () => {
+  updateMetaTags()
+})
 
 const store = useNavigationStore();
 
