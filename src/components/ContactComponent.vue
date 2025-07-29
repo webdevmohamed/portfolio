@@ -30,9 +30,14 @@
           <textarea v-model="message" required id="message" name="message" :placeholder="t('contact.form.placeholder.message')" class="max-lg:text-sm py-3 font-light text-primary resize-none placeholder:text-primary bg-transparent border-b-2 border-primary focus:text-accent-blue focus:border-accent-blue focus:outline-none focus:placeholder-transparent caret-accent-blue" rows="4"></textarea>
         </div>
 
-        <p v-if="status" class="text-sm md:text-center text-primary transition-all duration-300 mt-4">
-          {{ status }}
-        </p>
+        <transition name="fade">
+          <p
+            v-if="showStatus"
+            class="text-sm md:text-center text-primary transition-all duration-300 mt-4"
+          >
+            {{ status }}
+          </p>
+        </transition>
 
         <div class="flex items-center md:justify-center w-full">
           <button
@@ -63,17 +68,27 @@ const email = ref('')
 const message = ref('')
 const bot = ref(null)
 const status = ref('')
+const showStatus = ref(false)
+
+const showStatusMessage = (message) => {
+  status.value = message
+  showStatus.value = true
+
+  setTimeout(() => {
+    showStatus.value = false
+  }, 10000)
+}
 
 const handleSubmit = async () => {
   status.value = ''
+  showStatus.value = false
 
   if (bot.value !== null && bot.value !== '') {
-    status.value = t('contact.form.honeypot')
+    showStatusMessage(t('contact.form.honeypot'))
     return;
   }
-
+  showStatusMessage(t('contact.form.sending'))
   try {
-    status.value = t('contact.form.sending')
     const res = await fetch("https://formsubmit.co/ajax/0073aab4429260995cc342388d6ff2ee", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -85,20 +100,27 @@ const handleSubmit = async () => {
     })
 
     if (res.ok) {
+      showStatusMessage(t('contact.form.success'))
       status.value = t('contact.form.success')
       name.value = ''
       email.value = ''
       message.value = ''
       bot.value = ''
     } else {
-      status.value = t('contact.form.error')
+      showStatusMessage(t('contact.form.error'))
     }
   } catch (error) {
-    status.value = t('contact.form.error')
+    showStatusMessage(t('contact.form.error'))
   }
 }
 </script>
 
 <style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 
 </style>
