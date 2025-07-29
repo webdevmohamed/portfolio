@@ -37,16 +37,22 @@
                     {{ experience.period }}
                   </span>
                 </div>
-                <div class="flex flex-wrap justify-end max-md:justify-start gap-3">
-                  <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
-                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
+                <div class="flex flex-wrap md:justify-end gap-3 w-full">
+                  <a
+                    v-for="(client, idx) in experience.clients"
+                    :key="idx"
+                    :href="client.url"
+                    target="_blank"
+                    class="relative h-10 max-lg:h-9 min-w-[40px] flex-shrink-0 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
+
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
+                      class="w-auto h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
                     />
                   </a>
                 </div>
+
               </div>
             </template>
             <template v-else>
@@ -117,16 +123,22 @@
                     {{ experience.period }}
                   </span>
                 </div>
-                <div class="flex flex-wrap justify-start gap-3">
-                  <a v-for="(client, idx) in experience.clients" :key="idx" :href="client.url" target="_blank"
-                     class="relative h-10 max-lg:h-9 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
+                <div class="flex flex-wrap justify-start gap-3 w-full">
+                  <a
+                    v-for="(client, idx) in experience.clients"
+                    :key="idx"
+                    :href="client.url"
+                    target="_blank"
+                    class="relative h-10 max-lg:h-9 min-w-[40px] flex-shrink-0 rounded-lg overflow-hidden p-2 bg-foreground/[.03] hover:bg-foreground/[.07] dark:bg-foreground/[.05] dark:hover:bg-foreground/[.09] transition-colors duration-300">
+
                     <img
                       :src="client.logo"
                       :alt="client.name"
-                      class="w-full h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
+                      class="w-auto h-full object-contain grayscale opacity-60 dark:invert hover:opacity-100 hover:dark:invert-0 hover:grayscale-0 transition-all duration-300"
                     />
                   </a>
                 </div>
+
               </div>
             </template>
           </div>
