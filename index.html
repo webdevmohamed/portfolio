@@ -19,11 +19,13 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-      // Initialize theme before the application loads
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
+      const savedTheme = localStorage.getItem('theme')
+
+      if (savedTheme === 'light') {
         document.documentElement.classList.remove('dark')
+      } else {
+        // Default to dark if no saved theme or if it's explicitly 'dark'
+        document.documentElement.classList.add('dark')
       }
     </script>
   </head>
