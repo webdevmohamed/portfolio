@@ -2,7 +2,9 @@
   <nav class="p-2 relative flex">
     <button @click="toggleMenu" class="menu-toggle relative z-50 w-8 h-4 flex bg-transparent" :class="{'opened': opened}"></button>
     <Transition name="menu-container">
-      <div v-show="opened" class="w-[300px] max-lg:w-[250px] absolute -top-3 -right-3 p-10 max-lg:px-5 max-lg:pb-5 bg-background shadow-xl rounded-xl flex flex-col gap-5 border border-border z-10">
+      <div v-show="opened" class="w-[300px] max-lg:w-[250px] absolute -top-3 -right-3 p-10 max-lg:px-5 max-lg:pb-5
+      bg-white dark:bg-[#111827] bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg shadow-xl rounded-xl
+      flex flex-col gap-5 border border-border z-10">
         <p v-for="(section, index) in store.sections"
            @click="scrollToSection(index)"
            :key="section.id"

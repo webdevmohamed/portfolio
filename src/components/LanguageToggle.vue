@@ -10,7 +10,8 @@
 
     <!-- Dropdown menu -->
     <Transition name="menu-container">
-      <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-32 bg-background border border-border rounded-lg shadow-lg">
+      <div v-if="isOpen" class="absolute right-0 mt-2 py-2 w-32 bg-white dark:bg-[#111827] bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg
+       border border-border rounded-lg shadow-lg">
         <button v-for="(lang, index) in availableLanguages"
                 :key="lang.code"
                 @click="changeLanguage(lang.code)"
@@ -25,7 +26,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
@@ -57,22 +58,6 @@ const changeLanguage = (lang) => {
   isOpen.value = false
   animateItems.value = false
 }
-
-// Close menu when clicking outside
-const closeOnClickOutside = (e) => {
-  if (isOpen.value && !e.target.closest('.language-toggle')) {
-    isOpen.value = false
-    animateItems.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', closeOnClickOutside)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', closeOnClickOutside)
-})
 </script>
 
 <style scoped>
