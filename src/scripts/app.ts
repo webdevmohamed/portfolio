@@ -25,6 +25,18 @@ if (!prefersReduced && !SNAP) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Header veil: transparent at top, blurred once scrolled              */
+/* ------------------------------------------------------------------ */
+function initHeaderVeil() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+  const toggle = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
+  toggle();
+  window.addEventListener('scroll', toggle, { passive: true });
+}
+initHeaderVeil();
+
+/* ------------------------------------------------------------------ */
 /* Helpers                                                             */
 /* ------------------------------------------------------------------ */
 const $$ = <T extends Element = HTMLElement>(sel: string, scope: ParentNode = document) =>

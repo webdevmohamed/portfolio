@@ -106,7 +106,7 @@ const t = getDict(locale);
         <div class="group flex flex-wrap items-center gap-4">
           <a
             href="mailto:mohamed.mortahil@gmail.com"
-            class="link-underline font-display text-2xl font-medium text-ink transition-colors hover:text-acid md:text-4xl"
+            class="link-underline min-w-0 font-display text-2xl font-medium break-all text-ink transition-colors hover:text-acid md:text-4xl"
             data-magnetic
           >mohamed.mortahil@gmail.com</a>
           <button
@@ -146,13 +146,9 @@ const t = getDict(locale);
         </div>
       </div>
 
-      <!-- Availability + clock -->
+      <!-- Local time -->
       <div class="mt-4 flex flex-col items-start gap-1 font-mono text-[0.65rem] tracking-[0.18em] text-smoke uppercase" data-fade>
-        <span class="flex items-center gap-2">
-          <span class="inline-block h-1.5 w-1.5 rounded-full bg-acid animate-pulse-dot"></span>
-          {t.hero.available}
-        </span>
-        <span class="mt-2">{t.contact.localTime}</span>
+        <span>{t.contact.localTime}</span>
         <span class="text-ink" data-clock>--:--:--</span>
       </div>
     </div>

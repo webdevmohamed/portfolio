@@ -25,7 +25,6 @@ export default {
     name2: 'MORTAHIL',
     role: 'FULL STACK WEB DEVELOPER',
     based: 'Talavera de la Reina, Spain',
-    available: 'Available for new projects',
     years: 'years of experience',
     viewWork: 'See experience',
   },

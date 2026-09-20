@@ -38,11 +38,26 @@ html {
   scrollbar-color: color-mix(in srgb, var(--color-acid) 35%, transparent) transparent;
 }
 
-/* Fixed header needs its own veil, otherwise it melts into the hero on scroll */
+/* Fixed header: transparent at the top of the page, veiled once the user
+   scrolls (class toggled in JS) so content never melts into the bar. */
 #site-header {
+  background: transparent;
+  transition: background 0.45s var(--ease-out-expo);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  #site-header {
+    transition: background 0.45s var(--ease-out-expo), backdrop-filter 0.45s var(--ease-out-expo),
+      -webkit-backdrop-filter 0.45s var(--ease-out-expo);
+  }
+}
+#site-header.is-scrolled {
   background: color-mix(in srgb, var(--color-void) 72%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+}
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  #site-header.is-scrolled {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
 }
 
 html.lenis, html.lenis body { height: auto; }

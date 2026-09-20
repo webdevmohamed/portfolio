@@ -25,7 +25,6 @@ export default {
     name2: 'MORTAHIL',
     role: 'DESARROLLADOR WEB FULL STACK',
     based: 'Talavera de la Reina, España',
-    available: 'Disponible para nuevos proyectos',
     years: 'años de experiencia',
     viewWork: 'Ver experiencia',
   },
