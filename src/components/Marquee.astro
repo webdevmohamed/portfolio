@@ -1,0 +1,20 @@
+---
+import { getDict, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getDict(locale);
+const items = [...t.marquee.items, ...t.marquee.items];
+---
+
+<div class="relative z-10 -rotate-[0.6deg] scale-[1.02] overflow-hidden border-y border-acid/20 bg-acid py-3 md:py-4" aria-hidden="true">
+  <div class="flex w-max animate-marquee items-center gap-10 pr-10 whitespace-nowrap will-change-transform">
+    {items.map((item) => (
+      <span class="flex items-center gap-10 font-display text-xl font-semibold tracking-wide text-void uppercase md:text-2xl">
+        {item}
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 2v20M2 12h20" />
+        </svg>
+      </span>
+    ))}
+  </div>
+</div>

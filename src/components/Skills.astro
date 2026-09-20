@@ -1,0 +1,74 @@
+---
+import { getDict, type Locale } from '../i18n';
+import { SKILLS } from '../data/skills';
+import * as si from 'simple-icons';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getDict(locale);
+
+const filters = [
+  { key: 'all', label: t.skills.filters.all },
+  { key: 'frontend', label: t.skills.filters.frontend },
+  { key: 'backend', label: t.skills.filters.backend },
+  { key: 'cloud', label: t.skills.filters.cloud },
+] as const;
+
+function icon(slug: string) {
+  const key = 'si' + slug.charAt(0).toUpperCase() + slug.slice(1);
+  return (si as Record<string, any>)[key]?.path ?? '';
+}
+---
+
+<section id="skills" class="relative overflow-hidden border-t border-line gutter py-24 md:py-36" data-skills>
+  <div class="flex items-center justify-between">
+    <p class="label">{t.skills.label}</p>
+    <span class="label hidden md:block">{SKILLS.length} TOOLS</span>
+  </div>
+
+  <div class="mt-10 flex flex-wrap items-end justify-between gap-8">
+    <h2 class="font-display text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-semibold tracking-tight" data-reveal>
+      {t.skills.title}<span class="text-acid">.</span>
+    </h2>
+    <p class="max-w-sm text-sm leading-relaxed text-smoke" data-fade>{t.skills.description}</p>
+  </div>
+
+  <!-- Filters -->
+  <div class="mt-12 flex flex-wrap gap-2" data-skill-filters role="tablist" aria-label={t.skills.title}>
+    {filters.map((f, i) => (
+      <button
+        class="border px-4 py-2 font-mono text-[0.68rem] tracking-[0.18em] uppercase transition-all duration-300 data-[active=true]:border-acid data-[active=true]:bg-acid data-[active=true]:text-void border-line text-smoke hover:border-acid/60 hover:text-acid"
+        data-filter={f.key}
+        role="tab"
+        aria-selected={i === 0 ? 'true' : 'false'}
+        data-active={i === 0 ? 'true' : 'false'}
+      >
+        {f.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Grid -->
+  <ul class="mt-10 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-6" data-skill-grid>
+    {SKILLS.map((s) => (
+      <li
+        class="group relative flex aspect-square flex-col items-center justify-center gap-3 bg-void p-4 transition-colors duration-500 hover:bg-surface"
+        data-skill
+        data-cat={s.cat}
+      >
+        <svg
+          class="h-8 w-8 fill-smoke transition-all duration-500 group-hover:fill-acid group-hover:-translate-y-1 md:h-9 md:w-9"
+          role="img"
+          aria-label={s.name}
+          viewBox="0 0 24 24"
+        >
+          <path d={icon(s.icon)}></path>
+        </svg>
+        <span class="text-center font-mono text-[0.65rem] tracking-[0.14em] text-ink uppercase">
+          {s.note ? `${s.name} · ${s.note}` : s.name}
+        </span>
+        <span class="pointer-events-none absolute inset-0 border border-acid/0 transition-colors duration-500 group-hover:border-acid/40"></span>
+      </li>
+    ))}
+  </ul>
+</section>

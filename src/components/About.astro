@@ -1,0 +1,64 @@
+---
+import { getDict, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getDict(locale);
+---
+
+<section id="about" class="relative border-t border-line gutter py-24 md:py-36" data-about>
+  <div class="flex items-center justify-between">
+    <p class="label">{t.about.label}</p>
+    <span class="label hidden md:block">EST. 2021</span>
+  </div>
+
+  <h2 class="mt-10 font-display text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-semibold tracking-tight">
+    <span class="block" data-reveal>{t.about.title}</span>
+    <span class="block text-stroke-acid" data-reveal>{t.about.titleAccent}</span>
+  </h2>
+
+  <div class="mt-14 grid gap-12 md:mt-20 md:grid-cols-12 md:gap-8">
+    <div class="md:col-span-7">
+      <p class="max-w-xl font-display text-xl leading-snug font-medium text-ink md:text-2xl" data-words>
+        {t.about.lead}
+      </p>
+      <p class="mt-8 max-w-xl text-base leading-relaxed text-smoke" data-fade>
+        {t.about.body}
+      </p>
+    </div>
+
+    <div class="md:col-span-5">
+      <dl class="divide-y divide-line border-y border-line">
+        <div class="flex items-center justify-between py-4">
+          <dt class="label">{t.about.facts.location}</dt>
+          <dd class="font-mono text-xs tracking-wider text-ink">40.96°N · 4.83°W</dd>
+        </div>
+        <div class="flex items-center justify-between py-4">
+          <dt class="label">{t.about.facts.languages}</dt>
+          <dd class="font-mono text-xs tracking-wider text-ink">{t.about.facts.languagesValue}</dd>
+        </div>
+        <div class="flex items-center justify-between py-4">
+          <dt class="label">{t.about.facts.focus}</dt>
+          <dd class="font-mono text-xs tracking-wider text-acid">{t.about.facts.focusValue}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="mt-20 grid grid-cols-2 gap-px bg-line md:mt-28 lg:grid-cols-4" data-stats>
+    {t.about.stats.map((s, i) => (
+      <div class="group relative flex flex-col gap-3 bg-void p-6 transition-colors duration-500 hover:bg-surface md:p-8" data-stat data-index={i}>
+        <span
+          class="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-none font-semibold text-ink transition-colors duration-500 group-hover:text-acid"
+          data-count={s.value}
+          data-prefix={s.prefix ?? ''}
+          data-suffix={s.suffix ?? ''}
+        >
+          {s.prefix ?? ''}0{s.suffix ?? ''}
+        </span>
+        <span class="label max-w-[16ch] text-pretty">{s.label}</span>
+        <span class="absolute bottom-0 left-0 h-[2px] w-0 bg-acid transition-all duration-500 group-hover:w-full"></span>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,100 @@
+---
+import { getDict, type Locale } from '../i18n';
+import { EXPERIENCE } from '../data/experience';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getDict(locale);
+---
+
+<section id="work" class="relative border-t border-line gutter py-24 md:py-36" data-experience>
+  <div class="flex items-center justify-between">
+    <p class="label">{t.experience.label}</p>
+    <span class="label hidden md:block">2021 — ∞</span>
+  </div>
+
+  <h2 class="mt-10 font-display text-[clamp(2.4rem,6.5vw,5.5rem)] leading-[1.02] font-semibold tracking-tight" data-reveal>
+    {t.experience.title}<span class="text-acid">.</span>
+  </h2>
+
+  <div class="relative mt-16 md:mt-24">
+    <!-- spine -->
+    <div class="absolute top-0 bottom-0 left-[7px] w-px bg-line md:left-1/2" aria-hidden="true">
+      <div class="absolute top-0 left-0 h-full w-px origin-top scale-y-0 bg-acid" data-spine></div>
+    </div>
+
+    <div class="flex flex-col gap-20 md:gap-32">
+      {EXPERIENCE.map((job, idx) => (
+        <article
+          class:list={['relative grid gap-8 pl-10 md:grid-cols-2 md:gap-16 md:pl-0', idx % 2 === 1 && 'md:[direction:rtl]']}
+          data-job
+        >
+          <!-- node -->
+          <span
+            class="absolute top-2 left-0 flex h-4 w-4 items-center justify-center md:left-1/2 md:-translate-x-1/2"
+            aria-hidden="true"
+          >
+            <span class="absolute h-4 w-4 animate-ping rounded-full bg-acid/25 [animation-duration:2.4s]"></span>
+            <span class="relative h-2 w-2 rounded-full bg-acid"></span>
+          </span>
+
+          <div class="md:[direction:ltr] md:text-right md:pr-14" data-job-meta>
+            <p class="font-mono text-xs tracking-[0.18em] text-acid uppercase">{job.period}</p>
+            <p class="label mt-1">{job.location}</p>
+          </div>
+
+          <div class="md:[direction:ltr]">
+            <h3 class="font-display text-3xl font-semibold tracking-tight text-ink md:text-4xl" data-reveal>
+              {job.company}
+            </h3>
+            <p class="mt-2 font-mono text-xs tracking-[0.16em] text-smoke uppercase" data-fade>
+              {t.experience.jobs[job.id].role}
+            </p>
+
+            <ul class="mt-6 flex flex-col gap-3">
+              {t.experience.jobs[job.id].points.map((p) => (
+                <li class="flex gap-3 text-sm leading-relaxed text-smoke" data-fade>
+                  <svg class="mt-1 h-3 w-3 shrink-0 text-acid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div class="mt-6 flex flex-wrap gap-2" data-fade>
+              {job.techs.map((tech) => (
+                <span class="border border-line px-2.5 py-1 font-mono text-[0.65rem] tracking-wider text-smoke transition-colors duration-300 hover:border-acid/60 hover:text-acid">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <div class="mt-8">
+              <p class="label mb-3">{t.experience.clients}</p>
+              <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+                {job.clients.map((c) => (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group relative block opacity-40 transition-opacity duration-300 hover:opacity-100 [filter:brightness(0)_invert(1)]"
+                    data-magnetic
+                  >
+                    <img
+                      src={c.logo}
+                      alt={c.name}
+                      loading="lazy"
+                      width="120"
+                      height="32"
+                      class="h-7 w-auto object-contain md:h-8"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

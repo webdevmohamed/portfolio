@@ -1,0 +1,62 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/jetbrains-mono';
+import '../styles/global.css';
+import { getDict, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  lang: 'es' | 'en';
+}
+
+const { locale, lang } = Astro.props;
+const t = getDict(locale);
+const other: Locale = locale === 'es' ? 'en' : 'es';
+const otherHref = locale === 'es' ? '/en/' : '/';
+
+const ogImage = '/og.png';
+---
+
+<!doctype html>
+<html lang={lang} class="has-cursor">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{t.meta.title}</title>
+    <meta name="description" content={t.meta.description} />
+    <meta name="author" content={t.meta.name} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={`https://morta.vercel.app${locale === 'es' ? '/' : '/en/'}`} />
+    <link rel="alternate" hreflang={other} href={`https://morta.vercel.app${otherHref}`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:image" content={`https://morta.vercel.app${ogImage}`} />
+    <meta property="og:url" content={`https://morta.vercel.app${locale === 'es' ? '/' : '/en/'}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500&display=swap"
+    />
+
+    <script>
+      // Freeze scroll while the preloader is up (before paint).
+      document.documentElement.classList.add('is-loading');
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="cursor-ring" aria-hidden="true" data-cursor-ring></div>
+    <div class="cursor-dot" aria-hidden="true" data-cursor-dot></div>
+
+    <script>
+      import '../scripts/app';
+    </script>
+  </body>
+</html>
