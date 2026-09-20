@@ -50,24 +50,31 @@ function icon(slug: string) {
 
   <!-- Grid -->
   <ul class="mt-10 grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-6" data-skill-grid>
-    {SKILLS.map((s) => (
+    {SKILLS.map((s, i) => (
       <li
         class="group relative flex aspect-square flex-col items-center justify-center gap-3 bg-void p-4 transition-colors duration-500 hover:bg-surface"
         data-skill
         data-cat={s.cat}
       >
+        <span
+          class="absolute top-2 left-2.5 font-mono text-[0.55rem] tracking-widest text-smoke/40 transition-colors duration-500 group-hover:text-acid/80"
+          aria-hidden="true"
+        >
+          {String(i + 1).padStart(2, '0')}
+        </span>
         <svg
-          class="h-8 w-8 fill-smoke transition-all duration-500 group-hover:fill-acid group-hover:-translate-y-1 md:h-9 md:w-9"
+          class="h-8 w-8 fill-smoke transition-all duration-500 group-hover:scale-110 group-hover:fill-acid group-hover:-translate-y-1 md:h-9 md:w-9"
           role="img"
           aria-label={s.name}
           viewBox="0 0 24 24"
         >
           <path d={icon(s.icon)}></path>
         </svg>
-        <span class="text-center font-mono text-[0.65rem] tracking-[0.14em] text-ink uppercase">
+        <span class="text-center font-mono text-[0.65rem] tracking-[0.14em] text-ink uppercase transition-colors duration-500 group-hover:text-acid">
           {s.note ? `${s.name} · ${s.note}` : s.name}
         </span>
-        <span class="pointer-events-none absolute inset-0 border border-acid/0 transition-colors duration-500 group-hover:border-acid/40"></span>
+        <span class="pointer-events-none absolute inset-0 border border-acid/0 transition-all duration-500 group-hover:border-acid/50 group-hover:shadow-[inset_0_0_34px_rgba(198,241,53,0.07)]"></span>
+        <span class="pointer-events-none absolute right-0 bottom-0 h-[2px] w-0 bg-acid transition-all duration-500 group-hover:w-full"></span>
       </li>
     ))}
   </ul>

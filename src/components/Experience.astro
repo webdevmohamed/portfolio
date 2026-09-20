@@ -37,7 +37,7 @@ const t = getDict(locale);
             <span class="relative h-2 w-2 rounded-full bg-acid"></span>
           </span>
 
-          <div class="md:[direction:ltr] md:text-right md:pr-14" data-job-meta>
+          <div class:list={["md:[direction:ltr]", idx % 2 === 1 ? 'md:pl-14' : 'md:text-right md:pr-14']} data-job-meta>
             <p class="font-mono text-xs tracking-[0.18em] text-acid uppercase">{job.period}</p>
             <p class="label mt-1">{job.location}</p>
           </div>

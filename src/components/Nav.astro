@@ -15,7 +15,7 @@ const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
 const other: Locale = locale === 'es' ? 'en' : 'es';
 ---
 
-<header class="fixed inset-x-0 top-0 z-[100]" data-nav>
+<header id="site-header" class="fixed inset-x-0 top-0 z-[100]" data-nav>
   <div class="gutter flex items-center justify-between py-4 md:py-5">
     <a
       href="#hello"
@@ -42,7 +42,7 @@ const other: Locale = locale === 'es' ? 'en' : 'es';
     <div class="flex items-center gap-3">
       <a
         href={other === 'en' ? '/en/' : '/'}
-        class="label inline-flex items-center border border-line px-3 py-2 transition-colors duration-300 hover:border-acid hover:text-acid"
+        class="label inline-flex h-10 items-center border border-line px-3 transition-colors duration-300 hover:border-acid hover:text-acid"
         data-magnetic
         hreflang={other}
         aria-label={other === 'en' ? 'Switch to English' : 'Cambiar a Español'}
@@ -53,10 +53,10 @@ const other: Locale = locale === 'es' ? 'en' : 'es';
         href={cvHref}
         target="_blank"
         rel="noopener"
-        class="label hidden items-center border border-acid/60 px-3 py-2 text-acid transition-all duration-300 hover:bg-acid hover:text-void sm:inline-flex"
+        class="label inline-flex h-10 items-center border border-acid/60 px-3 text-acid transition-all duration-300 hover:bg-acid hover:text-void"
         data-magnetic
       >
-        CV ↓
+        {t.nav.cv}
       </a>
       <button
         class="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border border-line lg:hidden"

@@ -38,6 +38,13 @@ html {
   scrollbar-color: color-mix(in srgb, var(--color-acid) 35%, transparent) transparent;
 }
 
+/* Fixed header needs its own veil, otherwise it melts into the hero on scroll */
+#site-header {
+  background: color-mix(in srgb, var(--color-void) 72%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }

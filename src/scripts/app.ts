@@ -115,7 +115,6 @@ function runPreloader(onDone: () => void) {
   const counter = pre?.querySelector<HTMLElement>('[data-counter]');
   const shutter = pre?.querySelector<HTMLElement>('[data-shutter]');
   const cover = pre?.querySelector<HTMLElement>('[data-shutter-cover]');
-  const enterBtn = pre?.querySelector<HTMLElement>('[data-enter]');
 
   const finish = () => {
     document.documentElement.classList.remove('is-loading');
@@ -139,10 +138,6 @@ function runPreloader(onDone: () => void) {
       counter.textContent = String(Math.round(state.v)).padStart(2, '0');
     },
     onComplete: () => {
-      // Release the enter button
-      enterBtn?.classList.remove('pointer-events-none');
-      if (enterBtn) gsap.to(enterBtn, { opacity: 1, duration: 0.4 });
-      // Auto-continue, but keep button for impatient users
       const go = () => {
         if (!cover || !shutter) {
           pre.remove();
@@ -156,10 +151,7 @@ function runPreloader(onDone: () => void) {
           .to(shutter, { y: 0, duration: 0.01 }, 0)
           .to(shutter, { y: '-100%', duration: 0.7, ease: 'power4.inOut' }, 0.28);
       };
-      let done = false;
-      const once = () => { if (!done) { done = true; go(); } };
-      enterBtn?.addEventListener('click', once, { once: true });
-      setTimeout(once, 900);
+      go();
     },
   });
   return count;
@@ -360,7 +352,11 @@ const SCRAMBLE_CHARS = '!<>-_\\/[]{}—=+*^?#________';
 function initScramble() {
   if (prefersReduced || SNAP) return;
   $$('[data-scramble]').forEach((el) => {
-    const original = el.textContent ?? '';
+    // Scramble ONLY the text node, preserving child elements (e.g. the 01
+    // number span) — writing textContent on the parent destroyed them.
+    const textNode = [...el.childNodes].find((n) => n.nodeType === Node.TEXT_NODE && n.textContent?.trim());
+    if (!textNode) return;
+    const original = textNode.textContent ?? '';
     let frame = 0;
     let raf = 0;
     const animate = () => {
@@ -370,9 +366,9 @@ function initScramble() {
         .split('')
         .map((ch, i) => (i < reveal || ch === ' ' ? ch : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]))
         .join('');
-      el.textContent = out;
+      textNode.textContent = out;
       if (reveal < original.length) raf = requestAnimationFrame(animate);
-      else el.textContent = original;
+      else textNode.textContent = original;
     };
     el.addEventListener('mouseenter', () => {
       cancelAnimationFrame(raf);

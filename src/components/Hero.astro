@@ -6,22 +6,15 @@ const t = getDict(locale);
 const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
 ---
 
-<section id="hello" class="relative flex min-h-svh flex-col justify-end overflow-hidden gutter pb-8 md:pb-10" data-hero>
-  <!-- Interactive globe (right side) -->
-  <div class="pointer-events-none absolute inset-y-0 globe-anchor hidden w-[46%] items-center justify-center md:flex" aria-hidden="true">
-    <div class="relative h-full max-h-[86vh] w-full touch-none select-none" data-globe style="pointer-events:auto"></div>
-    <span class="label absolute right-0 bottom-[9vh] flex items-center gap-2 text-smoke/70">
-      <span class="inline-block h-1 w-1 rounded-full bg-acid"></span>
-      {t.hero.drag}
-    </span>
+<section id="hello" class="relative flex min-h-svh flex-col justify-end overflow-hidden gutter pb-8 md:pb-10" data-hero>  <!-- Interactive globe: ambient backdrop on mobile, main visual on md+ -->
+  <div
+    class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-35 md:inset-y-0 md:left-auto md:right-0 md:w-[46%] md:opacity-100 globe-anchor"
+    aria-hidden="true"
+  >
+    <div class="relative h-full max-h-[86vh] w-full touch-none select-none md:pointer-events-auto" data-globe></div>
   </div>
 
   <div class="flex flex-col gap-6">
-    <p class="label flex items-center gap-3" data-hero-fade>
-      <span class="inline-block h-1.5 w-1.5 rounded-full bg-acid animate-pulse-dot"></span>
-      {t.hero.available}
-    </p>
-
     <p class="label" data-hero-fade>{t.hero.greeting} —</p>
 
     <h1 class="font-display font-semibold leading-[0.92] tracking-tight text-ink">
@@ -39,9 +32,9 @@ const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
           {t.hero.role}
         </p>
         <div class="flex flex-wrap items-center gap-4" data-hero-fade>
-          <a href="#work" class="btn-acid" data-magnetic>{t.hero.viewCv} →</a>
+          <a href="#work" class="btn-acid" data-magnetic>{t.hero.viewWork} ↓</a>
           <a href={cvHref} target="_blank" rel="noopener" class="label link-underline inline-flex h-11 items-center text-ink">
-            CV ↓
+            {t.nav.cv}
           </a>
         </div>
       </div>
@@ -49,10 +42,6 @@ const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
       <div class="flex flex-col items-start gap-1 font-mono text-[0.65rem] tracking-[0.18em] text-smoke uppercase md:items-end" data-hero-fade>
         <span>{t.hero.based}</span>
         <span class="text-ink" data-clock>--:--:--</span>
-        <span class="mt-2 flex items-center gap-2">
-          <span class="inline-block h-1 w-1 rounded-full bg-acid"></span>
-          {t.hero.scroll} ↓
-        </span>
       </div>
     </div>
   </div>

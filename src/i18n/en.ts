@@ -5,6 +5,7 @@ export default {
     work: 'Experience',
     skills: 'Skills',
     contact: 'Contact',
+    cv: 'CV · PDF ↓',
   },
   meta: {
     name: 'Mohamed Mortahil Elaaouad',
@@ -25,10 +26,8 @@ export default {
     role: 'FULL STACK WEB DEVELOPER',
     based: 'Talavera de la Reina, Spain',
     available: 'Available for new projects',
-    scroll: 'scroll to explore',
     years: 'years of experience',
-    viewCv: 'View CV',
-    drag: 'drag the globe ↻',
+    viewWork: 'See experience',
   },
   marquee: {
     items: ['LARAVEL', 'VUE', 'NUXT', 'STRIPE', 'ALGOLIA', 'OPENAI API', 'AWS S3', 'MYSQL', 'LINUX', 'TAILWIND'],
