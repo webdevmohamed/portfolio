@@ -23,7 +23,7 @@ const SITE_URL = SITE.href.replace(/\/$/, '');
 const canonical = locale === 'es' ? `${SITE_URL}/` : `${SITE_URL}/en/`;
 const alternateHref = locale === 'es' ? `${SITE_URL}/en/` : `${SITE_URL}/`;
 const ogImage = `${SITE_URL}/og.png`;
-const ogImageAlt = `${t.meta.name} — ${t.meta.role}`;
+const ogImageAlt = `${t.meta.name}: ${t.meta.role}`;
 
 // ------------------------------------------------------------------
 // JSON-LD: structured data for search engines AND answer engines

@@ -94,7 +94,7 @@ if (SNAP) {
     el.textContent = `${(el as HTMLElement).dataset.prefix ?? ''}${target}${(el as HTMLElement).dataset.suffix ?? ''}`;
   });
   // Single-section render for snapshot tooling: hide every other <main> child
-  // so the requested section sits at the top of the viewport (no scrolling —
+  // so the requested section sits at the top of the viewport (no scrolling -
   // Edge headless screenshots are unreliable once the page is scrolled).
   const only = new URLSearchParams(location.search).get('only');
   if (only && /^[a-z-]+$/i.test(only)) {
@@ -336,7 +336,7 @@ function initScramble() {
   if (prefersReduced || SNAP) return;
   $$('[data-scramble]').forEach((el) => {
     // Scramble ONLY the text node, preserving child elements (e.g. the 01
-    // number span) — writing textContent on the parent destroyed them.
+    // number span) - writing textContent on the parent destroyed them.
     const textNode = [...el.childNodes].find((n) => n.nodeType === Node.TEXT_NODE && n.textContent?.trim());
     if (!textNode) return;
     const original = textNode.textContent ?? '';
@@ -435,7 +435,7 @@ function initCopyEmail() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Contact form — client-side validation, composes a mailto: draft      */
+/* Contact form - client-side validation, composes a mailto: draft      */
 /* ------------------------------------------------------------------ */
 function initContactForm() {
   const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
@@ -486,8 +486,8 @@ function initContactForm() {
     const name = fields.name!.value.trim();
     const email = fields.email!.value.trim();
     const message = fields.message!.value.trim();
-    const subject = `Portfolio — mensaje de ${name}`;
-    const body = `${message}\n\n— ${name} (${email})`;
+    const subject = `Portfolio - mensaje de ${name}`;
+    const body = `${message}\n\n- ${name} (${email})`;
 
     if (status) status.textContent = form.dataset.statusSent ?? '';
     if (submitLabel) {

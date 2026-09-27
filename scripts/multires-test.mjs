@@ -56,7 +56,7 @@ async function waitForFile(file, timeoutMs = 45000) {
       const file = `${s.name}-${id}.png`;
       const outPath = path.join(OUT_WIN, file);
       // snap + only: render just one section at the top (Edge headless can't
-      // capture scrolled pages reliably — hiding siblings avoids scrolling)
+      // capture scrolled pages reliably - hiding siblings avoids scrolling)
       const url = `${BASE}/?snap=1${page !== 'hello' ? `&only=${page}` : ''}`;
       // window-size in physical px = css * DSF
       const winW = Math.round(s.w * DSF);

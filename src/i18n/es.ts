@@ -10,7 +10,7 @@ export default {
   meta: {
     name: 'Mohamed Mortahil Elaaouad',
     role: 'Desarrollador Web Full Stack',
-    title: 'Mohamed Mortahil — Desarrollador Web Full Stack',
+    title: 'Mohamed Mortahil - Desarrollador Web Full Stack',
     description:
       'Desarrollador Full Stack con 6 años de experiencia: Laravel, Vue, Nuxt, IA aplicada y cloud. Sistemas que automatizan el 90% del procesamiento manual y búsquedas en menos de 50ms.',
   },
@@ -27,11 +27,11 @@ export default {
     items: ['LARAVEL', 'VUE', 'NUXT', 'STRIPE', 'ALGOLIA', 'OPENAI API', 'AWS S3', 'MYSQL', 'LINUX', 'TAILWIND'],
   },
   about: {
-    label: '01 — Sobre mí',
+    label: '01 - Sobre mí',
     title: 'No hago páginas.',
     titleAccent: 'Construyo sistemas.',
     lead:
-      'Desde 2021 lidero el ciclo de vida completo de software: modelado de datos, backend, frontend, cloud e IA. Autonomía técnica de principio a fin — de la idea al servidor en producción.',
+      'Desde 2021 lidero el ciclo de vida completo de software: modelado de datos, backend, frontend, cloud e IA. Autonomía técnica de principio a fin: de la idea al servidor en producción.',
     body:
       'Trabajo el stack Laravel + Vue/Nuxt con foco en arquitecturas escalables y en medir el impacto: procesamiento de pedidos automatizado con IA en un 90%, búsquedas por debajo de 50ms, cargas web un 70% más rápidas. Antes, buscadores de alta concurrencia integrados en la plataforma de Renfe.',
     stats: [
@@ -49,7 +49,7 @@ export default {
     },
   },
   experience: {
-    label: '02 — Experiencia',
+    label: '02 - Experiencia',
     title: 'Dónde dejé huella',
     highlights: 'Resultados',
     clients: 'Clientes y proyectos',
@@ -81,13 +81,13 @@ export default {
     },
   },
   skills: {
-    label: '03 — Arsenal',
+    label: '03 - Arsenal',
     title: 'Herramientas del oficio',
     description: 'Tecnologías con las que construyo productos de principio a fin.',
     filters: { all: 'Todas', frontend: 'Frontend', backend: 'Backend', cloud: 'Cloud & IA' },
   },
   contact: {
-    label: '04 — Contacto',
+    label: '04 - Contacto',
     titleLead: '¿Hablemos',
     titleRest: 'ahora?',
     description: 'Un proyecto, una oferta o una idea. Respondo rápido.',

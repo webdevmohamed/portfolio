@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI answer engines — explicitly welcome (AEO)
+# AI answer engines: explicitly welcome (AEO)
 User-agent: GPTBot
 Allow: /
 User-agent: OAI-SearchBot

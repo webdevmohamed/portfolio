@@ -10,7 +10,7 @@ export default {
   meta: {
     name: 'Mohamed Mortahil Elaaouad',
     role: 'Full Stack Web Developer',
-    title: 'Mohamed Mortahil — Full Stack Web Developer',
+    title: 'Mohamed Mortahil - Full Stack Web Developer',
     description:
       'Full Stack Developer with 6 years of experience: Laravel, Vue, Nuxt, applied AI and cloud. Systems that automate 90% of manual processing and sub-50ms search.',
   },
@@ -27,11 +27,11 @@ export default {
     items: ['LARAVEL', 'VUE', 'NUXT', 'STRIPE', 'ALGOLIA', 'OPENAI API', 'AWS S3', 'MYSQL', 'LINUX', 'TAILWIND'],
   },
   about: {
-    label: '01 — About',
+    label: '01 - About',
     title: 'I don’t build pages.',
     titleAccent: 'I build systems.',
     lead:
-      'Since 2021 I’ve led the full software lifecycle: data modeling, backend, frontend, cloud and AI. End-to-end technical autonomy — from idea to production server.',
+      'Since 2021 I’ve led the full software lifecycle: data modeling, backend, frontend, cloud and AI. End-to-end technical autonomy: from idea to production server.',
     body:
       'I work the Laravel + Vue/Nuxt stack with a focus on scalable architectures and measuring impact: AI-automated order processing down 90%, search under 50ms, web loads 70% faster. Before that, high-concurrency search engines integrated into Renfe’s booking platform.',
     stats: [
@@ -49,7 +49,7 @@ export default {
     },
   },
   experience: {
-    label: '02 — Experience',
+    label: '02 - Experience',
     title: 'Where I left a mark',
     highlights: 'Results',
     clients: 'Clients & projects',
@@ -81,13 +81,13 @@ export default {
     },
   },
   skills: {
-    label: '03 — Arsenal',
+    label: '03 - Arsenal',
     title: 'Tools of the trade',
     description: 'The technologies I use to build products from start to finish.',
     filters: { all: 'All', frontend: 'Frontend', backend: 'Backend', cloud: 'Cloud & AI' },
   },
   contact: {
-    label: '04 — Contact',
+    label: '04 - Contact',
     titleLead: 'Shall',
     titleRest: 'we talk?',
     description: 'A project, an offer or an idea. I reply fast.',

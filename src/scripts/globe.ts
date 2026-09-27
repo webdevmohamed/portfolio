@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------ */
-/* Hero globe — dotted sphere + acid arcs. Three.js is dynamically     */
+/* Hero globe - dotted sphere + acid arcs. Three.js is dynamically     */
 /* imported so mobile/legacy users never download the chunk.           */
 /* ------------------------------------------------------------------ */
 
@@ -234,7 +234,7 @@ async function boot(
   };
   addEventListener('pointerup', endDrag);
   // A backgrounded tab never delivers `pointerup`, and a lost capture delivers
-  // neither — without these, `dragging` latches true and the idle auto-rotate
+  // neither - without these, `dragging` latches true and the idle auto-rotate
   // branch in the loop never runs again.
   addEventListener('pointercancel', abortDrag);
   addEventListener('blur', abortDrag);
@@ -244,7 +244,7 @@ async function boot(
   // document.hidden inside the loop. Sharing one flag between both used to
   // deadlock the globe: a backgrounded tab can report a stale
   // isIntersecting:false, and the old `visible !== false` guard then made that
-  // permanent — the loop returned early forever after the tab regained focus.
+  // permanent - the loop returned early forever after the tab regained focus.
   let inView = true;
   const io = new IntersectionObserver(([entry]) => (inView = entry.isIntersecting), { threshold: 0.02 });
   io.observe(host);
@@ -268,7 +268,7 @@ async function boot(
     if (document.hidden || !inView) return;
 
     // Belt & suspenders: ResizeObserver can miss display:none→block flips in
-    // some embedders — check the real box every frame (cheap int compare).
+    // some embedders - check the real box every frame (cheap int compare).
     if (host.clientWidth !== lastW || host.clientHeight !== lastH) resize();
 
     const enter = ease(Math.min(1, (now - started) / 1400));

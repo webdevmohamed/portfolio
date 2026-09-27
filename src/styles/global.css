@@ -138,7 +138,7 @@ body {
   }
 }
 
-/* Same cap as .gutter, but as an inset — for absolutely positioned elements
+/* Same cap as .gutter, but as an inset - for absolutely positioned elements
    (padding on an ancestor does not constrain position:absolute children). */
 .globe-anchor {
   right: max(1.25rem, calc((100% - 96rem) / 2));
