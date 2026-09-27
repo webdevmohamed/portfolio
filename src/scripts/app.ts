@@ -1,9 +1,12 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
+import { EMAIL } from '../data/site';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+// ScrollTrigger and SplitText are only used by below-the-fold work, but
+// registering them at import time cost ~1s of main-thread time before the first
+// paint. They are loaded after the hero has painted instead.
+let ScrollTrigger: typeof import('gsap/ScrollTrigger').ScrollTrigger | null = null;
+let SplitText: typeof import('gsap/SplitText').SplitText | null = null;
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isFinePointer = window.matchMedia('(pointer: fine)').matches;
@@ -17,11 +20,9 @@ let lenis: Lenis | null = null;
 if (!prefersReduced && !SNAP) {
   lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 1.05 });
   (window as unknown as Record<string, unknown>).__lenis = lenis;
-  lenis.on('scroll', ScrollTrigger.update);
   const raf = (time: number) => lenis!.raf(time * 1000);
   gsap.ticker.add(raf);
   gsap.ticker.lagSmoothing(0);
-  lenis.stop(); // frozen until preloader completes
 }
 
 /* ------------------------------------------------------------------ */
@@ -59,7 +60,26 @@ function startClocks() {
     els.forEach((el) => (el.textContent = s));
   };
   tick();
-  setInterval(tick, 1000);
+  // A one-second timer that never stops wakes the page up every second even
+  // when the tab is hidden or the clock is scrolled out of sight.
+  let timer = 0;
+  const start = () => {
+    if (!timer) timer = window.setInterval(tick, 1000);
+  };
+  const stop = () => {
+    clearInterval(timer);
+    timer = 0;
+  };
+  start();
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
+      { threshold: 0.01 },
+    );
+    els.forEach((el) => io.observe(el));
+  }
 }
 startClocks();
 
@@ -67,8 +87,6 @@ startClocks();
 /* Snapshot mode: static render, everything visible, no motion          */
 /* ------------------------------------------------------------------ */
 if (SNAP) {
-  document.querySelector('[data-preloader]')?.remove();
-  document.documentElement.classList.remove('is-loading');
   document.documentElement.classList.remove('has-cursor');
   // Final counter values
   $$('[data-count]').forEach((el) => {
@@ -119,58 +137,7 @@ if (SNAP) {
 }
 
 /* ------------------------------------------------------------------ */
-/* Preloader: counter → shutter → hero intro                           */
-/* ------------------------------------------------------------------ */
-function runPreloader(onDone: () => void) {
-  if (SNAP) return;
-  const pre = document.querySelector<HTMLElement>('[data-preloader]');
-  const counter = pre?.querySelector<HTMLElement>('[data-counter]');
-  const shutter = pre?.querySelector<HTMLElement>('[data-shutter]');
-  const cover = pre?.querySelector<HTMLElement>('[data-shutter-cover]');
-
-  const finish = () => {
-    document.documentElement.classList.remove('is-loading');
-    lenis?.start();
-    heroIntro();
-    onDone();
-  };
-
-  if (!pre || !counter || !shutter || prefersReduced) {
-    pre?.remove();
-    finish();
-    return;
-  }
-
-  const state = { v: 0 };
-  const count = gsap.to(state, {
-    v: 100,
-    duration: 1.6,
-    ease: 'power2.inOut',
-    onUpdate: () => {
-      counter.textContent = String(Math.round(state.v)).padStart(2, '0');
-    },
-    onComplete: () => {
-      const go = () => {
-        if (!cover || !shutter) {
-          pre.remove();
-          finish();
-          return;
-        }
-        gsap
-          .timeline({ onComplete: () => { pre.remove(); finish(); } })
-          .to(cover, { scaleY: 0, duration: 0.55, ease: 'power3.inOut' }, 0)
-          .to(counter.parentElement!, { opacity: 0, duration: 0.3 }, 0)
-          .to(shutter, { y: 0, duration: 0.01 }, 0)
-          .to(shutter, { y: '-100%', duration: 0.7, ease: 'power4.inOut' }, 0.28);
-      };
-      go();
-    },
-  });
-  return count;
-}
-
-/* ------------------------------------------------------------------ */
-/* Hero intro after preloader                                          */
+/* Hero intro                                                           */
 /* ------------------------------------------------------------------ */
 function heroIntro() {
   if (prefersReduced) return;
@@ -231,19 +198,22 @@ function initScrollAnimations() {
   });
 
   // Manifesto word-by-word opacity
-  $$('[data-words]').forEach((el) => {
-    const split = new SplitText(el as HTMLElement, { type: 'words' });
-    gsap.fromTo(
-      split.words,
-      { opacity: 0.12 },
-      {
-        opacity: 1,
-        stagger: 0.06,
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: 0.6 },
-      },
-    );
-  });
+  const Split = SplitText;
+  if (Split) {
+    $$('[data-words]').forEach((el) => {
+      const split = new Split(el as HTMLElement, { type: 'words' });
+      gsap.fromTo(
+        split.words,
+        { opacity: 0.12 },
+        {
+          opacity: 1,
+          stagger: 0.06,
+          ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: 0.6 },
+        },
+      );
+    });
+  }
 
   // Timeline spine draw
   const spine = document.querySelector('[data-spine]');
@@ -272,14 +242,15 @@ function initScrollAnimations() {
   });
 
   // Stat counters
+  const ST = ScrollTrigger;
   $$('[data-stat]').forEach((stat) => {
     const numEl = stat.querySelector<HTMLElement>('[data-count]');
-    if (!numEl) return;
+    if (!numEl || !ST) return;
     const target = Number(numEl.dataset.count);
     const prefix = numEl.dataset.prefix ?? '';
     const suffix = numEl.dataset.suffix ?? '';
     const obj = { v: 0 };
-    ScrollTrigger.create({
+    ST.create({
       trigger: stat,
       start: 'top 85%',
       once: true,
@@ -417,7 +388,7 @@ function initSkillFilters() {
           item.style.display = 'none';
         }
       });
-      ScrollTrigger.refresh();
+      ScrollTrigger?.refresh();
     });
   });
 }
@@ -441,12 +412,12 @@ function initCopyEmail() {
     };
     btn.addEventListener('click', async () => {
       try {
-        await navigator.clipboard.writeText('mohamed.mortahil@gmail.com');
+        await navigator.clipboard.writeText(EMAIL);
         flash();
       } catch {
         // Legacy fallback
         const ta = document.createElement('textarea');
-        ta.value = 'mohamed.mortahil@gmail.com';
+        ta.value = EMAIL;
         ta.style.position = 'fixed';
         ta.style.opacity = '0';
         document.body.appendChild(ta);
@@ -455,7 +426,7 @@ function initCopyEmail() {
           document.execCommand('copy');
           flash();
         } catch {
-          window.location.href = 'mailto:mohamed.mortahil@gmail.com';
+          window.location.href = `mailto:${EMAIL}`;
         }
         ta.remove();
       }
@@ -524,7 +495,7 @@ function initContactForm() {
     }
     // Paint the success state first, then hand off to the mail client
     setTimeout(() => {
-      window.location.href = `mailto:mohamed.mortahil@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }, 60);
 
     setTimeout(() => {
@@ -584,18 +555,34 @@ function initAnchors() {
 }
 
 /* ------------------------------------------------------------------ */
-window.addEventListener('load', () => {
-  initCursor();
-  initMagnetic();
-  initScramble();
-  initSkillFilters();
-  initCopyEmail();
-  initContactForm();
-  initMobileMenu();
-  initAnchors();
-  if (SNAP) return; // static mode: no preloader, no scroll animations
-  runPreloader(() => {
+/* Boot                                                                 */
+/* ------------------------------------------------------------------ */
+// This module is deferred, so the DOM is already parsed. Only the hero intro
+// stays on the critical path -- `from()` sets its start state, so deferring it
+// would flash the headline visible and then hide it again.
+lenis?.start();
+heroIntro();
+
+// Everything else waited for `load` originally (idling until the fonts and the
+// globe chunk had arrived), and moving it all inline was worse: one 1.4 s task
+// ran before the first paint. Deferred past the first paint it costs nothing
+// visible and the headline paints immediately.
+requestAnimationFrame(() =>
+  requestAnimationFrame(async () => {
+    const [st, sp] = await Promise.all([import('gsap/ScrollTrigger'), import('gsap/SplitText')]);
+    ScrollTrigger = st.ScrollTrigger;
+    SplitText = sp.SplitText;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    lenis?.on('scroll', ScrollTrigger.update);
     initScrollAnimations();
     ScrollTrigger.refresh();
-  });
-});
+    initCursor();
+    initMagnetic();
+    initScramble();
+    initSkillFilters();
+    initCopyEmail();
+    initContactForm();
+    initMobileMenu();
+    initAnchors();
+  }),
+);

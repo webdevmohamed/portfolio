@@ -33,6 +33,4 @@ export const SKILLS: Skill[] = [
   { name: 'Algolia', cat: 'cloud', icon: 'algolia' },
   { name: 'OpenAI API', cat: 'cloud', icon: 'claude', note: 'AI' },
   { name: 'Claude API', cat: 'cloud', icon: 'anthropic' },
-  { name: 'Figma', cat: 'cloud', icon: 'figma' },
-  { name: 'Vite', cat: 'cloud', icon: 'vite' },
 ];

@@ -3,6 +3,10 @@ import '@fontsource-variable/space-grotesk';
 import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import { getDict, type Locale } from '../i18n';
+import { EMAIL } from '../data/site';
+import clashDisplay600 from '../assets/fonts/clash-display-600.woff2?url';
+import spaceGroteskLatin from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
+import jetbrainsMonoLatin from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 
 interface Props {
   locale: Locale;
@@ -33,7 +37,7 @@ const person = {
   jobTitle: t.meta.role,
   description: t.meta.description,
   url: canonical,
-  email: 'mailto:mohamed.mortahil@gmail.com',
+  email: `mailto:${EMAIL}`,
   telephone: '+34 632 15 94 01',
   image: ogImage,
   address: {
@@ -104,6 +108,14 @@ const jsonLd = {
     <meta name="color-scheme" content="dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- The three faces used above the fold. Without these the woff2 requests
+         only start once the stylesheet has parsed and the @font-face matched,
+         which serialises font download behind CSS. `crossorigin` is required
+         even same-origin: font fetches are always CORS-mode. -->
+    <link rel="preload" href={clashDisplay600} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={spaceGroteskLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={jetbrainsMonoLatin} as="font" type="font/woff2" crossorigin />
+
     <!-- Canonical + hreflang (x-default points to the primary language) -->
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={locale} href={canonical} />
@@ -132,17 +144,6 @@ const jsonLd = {
 
     <!-- Structured data: Person + WebSite + ProfilePage -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500&display=swap"
-    />
-
-    <script>
-      // Freeze scroll while the preloader is up (before paint).
-      document.documentElement.classList.add('is-loading');
-    </script>
   </head>
   <body>
     <slot />

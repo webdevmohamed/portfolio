@@ -14,17 +14,12 @@ export default {
     description:
       'Full Stack Developer with 6 years of experience: Laravel, Vue, Nuxt, applied AI and cloud. Systems that automate 90% of manual processing and sub-50ms search.',
   },
-  preloader: {
-    loading: 'LOADING PORTFOLIO',
-    enter: 'ENTER',
-    hint: 'MOHAMED MORTAHIL © 2026',
-  },
   hero: {
     greeting: "Hi, I'm",
     name1: 'MOHAMED',
     name2: 'MORTAHIL',
     role: 'FULL STACK WEB DEVELOPER',
-    based: 'Talavera de la Reina, Spain',
+    localTime: 'Local time',
     years: 'years of experience',
     viewWork: 'See experience',
   },
@@ -93,7 +88,8 @@ export default {
   },
   contact: {
     label: '04 — Contact',
-    title: 'Shall we talk?',
+    titleLead: 'Shall',
+    titleRest: 'we talk?',
     description: 'A project, an offer or an idea. I reply fast.',
     emailLabel: 'Email me',
     copy: 'Copy',
@@ -103,7 +99,7 @@ export default {
     cvLabel: 'Résumé',
     cvEs: 'Descargar CV · ES',
     cvEn: 'Download CV · EN',
-    footer: 'Designed & hand-coded by Mohamed Mortahil',
+    footer: 'Mohamed Mortahil',
     localTime: 'Local time',
     backTop: 'Back to top',
     form: {

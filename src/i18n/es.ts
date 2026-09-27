@@ -14,17 +14,12 @@ export default {
     description:
       'Desarrollador Full Stack con 6 años de experiencia: Laravel, Vue, Nuxt, IA aplicada y cloud. Sistemas que automatizan el 90% del procesamiento manual y búsquedas en menos de 50ms.',
   },
-  preloader: {
-    loading: 'CARGANDO PORTFOLIO',
-    enter: 'ENTRAR',
-    hint: 'MOHAMED MORTAHIL © 2026',
-  },
   hero: {
     greeting: 'Hola, soy',
     name1: 'MOHAMED',
     name2: 'MORTAHIL',
     role: 'DESARROLLADOR WEB FULL STACK',
-    based: 'Talavera de la Reina, España',
+    localTime: 'Hora local',
     years: 'años de experiencia',
     viewWork: 'Ver experiencia',
   },
@@ -93,7 +88,8 @@ export default {
   },
   contact: {
     label: '04 — Contacto',
-    title: '¿Hablemos?',
+    titleLead: '¿Hablemos',
+    titleRest: 'ahora?',
     description: 'Un proyecto, una oferta o una idea. Respondo rápido.',
     emailLabel: 'Escríbeme',
     copy: 'Copiar',
@@ -103,7 +99,7 @@ export default {
     cvLabel: 'Currículum',
     cvEs: 'Descargar CV · ES',
     cvEn: 'Download CV · EN',
-    footer: 'Diseñado y desarrollado a mano por Mohamed Mortahil',
+    footer: 'Mohamed Mortahil',
     localTime: 'Hora local',
     backTop: 'Volver arriba',
     form: {

@@ -1,5 +1,6 @@
 ---
 import { getDict, type Locale } from '../i18n';
+import { EMAIL } from '../data/site';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getDict(locale);
@@ -13,8 +14,8 @@ const t = getDict(locale);
   <div>
     <p class="label">{t.contact.label}</p>
     <h2 class="mt-10 font-display text-[clamp(3rem,11vw,10rem)] leading-[0.95] font-semibold tracking-tight">
-      <span class="block" data-reveal>{t.contact.title.split(' ')[0]}</span>
-      <span class="block text-stroke-acid" data-reveal>{t.contact.title.split(' ').slice(1).join(' ') || '­'}</span>
+      <span class="block" data-reveal>{t.contact.titleLead}</span>
+      <span class="block text-stroke-acid" data-reveal>{t.contact.titleRest}</span>
     </h2>
     <p class="mt-6 max-w-md text-smoke" data-fade>{t.contact.description}</p>
   </div>
@@ -105,10 +106,10 @@ const t = getDict(locale);
         <p class="label mb-3">{t.contact.emailLabel}</p>
         <div class="group flex flex-wrap items-center gap-4">
           <a
-            href="mailto:mohamed.mortahil@gmail.com"
+            href={`mailto:${EMAIL}`}
             class="link-underline min-w-0 font-display text-2xl font-medium break-all text-ink transition-colors hover:text-acid md:text-4xl"
             data-magnetic
-          >mohamed.mortahil@gmail.com</a>
+          >{EMAIL}</a>
           <button
             class="label border border-line px-3 py-2 transition-all duration-300 hover:border-acid hover:text-acid"
             data-copy-email
@@ -160,8 +161,7 @@ const t = getDict(locale);
     </a>
   </div>
 
-  <footer class="mt-20 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
+  <footer class="mt-20 flex flex-wrap items-center gap-4 border-t border-line pt-6">
     <p class="label">{t.contact.footer} © 2026</p>
-    <p class="label">TALAVERA DE LA REINA · 39.96°N · 4.83°W</p>
   </footer>
 </section>

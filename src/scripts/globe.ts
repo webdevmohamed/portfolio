@@ -5,15 +5,38 @@
 
 const host = document.querySelector<HTMLElement>('[data-globe]');
 
-if (host) {
+// The globe is a decorative backdrop and three.js is the heaviest asset on the
+// page by an order of magnitude, so it is not worth fetching on a metered or
+// low-end connection.
+const conn = (
+  navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }
+).connection;
+const SKIP =
+  conn?.saveData === true ||
+  conn?.effectiveType === 'slow-2g' ||
+  conn?.effectiveType === '2g' ||
+  (navigator.hardwareConcurrency ?? 8) <= 2;
+
+if (host && !SKIP) {
   const SNAP = new URLSearchParams(location.search).has('snap');
   const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  import('three')
-    .then((THREE) => boot(THREE, host, SNAP || REDUCED))
-    .catch((err) => {
-      console.warn('[globe] failed:', err);
-    });
+  const load = () =>
+    import('three')
+      .then((THREE) => boot(THREE, host, SNAP || REDUCED))
+      .catch((err) => {
+        console.warn('[globe] failed:', err);
+      });
+
+  if (SNAP) {
+    load(); // snapshot tooling needs the canvas on the first possible frame
+  } else if ('requestIdleCallback' in window) {
+    // Let the hero headline paint first: fetching 180 kB of gzipped three.js
+    // during the critical path competed with the preloaded fonts for bandwidth.
+    requestAnimationFrame(() => requestIdleCallback(load, { timeout: 1000 }));
+  } else {
+    setTimeout(load, 0);
+  }
 }
 
 async function boot(
@@ -22,8 +45,15 @@ async function boot(
   STATIC: boolean,
 ) {
   /* ---------- renderer / scene / camera ---------- */
-  // preserveDrawingBuffer keeps the frame alive for headless captures
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power', preserveDrawingBuffer: true });
+  // preserveDrawingBuffer stops the driver discarding the back buffer, which
+  // costs memory and bandwidth on every frame. It is only needed to keep a
+  // single settled frame alive for headless captures, so gate it on STATIC.
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+    powerPreference: 'low-power',
+    preserveDrawingBuffer: STATIC,
+  });
   renderer.setClearColor(0x000000, 0);
   renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;opacity:0;transition:opacity .8s ease;';
   host.appendChild(renderer.domElement);
@@ -83,6 +113,15 @@ async function boot(
     }),
   );
   globe.add(dots);
+
+  // Below md the globe sits behind the hero copy at reduced opacity, so give
+  // the dots more visual weight to keep it readable on a phone.
+  const md = matchMedia('(min-width: 48rem)');
+  const weight = () => {
+    (dots.material as import('three').PointsMaterial).size = md.matches ? 0.024 : 0.038;
+  };
+  weight();
+  md.addEventListener('change', weight);
 
   /* ---------- faint graticule + tilted orbit rings ---------- */
   const ring = (radius: number, color: number, opacity: number, segments = 160) => {
@@ -180,15 +219,43 @@ async function boot(
       tiltTarget = (ny - 0.5) * 0.22; // gentle parallax with cursor height
     }
   });
-  addEventListener('pointerup', () => {
+  // Release keeps the throw velocity so the fling/inertia reads.
+  const endDrag = () => {
+    if (!dragging) return;
     dragging = false;
     renderer.domElement.style.cursor = 'grab';
-  });
+  };
+  // Interrupted gestures must also drop the velocity, or whatever was captured
+  // before the interruption fires as a huge fling on the next rendered frame.
+  const abortDrag = () => {
+    endDrag();
+    velY = 0;
+    velX = 0;
+  };
+  addEventListener('pointerup', endDrag);
+  // A backgrounded tab never delivers `pointerup`, and a lost capture delivers
+  // neither — without these, `dragging` latches true and the idle auto-rotate
+  // branch in the loop never runs again.
+  addEventListener('pointercancel', abortDrag);
+  addEventListener('blur', abortDrag);
 
   /* ---------- visibility management ---------- */
-  let visible = true;
-  new IntersectionObserver(([entry]) => (visible = entry.isIntersecting), { threshold: 0.02 }).observe(host);
-  document.addEventListener('visibilitychange', () => (visible = !document.hidden && visible !== false));
+  // `inView` tracks scroll position only; tab visibility is read live from
+  // document.hidden inside the loop. Sharing one flag between both used to
+  // deadlock the globe: a backgrounded tab can report a stale
+  // isIntersecting:false, and the old `visible !== false` guard then made that
+  // permanent — the loop returned early forever after the tab regained focus.
+  let inView = true;
+  const io = new IntersectionObserver(([entry]) => (inView = entry.isIntersecting), { threshold: 0.02 });
+  io.observe(host);
+  const resync = () => {
+    abortDrag();
+    tiltTarget = 0;
+    lastW = -1; // force the per-frame size check to re-fit the camera
+    // Re-observe so the browser re-evaluates and reports the true state.
+    io.unobserve(host);
+    io.observe(host);
+  };
 
   /* ---------- entrance ---------- */
   const started = performance.now();
@@ -198,7 +265,7 @@ async function boot(
   let raf = 0;
   const tick = (now: number) => {
     raf = requestAnimationFrame(tick);
-    if (!visible || document.hidden) return;
+    if (document.hidden || !inView) return;
 
     // Belt & suspenders: ResizeObserver can miss display:none→block flips in
     // some embedders — check the real box every frame (cheap int compare).
@@ -255,8 +322,24 @@ async function boot(
     setTimeout(settle, 500); // belt & suspenders for headless timing
     return;
   }
-  raf = requestAnimationFrame(tick);
-  addEventListener('pagehide', () => cancelAnimationFrame(raf));
+  const start = () => {
+    if (!raf) raf = requestAnimationFrame(tick);
+  };
+  start();
+  // A page restored from the back-forward cache fires pagehide first; cancel and
+  // clear the handle so pageshow can revive the loop instead of leaving a dead
+  // requestAnimationFrame id behind.
+  addEventListener('pagehide', () => {
+    cancelAnimationFrame(raf);
+    raf = 0;
+  });
+  addEventListener('pageshow', start);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      resync();
+      start();
+    }
+  });
 
   // Debug/test handle
   (window as unknown as Record<string, unknown>).__globe = globe;

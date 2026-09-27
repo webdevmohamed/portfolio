@@ -10,7 +10,7 @@ const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
      desktop so the skills marquee peeks above the fold on 27" displays -->
 <section id="hello" class="relative flex min-h-svh flex-col justify-end overflow-hidden gutter pb-8 md:min-h-[86svh] md:justify-start md:overflow-visible md:pb-10 md:pt-32 lg:pt-44" data-hero>  <!-- Interactive globe: ambient backdrop on mobile, main visual on md+ -->
   <div
-    class="pointer-events-none absolute inset-0 flex items-start justify-center pt-[2vh] opacity-35 md:inset-y-0 md:left-auto md:right-0 md:w-[46%] md:items-center md:pt-0 md:opacity-100 globe-anchor"
+    class="pointer-events-none absolute inset-0 flex items-start justify-center pt-[2vh] opacity-60 md:inset-y-0 md:left-auto md:right-0 md:w-[46%] md:items-center md:pt-0 md:opacity-100 globe-anchor"
     aria-hidden="true"
   >
     <div class="relative h-[68vh] max-h-[86vh] w-full touch-none select-none md:h-full md:pointer-events-auto" data-globe></div>
@@ -42,7 +42,7 @@ const cvHref = locale === 'es' ? '/cv/cv-es.pdf' : '/cv/cv-en.pdf';
       </div>
 
       <div class="flex flex-row items-baseline gap-4 font-mono text-[0.65rem] tracking-[0.18em] text-smoke uppercase md:gap-6 lg:flex-col lg:items-end lg:gap-1" data-hero-fade>
-        <span>{t.hero.based}</span>
+        <span>{t.hero.localTime}</span>
         <span class="text-ink" data-clock>--:--:--</span>
       </div>
     </div>
