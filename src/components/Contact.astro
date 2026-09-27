@@ -26,11 +26,25 @@ const t = getDict(locale);
       class="order-2 flex flex-col gap-10 md:order-1 md:col-span-7"
       data-contact-form
       novalidate
+      data-status-sending={t.contact.form.sending}
       data-status-sent={t.contact.form.sent}
       data-status-errors={t.contact.form.fix}
+      data-status-error={t.contact.form.error}
       data-done-label={t.contact.form.sentShort}
     >
       <p class="label">{t.contact.form.label}</p>
+
+      <!-- Honeypot: visually hidden; only bots fill this in -->
+      <div class="hidden" aria-hidden="true">
+        <label for="cf-website">Website</label>
+        <input
+          id="cf-website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
 
       <div class="grid gap-10 sm:grid-cols-2 sm:gap-8">
         <div class="relative">
@@ -91,7 +105,7 @@ const t = getDict(locale);
       </div>
 
       <div class="flex flex-wrap items-center gap-6">
-        <button type="submit" class="btn-acid" data-magnetic>
+        <button type="submit" class="btn-acid" data-magnetic data-submit-button>
           <span data-submit-label>{t.contact.form.send}</span>
           <span aria-hidden="true">→</span>
         </button>

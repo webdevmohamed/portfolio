@@ -435,7 +435,7 @@ function initCopyEmail() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Contact form - client-side validation, composes a mailto: draft      */
+/* Contact form - client-side validation + POST to /api/contact        */
 /* ------------------------------------------------------------------ */
 function initContactForm() {
   const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
@@ -474,7 +474,7 @@ function initContactForm() {
     fields[key]?.addEventListener('input', () => showError(key, false));
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const bad = validate();
     if (bad) {
@@ -486,23 +486,32 @@ function initContactForm() {
     const name = fields.name!.value.trim();
     const email = fields.email!.value.trim();
     const message = fields.message!.value.trim();
-    const subject = `Portfolio - mensaje de ${name}`;
-    const body = `${message}\n\n- ${name} (${email})`;
 
-    if (status) status.textContent = form.dataset.statusSent ?? '';
-    if (submitLabel) {
-      submitLabel.textContent = '✓ ' + (form.dataset.doneLabel ?? 'Sent!');
+    // Show the pending state and lock the form while the request runs
+    if (status) status.textContent = form.dataset.statusSending ?? '';
+    const button = form.querySelector<HTMLButtonElement>('[data-submit-button]');
+    button && (button.disabled = true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message, website: (form.elements.namedItem('website') as HTMLInputElement | null)?.value ?? '' }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean };
+
+      if (res.ok && data.ok) {
+        if (status) status.textContent = form.dataset.statusSent ?? '';
+        if (submitLabel) submitLabel.textContent = '✓ ' + (form.dataset.doneLabel ?? 'Sent!');
+        form.reset();
+      } else {
+        if (status) status.textContent = form.dataset.statusError ?? '';
+      }
+    } catch {
+      if (status) status.textContent = form.dataset.statusError ?? '';
+    } finally {
+      button && (button.disabled = false);
     }
-    // Paint the success state first, then hand off to the mail client
-    setTimeout(() => {
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }, 60);
-
-    setTimeout(() => {
-      form.reset();
-      if (submitLabel) submitLabel.textContent = submitLabel.dataset.original ?? '';
-      if (status) status.textContent = '';
-    }, 5000);
   });
 
   // Preserve the original button label for the success-state reset
