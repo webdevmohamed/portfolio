@@ -1,6 +1,6 @@
 ---
 import { getDict, type Locale } from '../i18n';
-import { SKILLS } from '../data/skills';
+import { SKILLS, type Skill } from '../data/skills';
 import * as si from 'simple-icons';
 
 interface Props { locale: Locale }
@@ -14,8 +14,10 @@ const filters = [
   { key: 'cloud', label: t.skills.filters.cloud },
 ] as const;
 
-function icon(slug: string) {
-  const key = 'si' + slug.charAt(0).toUpperCase() + slug.slice(1);
+function icon(skill: Skill) {
+  // '@slug' = custom path bundled locally (not available in simple-icons)
+  if (skill.icon.startsWith('@')) return skill.path ?? '';
+  const key = 'si' + skill.icon.charAt(0).toUpperCase() + skill.icon.slice(1);
   return (si as Record<string, any>)[key]?.path ?? '';
 }
 ---
@@ -68,7 +70,7 @@ function icon(slug: string) {
           aria-label={s.name}
           viewBox="0 0 24 24"
         >
-          <path d={icon(s.icon)}></path>
+          <path d={icon(s)}></path>
         </svg>
         <span class="text-center font-mono text-[0.65rem] tracking-[0.14em] text-ink uppercase transition-colors duration-500 group-hover:text-acid">
           {s.note ? `${s.name} · ${s.note}` : s.name}

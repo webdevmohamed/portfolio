@@ -1,6 +1,6 @@
 ---
 import { getDict, type Locale } from '../i18n';
-import { EMAIL } from '../data/site';
+import { EMAIL, CV_DOWNLOAD_NAME } from '../data/site';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getDict(locale);
@@ -156,8 +156,8 @@ const t = getDict(locale);
       <div data-fade>
         <p class="label mb-3">{t.contact.cvLabel}</p>
         <div class="flex flex-wrap gap-3">
-          <a href="/cv/cv-es.pdf" download class="btn-acid" data-magnetic>CV · ES ↓</a>
-          <a href="/cv/cv-en.pdf" download class="btn-acid" data-magnetic>CV · EN ↓</a>
+          <a href="/cv/cv-es.pdf" download={CV_DOWNLOAD_NAME} class="btn-acid" data-magnetic>CV · ES ↓</a>
+          <a href="/cv/cv-en.pdf" download={CV_DOWNLOAD_NAME} class="btn-acid" data-magnetic>CV · EN ↓</a>
         </div>
       </div>
 

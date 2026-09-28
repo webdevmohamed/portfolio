@@ -1,5 +1,6 @@
 ---
 import { getDict, type Locale } from '../i18n';
+import { CV_DOWNLOAD_NAME } from '../data/site';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getDict(locale);
@@ -51,8 +52,7 @@ const other: Locale = locale === 'es' ? 'en' : 'es';
       </a>
       <a
         href={cvHref}
-        target="_blank"
-        rel="noopener"
+        download={CV_DOWNLOAD_NAME}
         class="label inline-flex h-10 items-center border border-acid/60 px-3 text-acid transition-all duration-300 hover:bg-acid hover:text-void"
         data-magnetic
       >
@@ -90,8 +90,7 @@ const other: Locale = locale === 'es' ? 'en' : 'es';
       ))}
       <a
         href={cvHref}
-        target="_blank"
-        rel="noopener"
+        download={CV_DOWNLOAD_NAME}
         class="btn-acid mt-6 w-fit"
         data-mobile-link
       >
